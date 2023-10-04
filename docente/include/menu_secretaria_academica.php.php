@@ -28,7 +28,7 @@
                   <li><a><i class="fa fa-edit"></i> Planificación <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="periodo_academico.php">Periodo Académico</a></li>
-                      <li><a href="programcion_clases">Programación de Clases</a></li>
+                      <li><a href="programacion_clases.php">Programación de Clases</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-desktop"></i> Matrícula <span class="fa fa-chevron-down"></span></a>
