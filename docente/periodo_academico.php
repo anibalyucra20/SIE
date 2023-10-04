@@ -190,16 +190,8 @@
                       </div>
 
                       <!-- FIN MODAL REGISTRAR-->
-
-
                       <br />
-                      
-                        
-                          
                           <div class="x_content">
-                            <p class="text-muted font-13 m-b-30">
-                              DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
-                            </p>
                             <table id="example" class="table table-striped table-bordered">
                               <thead>
                                 <tr>
@@ -216,7 +208,7 @@
 
                               <tbody>
                               <?php 
-                              for ($i=1; $i <= 100 ; $i++) { 
+                              for ($i=1; $i <= 5 ; $i++) { 
                                 
                               
                               ?>
