@@ -2,155 +2,318 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Periodo Académico | SIE</title>
-    <!--icono en el titulo-->
-    <link rel="shortcut icon" href="">
-    <!-- Bootstrap -->
-    <link href="../plantilla/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../plantilla/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../plantilla/vendors/nprogress/nprogress.css" rel="stylesheet">
+  <title>Periodo Académico | SIE</title>
+  <!--icono en el titulo-->
+  <link rel="shortcut icon" href="">
 
-    <!-- Custom Theme Style -->
-    <link href="../plantilla/build/css/custom.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="../plantilla/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../plantilla/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../plantilla/vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- iCheck -->
+  <link href="../plantilla/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  <!-- Datatables -->
+  <link href="../plantilla/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  <link href="../plantilla/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+  <link href="../plantilla/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+  <link href="../plantilla/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+  <link href="../plantilla/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="../plantilla/build/css/custom.min.css" rel="stylesheet">
 </head>
 
 <body class="nav-md">
-    <div class="container body">
-        <div class="main_container">
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
-                    
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
 
-                    <?php include("include/menu_secretaria_academica.php.php"); ?>
 
-                    <!-- page content -->
-                    <div class="right_col" role="main">
-                        <div class="">
-                            <div class="page-title">
-                                <div class="title_left">
-                                    <h3>Periodo Académico</h3>
-                                </div>
+          <?php include("include/menu_secretaria_academica.php.php"); ?>
 
-                                
+          <!-- page content -->
+          <div class="right_col" role="main">
+            <div class="">
+              <div class="page-title">
+                <div class="title_left">
+
+                </div>
+
+
+              </div>
+              <div class="clearfix"></div>
+
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Periodo Académico</h2>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <button type="button" class="btn btn-success" data-toggle="modal" data-target=".registrar"><i class="fa fa-plus-square"></i> Nuevo</button>
+
+
+                      <!--MODAL REGISTRAR-->
+                      <div class="modal fade registrar" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                              </button>
+                              <h4 class="modal-title" id="myModalLabel" align="center">Registrar Periodo Academico</h4>
                             </div>
-                            <div class="clearfix"></div>
+                            <div class="modal-body">
+                              <!--INICIO CONTENIDO DE MODAL-->
+                              <div class="x_panel">
 
-                            <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Form Design <small>different form elements</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                <div class="" align="center">
+                                  <h2></h2>
+                                  <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                  <br />
+                                  <form role="form" action="operaciones/registrar_periodo_academico.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Periodo Académico : </label>
+                                      <div class="row">
+                                        <div class="col-md-3 col-sm-3 col-xs-6">
+                                          <select class="form-control" name="anio" id="anio" required>
+                                            <option value=""></option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
+                                          </select>
+                                          <br>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede : </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control" id="director" name="director" value="" required="required">
+                                          <option></option>
+                                          <option value="10">HUAMANGA</option>
+                                          <option value="10">HUANTA</option>
+                                          <option value="10">LURICOCHA</option>
+                                        </select>
+                                        <br>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Director : </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control" id="director" name="director" value="" required="required">
+                                          <option></option>
+                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                        </select>
+                                        <br>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Secretario Académico : </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control" id="director" name="director" value="" required="required">
+                                          <option></option>
+                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                        </select>
+                                        <br>
+                                      </div>
+                                    </div>
 
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <div id="gender" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                            </label>
-                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="female"> Female
-                            </label>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Inicio : </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="date" class="form-control" name="fecha_inicio" required="required">
+                                        <br>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Fin : </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="date" class="form-control" name="fecha_fin" required="required">
+                                        <br>
+                                      </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Cursos a Programar :
+                                      </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <div class="checkbox">
+                                          <label>
+                                            <input type="checkbox" class="flat" name="pe_2"> INICIAL </label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label>
+                                            <input type="checkbox" class="flat" name="pe_3"> PRIMARIA </label>
+                                        </div>
+                                        <div class="checkbox">
+                                          <label>
+                                            <input type="checkbox" class="flat" name="pe_4"> SECUNDARIA </label>
+                                        </div>
+
+                                        <br><br>
+                                      </div>
+                                    </div>
+                                    <div align="center">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+
+                                      <button type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                              <!--FIN DE CONTENIDO DE MODAL-->
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-                        </div>
-                      </div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button class="btn btn-primary" type="button">Cancel</button>
-						  <button class="btn btn-primary" type="reset">Reset</button>
-                          <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                      </div>
 
-                    </form>
+                      <!-- FIN MODAL REGISTRAR-->
+
+
+                      <br />
+                      
+                        
+                          
+                          <div class="x_content">
+                            <p class="text-muted font-13 m-b-30">
+                              DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
+                            </p>
+                            <table id="example" class="table table-striped table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>Nro</th>
+                                  <th>Año</th>
+                                  <th>Sede</th>
+                                  <th>Fecha Inicio</th>
+                                  <th>Fecha Fin</th>
+                                  <th>Director</th>
+                                  <th>Secretario</th>
+                                </tr>
+                              </thead>
+
+
+                              <tbody>
+                              <?php 
+                              for ($i=1; $i <= 100 ; $i++) { 
+                                
+                              
+                              ?>
+                                <tr>
+                                  <td><?php echo $i; ?></td>
+                                  <td><?php echo $i; ?>Tiger Nixon</td>
+                                  <td><?php echo $i; ?>System Architect</td>
+                                  <td><?php echo $i; ?>Edinburgh</td>
+                                  <td><?php echo $i; ?>61</td>
+                                  <td><?php echo $i; ?>2011/04/25</td>
+                                  <td><?php echo $i; ?>$320,800</td>
+                                </tr>
+                                <?php 
+                              }
+                              ?>
+                              </tbody>
+                            </table>
+                          </div>
+                        
+                      
+
+
+
+                    </div>
                   </div>
                 </div>
               </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /page content -->
-
-                    <!-- footer content -->
-                    <footer>
-                        <div class="pull-right">
-                            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </footer>
-                    <!-- /footer content -->
-                </div>
             </div>
+          </div>
+          <!-- /page content -->
 
-            <!-- jQuery -->
-            <script src="../plantilla/vendors/jquery/dist/jquery.min.js"></script>
-            <!-- Bootstrap -->
-            <script src="../plantilla/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-            <!-- FastClick -->
-            <script src="../plantilla/vendors/fastclick/lib/fastclick.js"></script>
-            <!-- NProgress -->
-            <script src="../plantilla/vendors/nprogress/nprogress.js"></script>
-            <!-- validator -->
-            <script src="../plantilla/vendors/validator/validator.js"></script>
+          <!-- footer content -->
+          <footer>
+            <div class="pull-right">
+              Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            </div>
+            <div class="clearfix"></div>
+          </footer>
+          <!-- /footer content -->
+        </div>
+      </div>
 
-            <!-- Custom Theme Scripts -->
-            <script src="../plantilla/build/js/custom.min.js"></script>
+      <!-- jQuery -->
+      <script src="../plantilla/vendors/jquery/dist/jquery.min.js"></script>
+      <!-- Bootstrap -->
+      <script src="../plantilla/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+      <!-- FastClick -->
+      <script src="../plantilla/vendors/fastclick/lib/fastclick.js"></script>
+      <!-- NProgress -->
+      <script src="../plantilla/vendors/nprogress/nprogress.js"></script>
+      <!-- iCheck -->
+      <script src="../plantilla/vendors/iCheck/icheck.min.js"></script>
+      <!-- Datatables -->
+      <script src="../plantilla/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+      <script src="../plantilla/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+      <script src="../plantilla/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+      <script src="../plantilla/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+      <script src="../plantilla/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+      <script src="../plantilla/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+      <script src="../plantilla/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+      <script src="../plantilla/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+      <script src="../plantilla/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+      <script src="../plantilla/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+      <script src="../plantilla/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+      <script src="../plantilla/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+      <script src="../plantilla/vendors/jszip/dist/jszip.min.js"></script>
+      <script src="../plantilla/vendors/pdfmake/build/pdfmake.min.js"></script>
+      <script src="../plantilla/vendors/pdfmake/build/vfs_fonts.js"></script>
+
+      <!-- Custom Theme Scripts -->
+      <script src="../plantilla/build/js/custom.min.js"></script>
+
+      <script>
+        $(document).ready(function() {
+          $('#example').DataTable({
+            "language": {
+              "processing": "Procesando...",
+              "lengthMenu": "Mostrar _MENU_ registros",
+              "zeroRecords": "No se encontraron resultados",
+              "emptyTable": "Ningún dato disponible en esta tabla",
+              "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+              "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+              "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+              "search": "Buscar:",
+              "infoThousands": ",",
+              "loadingRecords": "Cargando...",
+              "paginate": {
+                "first": "Primero",
+                "last": "Último",
+                "next": "Siguiente",
+                "previous": "Anterior"
+              },
+            }
+          });
+
+        });
+      </script>
 
 </body>
 
