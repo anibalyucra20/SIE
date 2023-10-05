@@ -68,11 +68,11 @@
                                 <tr>
                                   <th>Nro</th>
                                   <th>Sede</th>
-                                  <th>Asignatura</th>
-                                  <th>Docente</th>
                                   <th>Grado</th>
                                   <th>Turno</th>
                                   <th>Seccion</th>
+                                  <th>Asignatura</th>
+                                  <th>Docente</th>
                                   <th>Acciones</th>
                                 </tr>
                               </thead>
@@ -86,12 +86,13 @@
                               ?>
                                 <tr>
                                   <td><?php echo $i; ?></td>
-                                  <td><?php echo $i; ?>Tiger Nixon</td>
-                                  <td><?php echo $i; ?>System Architect</td>
-                                  <td><?php echo $i; ?>Edinburgh</td>
-                                  <td><?php echo $i; ?>61</td>
-                                  <td><?php echo $i; ?>2011/04/25</td>
-                                  <td><?php echo $i; ?>$320,800</td>
+                                  <td><?php echo $i; ?>Sede</td>
+                                  <td><?php echo $i; ?>Grado</td>
+                                  <td><?php echo $i; ?>Turno</td>
+                                  <td><?php echo $i; ?>Seccion</td>
+                                  <td><?php echo $i; ?>Asignatura</td>
+                                  <td><?php echo $i; ?>Docente</td>
+                                  <td><a href="" class="btn btn-info">Ver</a></td>
                                 </tr>
                                 <?php 
                               }
