@@ -85,68 +85,45 @@
                                   <br />
                                   <form role="form" action="operaciones/registrar_periodo_academico.php" class="form-horizontal form-label-left input_mask" method="POST">
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">DNI: </label>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">DNI : </label>
                                       <div class="row">
                                         <div class="col-md-3 col-sm-3 col-xs-6">
-                                          <select class="form-control" name="anio" id="anio" required>
-                                            <option value=""></option>
-                                            <option value="2021">2021</option>
-                                            <option value="2022">2022</option>
-                                            <option value="2023">2023</option>
-                                            <option value="2024">2024</option>
-                                            <option value="2025">2025</option>
-                                            <option value="2026">2026</option>
-                                          </select>
+                                        <input type="number" class="form-control" name="fecha_inicio" required="required">
                                           <br>
                                         </div>
                                       </div>
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede : </label>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Apellidos y Nombres : </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="form-control" id="director" name="director" value="" required="required">
-                                          <option></option>
-                                          <option value="10">HUAMANGA</option>
-                                          <option value="10">HUANTA</option>
-                                          <option value="10">LURICOCHA</option>
-                                        </select>
+                                      <input type="text" class="form-control" name="fecha_inicio" required="required">
                                         <br>
                                       </div>
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Director : </label>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="form-control" id="director" name="director" value="" required="required">
-                                          <option></option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                        </select>
+                                      <input type="email" class="form-control" name="fecha_inicio" required="required">
                                         <br>
                                       </div>
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Secretario Académico : </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="form-control" id="director" name="director" value="" required="required">
-                                          <option></option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                        </select>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono : </label>
+                                      <div class="col-md-3 col-sm-3 col-xs-6">
+                                      <input type="number" class="form-control" name="fecha_inicio" required="required">
                                         <br>
                                       </div>
                                     </div>
 
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Inicio : </label>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Direción : </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="date" class="form-control" name="fecha_inicio" required="required">
+                                        <input type="text" class="form-control" name="fecha_inicio" required="required">
                                         <br>
                                       </div>
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Fin : </label>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento : </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input type="date" class="form-control" name="fecha_fin" required="required">
                                         <br>
