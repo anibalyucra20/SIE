@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Niveles | SIE</title>
+    <title>Grados | SIE</title>
     <!--icono en el titulo-->
     <link rel="shortcut icon" href="">
 
@@ -56,7 +56,7 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Niveles</h2>
+                                            <h2>Grados</h2>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
@@ -71,7 +71,7 @@
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                             </button>
-                                                            <h4 class="modal-title" id="myModalLabel" align="center">Niveles</h4>
+                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registrar Grado</h4>
                                                         </div>
                                                         <div class="modal-body">
                                                             <!--INICIO CONTENIDO DE MODAL-->
@@ -84,35 +84,37 @@
                                                                 <div class="x_content">
                                                                     <br />
                                                                     <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST">
-
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Codigo Modular: </label>
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nivel : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="150" class="form-control" name="codigo_modular" required="required">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre del Nivel: </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="150" class="form-control" name="codigo_modular" required="required">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-
-
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede: </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select class="form-control" name="genero" id="sede" required>
+                                                                                <select name="nivel" id="" class="form-control">
                                                                                     <option value=""></option>
-                                                                                    <option value="2021">HUANTA</option>
-                                                                                    <option value="2022">HUAMANGA</option>
+                                                                                    <option value="">Inicial</option>
+                                                                                    <option value="">Primaria</option>
+                                                                                    <option value="">Secundaria</option>
                                                                                 </select>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
-
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ciclo : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <select name="ciclo" id="" class="form-control">
+                                                                                    <option value=""></option>
+                                                                                    <option value="">I</option>
+                                                                                    <option value="">II</option>
+                                                                                    <option value="">III</option>
+                                                                                </select>
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Grado : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <input type="text" maxlength="20" class="form-control" name="grado">
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
                                                                         <div align="center">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
@@ -134,30 +136,25 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Nro</th>
-                                                            <th>Año</th>
-                                                            <th>Sede</th>
-                                                            <th>Fecha Inicio</th>
-                                                            <th>Fecha Fin</th>
-                                                            <th>Director</th>
-                                                            <th>Secretario</th>
+                                                            <th>Nivel</th>
+                                                            <th>Ciclo</th>
+                                                            <th>Grado</th>
+                                                            <th>Acciones</th>
                                                         </tr>
                                                     </thead>
 
 
                                                     <tbody>
                                                         <?php
-                                                        for ($i = 1; $i <= 5; $i++) {
+                                                        for ($i = 1; $i <= 4; $i++) {
 
 
                                                         ?>
                                                             <tr>
                                                                 <td><?php echo $i; ?></td>
-                                                                <td><?php echo $i; ?>Tiger Nixon</td>
-                                                                <td><?php echo $i; ?>System Architect</td>
-                                                                <td><?php echo $i; ?>Edinburgh</td>
-                                                                <td><?php echo $i; ?>61</td>
-                                                                <td><?php echo $i; ?>2011/04/25</td>
-                                                                <td><?php echo $i; ?>$320,800</td>
+                                                                <td><?php echo $i; ?>Nivel</td>
+                                                                <td><?php echo $i; ?>Ciclo</td>
+                                                                <td><?php echo $i; ?>Grado</td>
                                                                 <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
@@ -168,7 +165,7 @@
                                                                         <div class="modal-header">
                                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                                             </button>
-                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Modificar Nivel</h4>
+                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Sede</h4>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <!--INICIO CONTENIDO DE MODAL-->
@@ -180,31 +177,35 @@
                                                                                 </div>
                                                                                 <div class="x_content">
                                                                                     <br />
-                                                                                    <form role="form" action="operaciones/registrar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                    <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                                     <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Codigo Modular: </label>
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nivel : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="150" class="form-control" name="codigo_modular" required="required">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre del Nivel: </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="150" class="form-control" name="codigo_modular" required="required">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-
-
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede: </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select class="form-control" name="genero" id="sede" required>
+                                                                                <select name="nivel" id="" class="form-control">
                                                                                     <option value=""></option>
-                                                                                    <option value="2021">HUANTA</option>
-                                                                                    <option value="2022">HUAMANGA</option>
+                                                                                    <option value="">Inicial</option>
+                                                                                    <option value="">Primaria</option>
+                                                                                    <option value="">Secundaria</option>
                                                                                 </select>
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ciclo : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <select name="ciclo" id="" class="form-control">
+                                                                                    <option value=""></option>
+                                                                                    <option value="">I</option>
+                                                                                    <option value="">II</option>
+                                                                                    <option value="">III</option>
+                                                                                </select>
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Grado : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <input type="text" maxlength="20" class="form-control" name="grado">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -223,7 +224,6 @@
                                                             </div>
 
                                                             <!-- FIN MODAL EDITAR-->
-
 
 
                                                         <?php
