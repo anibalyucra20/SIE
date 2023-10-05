@@ -107,14 +107,7 @@
                                         <br>
                                       </div>
                                     </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono : </label>
-                                      <div class="col-md-3 col-sm-3 col-xs-6">
-                                      <input type="number" class="form-control" name="fecha_inicio" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-
+                                  
                                     <div class="form-group">
                                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Direción : </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
@@ -123,8 +116,15 @@
                                       </div>
                                     </div>
                                     <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono : </label>
+                                      <div class="col-md-3 col-sm-3 col-xs-6">
+                                      <input type="number" class="form-control" name="fecha_inicio" required="required">
+                                        <br>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
                                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento : </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                      <div class="col-md-3 col-sm-3 col-xs-9">
                                         <input type="date" class="form-control" name="fecha_fin" required="required">
                                         <br>
                                       </div>
@@ -142,9 +142,32 @@
                                       </div>
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">FOTO : </label>
-                                      <div class="col-md-3 col-sm-3 col-xs-9">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto : </label>
+                                      <div class="col-md-3 col-sm-3 col-xs-6">
                                         <input type="file" class="form-control" name="fecha_fin" required="required">
+                                        <br>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede :
+                                      </label>
+                                      <div class="col-md-3 col-sm-3 col-xs-6">
+                                      <select class="form-control" name="genero" id="genero" required>
+                                          <option value=""></option>
+                                          <option value="2021">HUANTA</option>
+                                          <option value="2022">HUAMNAGA</option> 
+                                        </select>
+                                        <br><br>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Discapacidad : </label>
+                                      <div class="col-md-3 col-sm-3 col-xs-6">
+                                      <select class="form-control" name="genero" id="genero" required>
+                                          <option value=""></option>
+                                          <option value="">Si</option>
+                                          <option value="">No</option> 
+                                        </select>
                                         <br>
                                       </div>
                                     </div>
