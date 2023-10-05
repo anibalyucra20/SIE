@@ -129,17 +129,17 @@
                                     <div class="form-group">
                                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Genero: </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                      <select class="form-control" name="genero" id="genero" required>
+                                        <select class="form-control" name="genero" id="genero" required>
                                           <option value=""></option>
                                           <option value="2021">Masculio</option>
-                                          <option value="2022">Femenino</option> 
+                                          <option value="2022">Femenino</option>
                                         </select>
                                         <br>
                                       </div>
                                     </div>
 
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de  Contrato : </label>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Contrato : </label>
                                       <div class="col-md-4 col-sm-4 col-xs-12">
                                         <input type="date" class="form-control" name="fecha_contrato" required="required">
                                         <br>
@@ -158,7 +158,7 @@
                                         <select class="form-control" name="condicion_laboral" id="condicion_laboral" required>
                                           <option value=""></option>
                                           <option value="2021">Contratado</option>
-                                          <option value="2022">Nombrado</option> 
+                                          <option value="2022">Nombrado</option>
                                         </select>
                                         <br>
                                       </div>
@@ -167,12 +167,12 @@
                                     <div class="form-group">
                                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Cargo: </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                      <select class="form-control" name="cargo" id="cargo" required>
+                                        <select class="form-control" name="cargo" id="cargo" required>
                                           <option value=""></option>
                                           <option value="2021">director</option>
-                                          <option value="2022">secretario academico</option> 
+                                          <option value="2022">secretario academico</option>
                                           <option value="2022">docente</option>
-                                          </select> 
+                                        </select>
                                         <br>
                                       </div>
                                     </div>
@@ -212,6 +212,7 @@
                               <th>Fecha Fin</th>
                               <th>Director</th>
                               <th>Secretario</th>
+                              <th>Acciones</th>
                             </tr>
                           </thead>
 
@@ -230,7 +231,168 @@
                                 <td><?php echo $i; ?>61</td>
                                 <td><?php echo $i; ?>2011/04/25</td>
                                 <td><?php echo $i; ?>$320,800</td>
+                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                               </tr>
+                              <!--MODAL EDITAR-->
+                              <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                  <div class="modal-content">
+
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                      </button>
+                                      <h4 class="modal-title" id="myModalLabel" align="center">Editar Docente</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                      <!--INICIO CONTENIDO DE MODAL-->
+                                      <div class="x_panel">
+
+                                        <div class="" align="center">
+                                          <h2></h2>
+                                          <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                          <br />
+                                          <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                            <div class="form-group">
+                                              <div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Dni : </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <input type="number" maxlength="8" class="form-control" readonly>
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Apellidos y Nombres: </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <input type="text" maxlength="150" class="form-control" readonly>
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo: </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <input type="email" maxlength="150" class="form-control" name="correo" required="required">
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Direccion: </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <input type="text" maxlength="150" class="form-control" name="direccion" required="required">
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono: </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <input type="text" maxlength="150" class="form-control" name="telefono" required="required">
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento : </label>
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                  <input type="date" class="form-control" name="fecha_nacimiento" required="required">
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Genero: </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <select class="form-control" name="genero" id="genero" required>
+                                                    <option value=""></option>
+                                                    <option value="2021">Masculio</option>
+                                                    <option value="2022">Femenino</option>
+                                                  </select>
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                              <div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Contrato : </label>
+                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                  <input type="date" class="form-control" name="fecha_contrato" required="required">
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Grado Academico: </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <input type="text" maxlength="150" class="form-control" name="grado_academico" required="required">
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Condición Laboral: </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <select class="form-control" name="condicion_laboral" id="condicion_laboral" required>
+                                                    <option value=""></option>
+                                                    <option value="2021">Contratado</option>
+                                                    <option value="2022">Nombrado</option>
+                                                  </select>
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                              <div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Cargo: </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <select class="form-control" name="cargo" id="cargo" required>
+                                                    <option value=""></option>
+                                                    <option value="2021">director</option>
+                                                    <option value="2022">secretario academico</option>
+                                                    <option value="2022">docente</option>
+                                                  </select>
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                              <div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto: </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <input type="file" class="form-control" name="foto" required="required">
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div align="center">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+
+                                              <button type="submit" class="btn btn-primary">Guardar</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                      <!--FIN DE CONTENIDO DE MODAL-->
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- FIN MODAL EDITAR-->
                             <?php
                             }
                             ?>

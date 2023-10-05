@@ -191,44 +191,152 @@
 
                       <!-- FIN MODAL REGISTRAR-->
                       <br />
-                          <div class="x_content">
-                            <table id="example" class="table table-striped table-bordered">
-                              <thead>
-                                <tr>
-                                  <th>Nro</th>
-                                  <th>Año</th>
-                                  <th>Sede</th>
-                                  <th>Fecha Inicio</th>
-                                  <th>Fecha Fin</th>
-                                  <th>Director</th>
-                                  <th>Secretario</th>
-                                </tr>
-                              </thead>
+                      <div class="x_content">
+                        <table id="example" class="table table-striped table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Nro</th>
+                              <th>Año</th>
+                              <th>Sede</th>
+                              <th>Fecha Inicio</th>
+                              <th>Fecha Fin</th>
+                              <th>Director</th>
+                              <th>Secretario</th>
+                              <th>Acciones</th>
+
+                            </tr>
+                          </thead>
 
 
-                              <tbody>
-                              <?php 
-                              for ($i=1; $i <= 5 ; $i++) { 
-                                
-                              
-                              ?>
-                                <tr>
-                                  <td><?php echo $i; ?></td>
-                                  <td><?php echo $i; ?>Tiger Nixon</td>
-                                  <td><?php echo $i; ?>System Architect</td>
-                                  <td><?php echo $i; ?>Edinburgh</td>
-                                  <td><?php echo $i; ?>61</td>
-                                  <td><?php echo $i; ?>2011/04/25</td>
-                                  <td><?php echo $i; ?>$320,800</td>
-                                </tr>
-                                <?php 
-                              }
-                              ?>
-                              </tbody>
-                            </table>
-                          </div>
-                        
-                      
+                          <tbody>
+                            <?php
+                            for ($i = 1; $i <= 5; $i++) {
+
+
+                            ?>
+                              <tr>
+                                <td><?php echo $i; ?></td>
+                                <td><?php echo $i; ?>Tiger Nixon</td>
+                                <td><?php echo $i; ?>System Architect</td>
+                                <td><?php echo $i; ?>Edinburgh</td>
+                                <td><?php echo $i; ?>61</td>
+                                <td><?php echo $i; ?>2011/04/25</td>
+                                <td><?php echo $i; ?>$320,800</td>
+                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                              </tr>
+                              <!--MODAL EDITAR-->
+                              <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                  <div class="modal-content">
+
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                      </button>
+                                      <h4 class="modal-title" id="myModalLabel" align="center">Editar Periodo Acádemico</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                      <!--INICIO CONTENIDO DE MODAL-->
+                                      <div class="x_panel">
+
+                                        <div class="" align="center">
+                                          <h2></h2>
+                                          <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                          <br />
+                                          <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                          <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Periodo Académico : </label>
+                                      <div class="row">
+                                        <div class="col-md-3 col-sm-3 col-xs-6">
+                                          <select class="form-control" name="anio" id="anio" required>
+                                            <option value=""></option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
+                                          </select>
+                                          <br>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede : </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control" id="director" name="director" value="" required="required">
+                                          <option></option>
+                                          <option value="10">HUAMANGA</option>
+                                          <option value="10">HUANTA</option>
+                                          <option value="10">LURICOCHA</option>
+                                        </select>
+                                        <br>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Director : </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control" id="director" name="director" value="" required="required">
+                                          <option></option>
+                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                        </select>
+                                        <br>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Secretario Académico : </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control" id="director" name="director" value="" required="required">
+                                          <option></option>
+                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                        </select>
+                                        <br>
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Inicio : </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="date" class="form-control" name="fecha_inicio" required="required">
+                                        <br>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Fin : </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="date" class="form-control" name="fecha_fin" required="required">
+                                        <br>
+                                      </div>
+                                    </div>
+
+                                            <div align="center">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+
+                                              <button type="submit" class="btn btn-primary">Guardar</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                      <!--FIN DE CONTENIDO DE MODAL-->
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- FIN MODAL EDITAR-->
+                            <?php
+                            }
+                            ?>
+                          </tbody>
+                        </table>
+                      </div>
+
+
 
 
 
