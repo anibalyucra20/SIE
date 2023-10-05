@@ -93,14 +93,35 @@
                                       </div>
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo: </label>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Codigo Modular: </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="email" maxlength="150" class="form-control" name="correo" required="required">
+                                        <input type="text" maxlength="150" class="form-control" name="codigo_modular" required="required">
                                         <br>
                                       </div>
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Direccion: </label>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Razon Social: </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" maxlength="150" class="form-control" name="razon_social" required="required">
+                                        <br>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Departamento: </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" maxlength="150" class="form-control" name="departamento" required="required">
+                                        <br>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Provincia: </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" maxlength="150" class="form-control" name="Provincia" required="required">
+                                        <br>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Dirección: </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
                                         <input type="text" maxlength="150" class="form-control" name="direccion" required="required">
                                         <br>
@@ -109,75 +130,18 @@
                                     <div class="form-group">
                                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono: </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" maxlength="150" class="form-control" name="telefono" required="required">
+                                        <input type="number" maxlength="150" class="form-control" name="telefono" required="required">
                                         <br>
                                       </div>
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento : </label>
-                                      <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <input type="date" class="form-control" name="fecha_nacimiento" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Genero: </label>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo: </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                      <select class="form-control" name="genero" id="genero" required>
-                                          <option value=""></option>
-                                          <option value="2021">Masculio</option>
-                                          <option value="2022">Femenino</option> 
-                                        </select>
+                                        <input type="text" maxlength="150" class="form-control" name="correo" required="required">
                                         <br>
                                       </div>
                                     </div>
-
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de  Contrato : </label>
-                                      <div class="col-md-4 col-sm-4 col-xs-12">
-                                        <input type="date" class="form-control" name="fecha_contrato" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Grado Academico: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" maxlength="150" class="form-control" name="grado_academico" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Condición Laboral: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="form-control" name="condicion_laboral" id="condicion_laboral" required>
-                                          <option value=""></option>
-                                          <option value="2021">Contratado</option>
-                                          <option value="2022">Nombrado</option> 
-                                        </select>
-                                        <br>
-                                      </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Cargo: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                      <select class="form-control" name="cargo" id="cargo" required>
-                                          <option value=""></option>
-                                          <option value="2021">director</option>
-                                          <option value="2022">secretario academico</option> 
-                                          <option value="2022">docente</option>
-                                          </select> 
-                                        <br>
-                                      </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="file" class="form-control" name="foto" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
+                                    
 
                                     <div align="center">
                                       <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
