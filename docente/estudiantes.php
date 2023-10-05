@@ -129,26 +129,11 @@
                                         <br>
                                       </div>
                                     </div>
-
-
-
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Cursos a Programar :
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Género :
                                       </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <div class="checkbox">
-                                          <label>
-                                            <input type="checkbox" class="flat" name="pe_2"> INICIAL </label>
-                                        </div>
-                                        <div class="checkbox">
-                                          <label>
-                                            <input type="checkbox" class="flat" name="pe_3"> PRIMARIA </label>
-                                        </div>
-                                        <div class="checkbox">
-                                          <label>
-                                            <input type="checkbox" class="flat" name="pe_4"> SECUNDARIA </label>
-                                        </div>
-
+                                        <input type="date" class="form-control" name="fecha_fin" required="required">
                                         <br><br>
                                       </div>
                                     </div>
