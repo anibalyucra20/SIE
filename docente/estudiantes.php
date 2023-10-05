@@ -116,7 +116,7 @@
                                       </div>
                                     </div>
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono : </label>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Teléfono : </label>
                                       <div class="col-md-3 col-sm-3 col-xs-6">
                                       <input type="number" class="form-control" name="fecha_inicio" required="required">
                                         <br>
@@ -135,7 +135,7 @@
                                       <div class="col-md-3 col-sm-3 col-xs-6">
                                       <select class="form-control" name="genero" id="genero" required>
                                           <option value=""></option>
-                                          <option value="2021">Masculio</option>
+                                          <option value="2021">Masculino</option>
                                           <option value="2022">Femenino</option> 
                                         </select>
                                         <br><br>
@@ -155,7 +155,7 @@
                                       <select class="form-control" name="genero" id="genero" required>
                                           <option value=""></option>
                                           <option value="2021">HUANTA</option>
-                                          <option value="2022">HUAMNAGA</option> 
+                                          <option value="2022">HUAMANGA</option> 
                                         </select>
                                         <br><br>
                                       </div>
@@ -216,7 +216,71 @@
                                   <td><?php echo $i; ?>61</td>
                                   <td><?php echo $i; ?>2011/04/25</td>
                                   <td><?php echo $i; ?>$320,800</td>
+                                  <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i;?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                 </tr>
+                                   <!--MODAL EDITAR-->
+                                                            <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                <div class="modal-dialog modal-lg">
+                                                                    <div class="modal-content">
+
+                                                                        <div class="modal-header">
+                                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                                                            </button>
+                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registrar Periodo Léctivo</h4>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <!--INICIO CONTENIDO DE MODAL-->
+                                                                            <div class="x_panel">
+
+                                                                                <div class="" align="center">
+                                                                                    <h2></h2>
+                                                                                    <div class="clearfix"></div>
+                                                                                </div>
+                                                                                <div class="x_content">
+                                                                                    <br />
+                                                                                    <form role="form" action="operaciones/registrar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                        <div class="form-group">
+                                                                                            <div class="row">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre : </label>
+                                                                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                    <input type="text" maxlength="20" class="form-control">
+                                                                                                    <br>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <div class="row">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Inicio : </label>
+                                                                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                                                                    <input type="date" class="form-control" name="fecha_inicio" required="required">
+                                                                                                    <br>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <div class="row">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Fin : </label>
+                                                                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                                                                    <input type="date" class="form-control" name="fecha_fin" required="required">
+                                                                                                    <br>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div align="center">
+                                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+
+                                                                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--FIN DE CONTENIDO DE MODAL-->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- FIN MODAL EDITAR-->
                                 <?php 
                               }
                               ?>
