@@ -245,7 +245,7 @@
                                                                                                 <div class="row">
                                                                                                     <div class="col-md-3 col-sm-3 col-xs-6">
                                                                                                         <input type="number" class="form-control" name="fecha_inicio" required="required">
-                                                                                                        <br>
+
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
@@ -255,18 +255,18 @@
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Apellidos y Nombres : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                                     <input type="text" class="form-control" name="fecha_inicio" required="required">
-                                                                                                    <br>
+
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                        <div class="row">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="email" class="form-control" name="fecha_inicio" required="required">
-                                                                                                <br>
+                                                                                            <div class="row">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
+                                                                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                    <input type="email" class="form-control" name="fecha_inicio" required="required">
+
+                                                                                                </div>
                                                                                             </div>
-                                                                                        </div>
                                                                                         </div>
 
                                                                                         <div class="form-group">
@@ -274,7 +274,7 @@
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Direción : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                                     <input type="text" class="form-control" name="fecha_inicio" required="required">
-                                                                                                    <br>
+
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -283,57 +283,66 @@
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Teléfono : </label>
                                                                                                 <div class="col-md-3 col-sm-3 col-xs-6">
                                                                                                     <input type="number" class="form-control" name="fecha_inicio" required="required">
-                                                                                                    <br>
+
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento : </label>
-                                                                                            <div class="col-md-3 col-sm-3 col-xs-9">
-                                                                                                <input type="date" class="form-control" name="fecha_fin" required="required">
-                                                                                                <br>
+                                                                                            <div class="row">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento : </label>
+                                                                                                <div class="col-md-3 col-sm-3 col-xs-9">
+                                                                                                    <input type="date" class="form-control" name="fecha_fin" required="required">
+
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Género :
-                                                                                            </label>
-                                                                                            <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                <select class="form-control" name="genero" id="genero" required>
-                                                                                                    <option value=""></option>
-                                                                                                    <option value="2021">Masculino</option>
-                                                                                                    <option value="2022">Femenino</option>
-                                                                                                </select>
-                                                                                                <br><br>
+                                                                                            <div class="row">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Género :
+                                                                                                </label>
+                                                                                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                                                                                    <select class="form-control" name="genero" id="genero" required>
+                                                                                                        <option value=""></option>
+                                                                                                        <option value="2021">Masculino</option>
+                                                                                                        <option value="2022">Femenino</option>
+                                                                                                    </select>
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto : </label>
-                                                                                            <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                <input type="file" class="form-control" name="fecha_fin" required="required">
-                                                                                                <br>
+                                                                                            <div class="row">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto : </label>
+                                                                                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                                                                                    <input type="file" class="form-control" name="fecha_fin" required="required">
+
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede :
-                                                                                            </label>
-                                                                                            <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                <select class="form-control" name="genero" id="genero" required>
-                                                                                                    <option value=""></option>
-                                                                                                    <option value="2021">HUANTA</option>
-                                                                                                    <option value="2022">HUAMANGA</option>
-                                                                                                </select>
-                                                                                                <br><br>
+                                                                                            <div class="row">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede :
+                                                                                                </label>
+                                                                                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                                                                                    <select class="form-control" name="genero" id="genero" required>
+                                                                                                        <option value=""></option>
+                                                                                                        <option value="2021">HUANTA</option>
+                                                                                                        <option value="2022">HUAMANGA</option>
+                                                                                                    </select>
+
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Discapacidad : </label>
-                                                                                            <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                <select class="form-control" name="genero" id="genero" required>
-                                                                                                    <option value=""></option>
-                                                                                                    <option value="">Si</option>
-                                                                                                    <option value="">No</option>
-                                                                                                </select>
-                                                                                                <br>
+                                                                                            <div class="row">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Discapacidad : </label>
+                                                                                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                                                                                    <select class="form-control" name="genero" id="genero" required>
+                                                                                                        <option value=""></option>
+                                                                                                        <option value="">Si</option>
+                                                                                                        <option value="">No</option>
+                                                                                                    </select>
+                                                                                                    <br>
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div align="center">
