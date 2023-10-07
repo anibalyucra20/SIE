@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Turno | SIE</title>
+    <title>Secciones | SIE</title>
     <!--icono en el titulo-->
     <link rel="shortcut icon" href="">
 
@@ -71,7 +71,7 @@
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                             </button>
-                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registar Turno</h4>
+                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registar Seccion</h4>
                                                         </div>
                                                         <div class="modal-body">
                                                             <!--INICIO CONTENIDO DE MODAL-->
@@ -88,13 +88,13 @@
 
 
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Turno : </label>
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sección : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                 <select name="responsable" id="" class="form-control">
                                                                                     <option value=""></option>
-                                                                                    <option value="">Mañana</option>
-                                                                                    <option value="">Tarde</option>
-                                                                                    <option value="">Noche</option>
+                                                                                    <option value="">UNICA</option>
+                                                                                    <option value="">A</option>
+                                                                                    <option value="">B</option>
                                                                                 </select>
                                                                                 <br>
                                                                             </div>
@@ -122,7 +122,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Nro</th>
-                                                            <th>Nombre del turno</th>
+                                                            <th>Nombre del sección</th>
                                                         
                                                             <th>Acciones</th>
                                                         </tr>
@@ -137,7 +137,7 @@
                                                         ?>
                                                             <tr>
                                                                 <td><?php echo $i; ?></td>
-                                                                <td><?php echo $i; ?>Nombre de sede</td>
+                                                                <td><?php echo $i; ?>Nombre de sección</td>
                                                              
                                                               
                                                                 <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
@@ -150,7 +150,7 @@
                                                                         <div class="modal-header">
                                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                                             </button>
-                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Turno</h4>
+                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Sección</h4>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <!--INICIO CONTENIDO DE MODAL-->
@@ -165,7 +165,7 @@
                                                                                     <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
 
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre Turno : </label>
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre Sección : </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                                 <input type="text" maxlength="50" class="form-control" name="nombre_turno">
                                                                                                 <br>
