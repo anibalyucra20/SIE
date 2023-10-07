@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Turno | SIE</title>
+    <title>Modalidad | SIE</title>
     <!--icono en el titulo-->
     <link rel="shortcut icon" href="">
 
@@ -56,7 +56,7 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Sedes</h2>
+                                            <h2>Modalidades</h2>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
@@ -71,8 +71,9 @@
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                             </button>
-                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registar Turno</h4>
+                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registrar Modalidad</h4>
                                                         </div>
+                                                        
                                                         <div class="modal-body">
                                                             <!--INICIO CONTENIDO DE MODAL-->
                                                             <div class="x_panel">
@@ -84,23 +85,22 @@
                                                                 <div class="x_content">
                                                                     <br />
                                                                     <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST">
-
-
-
+                                                                        
+                                                
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Turno : </label>
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"> Modalidad: </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="responsable" id="" class="form-control">
+                                                                                <select name="responsable" id="" class="form-control" >
                                                                                     <option value=""></option>
-                                                                                    <option value="">Mañana</option>
-                                                                                    <option value="">Tarde</option>
-                                                                                    <option value="">Noche</option>
+                                                                                    <option value="">Presencial</option>
+                                                                                    <option value="">Virtual</option>
+                                                                                    <option value="">Semi Presenciañ</option>
                                                                                 </select>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
-
-
+                                                                        
+                                                                        
                                                                         <div align="center">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
@@ -122,13 +122,12 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Nro</th>
-                                                            <th>Nombre del turno</th>
-                                                        
-                                                            <th>Acciones</th>
+                                                            <th>Nombre de Modalidad</th>
+                                                            
                                                         </tr>
                                                     </thead>
 
-
+                                                    
                                                     <tbody>
                                                         <?php
                                                         for ($i = 1; $i <= 4; $i++) {
@@ -137,10 +136,9 @@
                                                         ?>
                                                             <tr>
                                                                 <td><?php echo $i; ?></td>
-                                                                <td><?php echo $i; ?>Nombre de sede</td>
-                                                             
-                                                              
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                                <td><?php echo $i; ?>Nombre</td>
+                                                                
+                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i;?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
                                                             <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -150,7 +148,7 @@
                                                                         <div class="modal-header">
                                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                                             </button>
-                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Turno</h4>
+                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Modalidad</h4>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <!--INICIO CONTENIDO DE MODAL-->
@@ -161,18 +159,16 @@
                                                                                     <div class="clearfix"></div>
                                                                                 </div>
                                                                                 <div class="x_content">
-                                                                                    <br />
+                                                                                    <br/>
                                                                                     <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
-
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre Turno : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="50" class="form-control" name="nombre_turno">
-                                                                                                <br>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        
-
+                                                                                    <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Modalidad : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <input type="text" maxlength="20" class="form-control" name="modadalidad">
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                        
                                                                                         <div align="center">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
