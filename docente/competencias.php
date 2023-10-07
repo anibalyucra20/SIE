@@ -56,7 +56,7 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Sedes</h2>
+                                            <h2>Competencias</h2>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
@@ -105,64 +105,7 @@
                                                                                 <br>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Provincia : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="9000" class="form-control" name="provincia">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Distrito : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="distrito">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Direccion : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="distrito">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="telefono">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="email" maxlength="150" class="form-control" name="telefono">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Responsable : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="responsable" id="" class="form-control" >
-                                                                                    <option value=""></option>
-                                                                                    <option value="">Docente 1</option>
-                                                                                    <option value="">Docente 2</option>
-                                                                                    <option value="">Docente 3</option>
-                                                                                </select>
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="tipo_sede" id="" class="form-control" >
-                                                                                    <option value=""></option>
-                                                                                    <option value="">EBR</option>
-                                                                                    <option value="">EBA</option>
-                                                                                </select>
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
+                                                                        
                                                                         
                                                                         <div align="center">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -185,12 +128,10 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Nro</th>
-                                                            <th>Código</th>
-                                                            <th>Sede</th>
-                                                            <th>Dirección</th>
-                                                            <th>Responsable</th>
-                                                            <th>Tipo</th>
-                                                            <th>Acciones</th>
+                                                            <th>Nombre</th>
+                                                            <th>Enfoque</th>
+                                                            <th>Descripcion</th>
+                                                           
                                                         </tr>
                                                     </thead>
 
@@ -206,8 +147,7 @@
                                                                 <td><?php echo $i; ?>Codigo</td>
                                                                 <td><?php echo $i; ?>Sedet</td>
                                                                 <td><?php echo $i; ?>Direccion</td>
-                                                                <td><?php echo $i; ?>Responsable</td>
-                                                                <td><?php echo $i; ?>Tipo</td>
+                                                            
                                                                 <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i;?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
@@ -218,7 +158,7 @@
                                                                         <div class="modal-header">
                                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                                             </button>
-                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Sede</h4>
+                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Competencias</h4>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <!--INICIO CONTENIDO DE MODAL-->
@@ -232,84 +172,27 @@
                                                                                     <br/>
                                                                                     <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                                     <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Código : </label>
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Competencia : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="codigo">
+                                                                                <input type="text" maxlength="20" class="form-control" name="competencia">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre : </label>
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Enfoque : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="nombre">
+                                                                                <input type="text" maxlength="50" class="form-control" name="enfoque">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Departamento : </label>
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripciónn : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="departamento">
+                                                                                <input type="text" maxlength="50" class="form-control" name="descripcion_competencia">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Provincia : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="provincia">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Distrito : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="distrito">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Direccion : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="distrito">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="telefono">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="email" maxlength="150" class="form-control" name="telefono">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Responsable : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="responsable" id="" class="form-control" >
-                                                                                    <option value=""></option>
-                                                                                    <option value="">Docente 1</option>
-                                                                                    <option value="">Docente 2</option>
-                                                                                    <option value="">Docente 3</option>
-                                                                                </select>
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="tipo_sede" id="" class="form-control" >
-                                                                                    <option value=""></option>
-                                                                                    <option value="">EBR</option>
-                                                                                    <option value="">EBA</option>
-                                                                                </select>
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
+                                                                       
                                                                                         <div align="center">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
