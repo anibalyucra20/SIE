@@ -1,3 +1,7 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +42,7 @@
         <div class="left_col scroll-view">
 
 
-          <?php include("include/menu_secretaria_academica.php.php"); ?>
+          <?php include("include/menu_secretaria_academica.php"); ?>
 
           <!-- page content -->
           <div class="right_col" role="main">
@@ -83,7 +87,7 @@
                                 </div>
                                 <div class="x_content">
                                   <br />
-                                  <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                  <form role="form" action="operaciones/registrar_docentes.php" class="form-horizontal form-label-left input_mask" method="POST" enctype="multipart/form-data">
                                     <div class="form-group">
                                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Dni : </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
@@ -131,8 +135,8 @@
                                       <div class="col-md-9 col-sm-9 col-xs-12">
                                         <select class="form-control" name="genero" id="genero" required>
                                           <option value=""></option>
-                                          <option value="2021">Masculio</option>
-                                          <option value="2022">Femenino</option>
+                                          <option value="M">Masculino</option>
+                                          <option value="F">Femenino</option>
                                         </select>
                                         <br>
                                       </div>
@@ -157,8 +161,8 @@
                                       <div class="col-md-9 col-sm-9 col-xs-12">
                                         <select class="form-control" name="condicion_laboral" id="condicion_laboral" required>
                                           <option value=""></option>
-                                          <option value="2021">Contratado</option>
-                                          <option value="2022">Nombrado</option>
+                                          <option value="Contratado">Contratado</option>
+                                          <option value="Nombrado">Nombrado</option>
                                         </select>
                                         <br>
                                       </div>
@@ -169,9 +173,9 @@
                                       <div class="col-md-9 col-sm-9 col-xs-12">
                                         <select class="form-control" name="cargo" id="cargo" required>
                                           <option value=""></option>
-                                          <option value="2021">director</option>
-                                          <option value="2022">secretario academico</option>
-                                          <option value="2022">docente</option>
+                                          <option value="Director">Director</option>
+                                          <option value="Secretario Academico">Decretario Académico</option>
+                                          <option value="Docente">Docente</option>
                                         </select>
                                         <br>
                                       </div>
@@ -206,12 +210,13 @@
                           <thead>
                             <tr>
                               <th>Nro</th>
-                              <th>Año</th>
+                              <th>DNI</th>
+                              <th>Apellidos y Nombres</th>
                               <th>Sede</th>
-                              <th>Fecha Inicio</th>
-                              <th>Fecha Fin</th>
-                              <th>Director</th>
-                              <th>Secretario</th>
+                              <th>Cargo</th>
+                              <th>Correo</th>
+                              <th>Telefono</th>
+                              <th>Estado</th>
                               <th>Acciones</th>
                             </tr>
                           </thead>
@@ -219,19 +224,29 @@
 
                           <tbody>
                             <?php
-                            for ($i = 1; $i <= 5; $i++) {
+                            $b_docentes = buscar_docente($conexion);
+                            $cont = 0;
+                            while ($r_b_docentes = mysqli_fetch_array($b_docentes)) {
+                              $cont ++;
 
 
                             ?>
                               <tr>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $i; ?>Tiger Nixon</td>
-                                <td><?php echo $i; ?>System Architect</td>
-                                <td><?php echo $i; ?>Edinburgh</td>
-                                <td><?php echo $i; ?>61</td>
-                                <td><?php echo $i; ?>2011/04/25</td>
-                                <td><?php echo $i; ?>$320,800</td>
-                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                <td><?php echo $cont; ?></td>
+                                <td><?php echo $r_b_docentes['dni']; ?></td>
+                                <td><?php echo $r_b_docentes['apellidos_nombres']; ?></td>
+                                <td><?php echo "sede" ?></td>
+                                <td><?php echo $r_b_docentes['cargo']; ?></td>
+                                <td><?php echo $r_b_docentes['correo']; ?></td>
+                                <td><?php echo $r_b_docentes['telefono']; ?></td>
+                                <td><?php
+                                  if ($r_b_docentes['estado']==1) {
+                                    echo "activo";
+                                  }else {
+                                    echo "inactivo";
+                                  }
+                                ?></td>
+                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button></td>
                               </tr>
                               <!--MODAL EDITAR-->
                               <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -478,6 +493,7 @@
 
         });
       </script>
+     
 
 </body>
 
