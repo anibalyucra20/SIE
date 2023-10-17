@@ -1,5 +1,9 @@
+<?php 
+include("../include/conexion.php");
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -37,6 +41,7 @@
                                 <div class="title_left">
                                     <h3>ROL SECRETARIO</h3>
                                 </div>
+                                
 
                                 
                             </div>
