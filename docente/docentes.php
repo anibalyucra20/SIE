@@ -3,7 +3,7 @@ include("../include/conexion.php");
 include("../include/busquedas.php");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
