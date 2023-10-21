@@ -7,6 +7,10 @@ function buscar_docente($conexion){
     $consulta = "SELECT * FROM trabajador";
     return mysqli_query($conexion, $consulta);
 }
+function buscar_estudiante($conexion){
+    $consulta = "SELECT * FROM estudiante";
+    return mysqli_query($conexion, $consulta);
+}
 
 
 

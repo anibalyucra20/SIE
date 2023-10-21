@@ -32,7 +32,7 @@ include("../include/conexion.php");
                 <div class="left_col scroll-view">
                     
 
-                    <?php include("include/menu_secretaria_academica.php.php"); ?>
+                    <?php include("include/menu_secretaria_academica.php"); ?>
 
                     <!-- page content -->
                     <div class="right_col" role="main">

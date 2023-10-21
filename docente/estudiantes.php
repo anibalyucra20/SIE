@@ -38,7 +38,7 @@
                 <div class="left_col scroll-view">
 
 
-                    <?php include("include/menu_secretaria_academica.php.php"); ?>
+                    <?php include("include/menu_secretaria_academica.php"); ?>
 
                     <!-- page content -->
                     <div class="right_col" role="main">
@@ -88,7 +88,7 @@
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">DNI : </label>
                                                                             <div class="row">
                                                                                 <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                    <input type="number" class="form-control" name="fecha_inicio" required="required">
+                                                                                    <input type="number" class="form-control" name="dni" required="required">
                                                                                     <br>
                                                                                 </div>
                                                                             </div>
@@ -96,14 +96,14 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Apellidos y Nombres : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" class="form-control" name="fecha_inicio" required="required">
+                                                                                <input type="text" class="form-control" name="apellidos_nombres" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="email" class="form-control" name="fecha_inicio" required="required">
+                                                                                <input type="email" class="form-control" name="correo" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -111,21 +111,21 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Direción : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" class="form-control" name="fecha_inicio" required="required">
+                                                                                <input type="text" class="form-control" name="direccion" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Teléfono : </label>
                                                                             <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                <input type="number" class="form-control" name="fecha_inicio" required="required">
+                                                                                <input type="number" class="form-control" name="telefono" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento : </label>
                                                                             <div class="col-md-3 col-sm-3 col-xs-9">
-                                                                                <input type="date" class="form-control" name="fecha_fin" required="required">
+                                                                                <input type="date" class="form-control" name="fecha_nacimeinto" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -141,18 +141,12 @@
                                                                                 <br><br>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto : </label>
-                                                                            <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                <input type="file" class="form-control" name="fecha_fin" required="required">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
+                                                                        
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede :
                                                                             </label>
                                                                             <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                <select class="form-control" name="genero" id="genero" required>
+                                                                                <select class="form-control" name="sede" id="sese" required>
                                                                                     <option value=""></option>
                                                                                     <option value="2021">HUANTA</option>
                                                                                     <option value="2022">HUAMANGA</option>
@@ -163,11 +157,18 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Discapacidad : </label>
                                                                             <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                <select class="form-control" name="genero" id="genero" required>
+                                                                                <select class="form-control" name="discacidad" id="discapacidad" required>
                                                                                     <option value=""></option>
                                                                                     <option value="">Si</option>
                                                                                     <option value="">No</option>
                                                                                 </select>
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto : </label>
+                                                                            <div class="col-md-3 col-sm-3 col-xs-6">
+                                                                                <input type="file" class="form-control" name="foto" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
