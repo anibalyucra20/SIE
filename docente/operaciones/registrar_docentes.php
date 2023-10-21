@@ -15,6 +15,7 @@ $condicion_laboral = $_POST['condicion_laboral'];
 $cargo = $_POST['cargo'];
 
 $ruta_archivo = "../img_docente/".$dni.".jpg";
+$nombre_archivo = "img_docente/".$dni.".jpg";
 
 $b_docente = buscar_docenteByDni($conexion, $dni);
 $contar_docentes = mysqli_num_rows($b_docente);
@@ -26,12 +27,12 @@ if ($contar_docentes > 0) {
 		";
 }else{
 if (move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_archivo)) {
-    $consulta = "INSERT INTO trabajador (dni,apellidos_nombres,correo,telefono,direccion,fecha_nac,genero,fecha_contrato,grado_academico,cond_laboral,cargo,foto,password,estado,reset_password,token_password) VALUES ('$dni','$apellidos_nombres','$correo','$telefono','$direccion','$fecha_nacimiento','$genero','$fecha_contrato','$grado_academico','$condicion_laboral','$cargo','$ruta_archivo',' ',1,0,' ')";
+    $consulta = "INSERT INTO trabajador (dni,apellidos_nombres,correo,telefono,direccion,fecha_nac,genero,fecha_contrato,grado_academico,cond_laboral,cargo,foto,password,estado,reset_password,token_password) VALUES ('$dni','$apellidos_nombres','$correo','$telefono','$direccion','$fecha_nacimiento','$genero','$fecha_contrato','$grado_academico','$condicion_laboral','$cargo','$nombre_archivo',' ',1,0,' ')";
     $ejecutar_consulta = mysqli_query($conexion, $consulta);
     if ($ejecutar_consulta) {
         echo "<script>
 			        alert('Se realizó el registro con Éxito');
-			        window.location= '../docentes.php?reg=1';
+			        window.location= '../docentes.php';
 		            </script>
 		            ";
     }else {
