@@ -19,7 +19,7 @@ $ruta_archivo = $carpeta_destino . $nombre_archivo;
 
 if (move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_archivo)) {
     // Realiza la inserción en la base de datos
-    $consulta = "INSERT INTO Estudiantes (dni, apellidos_nombres, correo, direccion, telefono, fecha_nac, genero, Sede, Discapacidad, Foto) VALUES ('$dni', '$apellidos_nombres', '$correo', '$direccion', '$telefono', '$fecha_nacimiento', '$genero', '$sede', '$discapacidad', '$nombre_archivo')";
+    $consulta = "INSERT INTO Estudiantes (dni, apellidos_nombres, correo, direccion, telefono, fecha_nac, genero, sede, discapacidad, Foto) VALUES ('$dni', '$apellidos_nombres', '$correo', '$direccion', '$telefono', '$fecha_nacimiento', '$genero', '$sede', '$discapacidad', '$nombre_archivo')";
     
     $resultado = mysqli_query($conexion, $consulta);
 
