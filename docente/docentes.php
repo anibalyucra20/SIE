@@ -174,7 +174,7 @@ include("../include/busquedas.php");
                                         <select class="form-control" name="cargo" id="cargo" required>
                                           <option value=""></option>
                                           <option value="Director">Director</option>
-                                          <option value="Secretario Academico">Decretario Académico</option>
+                                          <option value="Secretario Academico">Secretario Académico</option>
                                           <option value="Docente">Docente</option>
                                         </select>
                                         <br>
