@@ -1,3 +1,7 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -83,7 +87,7 @@
                                                                 </div>
                                                                 <div class="x_content">
                                                                     <br />
-                                                                    <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                    <form role="form" action="operaciones/registrar_sedes.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Código : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
@@ -122,7 +126,7 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Direccion : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="distrito">
+                                                                                <input type="text" maxlength="50" class="form-control" name="direccion">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -136,7 +140,7 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="email" maxlength="150" class="form-control" name="telefono">
+                                                                                <input type="email" maxlength="150" class="form-control" name="correo">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -145,9 +149,11 @@
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                 <select name="responsable" id="" class="form-control" >
                                                                                     <option value=""></option>
-                                                                                    <option value="">Docente 1</option>
-                                                                                    <option value="">Docente 2</option>
-                                                                                    <option value="">Docente 3</option>
+                                                                                    <?php $b_director = buscar_docentePorCargo($conexion, "Director"); 
+                                                                                        while ($r_b_director = mysqli_fetch_array($b_director)) {
+                                                                                    ?>
+                                                                                    <option value="<?php echo $r_b_director['id']; ?>"><?php echo $r_b_director['apellidos_nombres']; ?></option>
+                                                                                    <?php } ?>
                                                                                 </select>
                                                                                 <br>
                                                                             </div>
@@ -157,8 +163,8 @@
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                 <select name="tipo_sede" id="" class="form-control" >
                                                                                     <option value=""></option>
-                                                                                    <option value="">EBR</option>
-                                                                                    <option value="">EBA</option>
+                                                                                    <option value="EBR">EBR</option>
+                                                                                    <option value="EBA">EBA</option>
                                                                                 </select>
                                                                                 <br>
                                                                             </div>
@@ -197,17 +203,21 @@
                                                     
                                                     <tbody>
                                                         <?php
-                                                        for ($i = 1; $i <= 4; $i++) {
-
-
+                                                        $b_sedes = buscar_sedes($conexion);
+                                                        $cont=0;
+                                                        while ($r_b_sedes = mysqli_fetch_array($b_sedes)) {
+                                                            $cont ++;
                                                         ?>
                                                             <tr>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td><?php echo $i; ?>Codigo</td>
-                                                                <td><?php echo $i; ?>Sedet</td>
-                                                                <td><?php echo $i; ?>Direccion</td>
-                                                                <td><?php echo $i; ?>Responsable</td>
-                                                                <td><?php echo $i; ?>Tipo</td>
+                                                                <td><?php echo $cont; ?></td>
+                                                                <td><?php echo $r_b_sedes['codigo']; ?></td>
+                                                                <td><?php echo $r_b_sedes['nombre']; ?></td>
+                                                                <td><?php echo $r_b_sedes['direccion']; ?></td>
+                                                                <?php $b_docente_id = buscar_docentePorId($conexion, $r_b_sedes['id_responsable']); 
+                                                                $r_b_docente_id = mysqli_fetch_array($b_docente_id);
+                                                                ?>
+                                                                <td><?php echo $r_b_docente_id['apellidos_nombres']; ?></td>
+                                                                <td><?php echo $r_b_sedes['tipo']; ?></td>
                                                                 <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i;?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
