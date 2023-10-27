@@ -7,28 +7,38 @@ $apellidos_nombres = $_POST['apellidos_nombres'];
 $correo = $_POST['correo'];
 $direccion = $_POST['direccion'];
 $telefono = $_POST['telefono'];
-$fecha_nacimiento = $_POST['fecha_nacimiento'];
+$fecha_nacimiento = $_POST['fecha_nacimeinto'];
 $genero = $_POST['genero'];
 $sede = $_POST['sede'];
 $discapacidad = $_POST['discapacidad'];
 
 // Sube la foto del estudiante al servidor
-$carpeta_destino = "../img_estudiante/"; 
-$nombre_archivo = $_FILES['foto']['name'];
-$ruta_archivo = $carpeta_destino . $nombre_archivo;
+$ruta_archivo = "../../estudiante/img_estudiante/". $dni . ".jpg";
+$foto = "img_estudiante/" . $dni . ".jpg";
 
 if (move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_archivo)) {
     // Realiza la inserción en la base de datos
-    $consulta = "INSERT INTO Estudiantes (dni, apellidos_nombres, correo, direccion, telefono, fecha_nac, genero, sede, discapacidad, Foto) VALUES ('$dni', '$apellidos_nombres', '$correo', '$direccion', '$telefono', '$fecha_nacimiento', '$genero', '$sede', '$discapacidad', '$nombre_archivo')";
+    $consulta = "INSERT INTO estudiante (dni, apellidos_nombres, correo, telefono, direccion, fecha_nac, genero,foto, id_sede, discapacidad, password, activo, reset_password, token_password) VALUES ('$dni', '$apellidos_nombres', '$correo', '$telefono','$direccion','$fecha_nacimiento', '$genero','$foto', '$sede', '$discapacidad', ' ',1 ,0 ,' ')";
     
     $resultado = mysqli_query($conexion, $consulta);
 
     if ($resultado) {
-        echo "El estudiante se registró correctamente.";
+        
+        echo "<script>
+                alert('El estudiante se registró correctamente.');
+                window.location = '../estudiantes.php';
+            </script>";
     } else {
-        echo "Hubo un error al registrar el estudiante.";
+        echo "<script>
+                alert('Hubo un error al registrar el estudiante.');
+                window.history.back();
+            </script>";
     }
 } else {
-    echo "Error al subir la foto del estudiante.";
+    echo "<script>
+    alert('Error al subir la foto del estudiante.');
+    window.history.back();
+</script>";
+    
 }
 ?>

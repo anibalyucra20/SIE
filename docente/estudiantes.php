@@ -1,3 +1,7 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -83,7 +87,7 @@
                                                                 </div>
                                                                 <div class="x_content">
                                                                     <br />
-                                                                    <form role="form" action="operaciones/registrar_periodo_academico.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                    <form role="form" action="operaciones/registrar_estudiante.php" class="form-horizontal form-label-left input_mask" method="POST"  enctype="multipart/form-data">
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">DNI : </label>
                                                                             <div class="row">
@@ -125,7 +129,7 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento : </label>
                                                                             <div class="col-md-3 col-sm-3 col-xs-9">
-                                                                                <input type="date" class="form-control" name="fecha_nacimeinto" required="required">
+                                                                                <input type="date" class="form-control" name="fecha_nacimiento" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -133,10 +137,10 @@
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Género :
                                                                             </label>
                                                                             <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                <select class="form-control" name="genero" id="genero" required>
+                                                                                <select class="form-control" name="genero" required>
                                                                                     <option value=""></option>
-                                                                                    <option value="2021">Masculino</option>
-                                                                                    <option value="2022">Femenino</option>
+                                                                                    <option value="M">Masculino</option>
+                                                                                    <option value="F">Femenino</option>
                                                                                 </select>
                                                                                 <br><br>
                                                                             </div>
@@ -146,10 +150,13 @@
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede :
                                                                             </label>
                                                                             <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                <select class="form-control" name="sede" id="sese" required>
+                                                                                <select class="form-control" name="sede"required>
                                                                                     <option value=""></option>
-                                                                                    <option value="2021">HUANTA</option>
-                                                                                    <option value="2022">HUAMANGA</option>
+                                                                                    <?php 
+                                                                                    $b_sede = buscar_sedes($conexion);
+                                                                                    while ($r_b_sede = mysqli_fetch_array($b_sede)) { ?>
+                                                                                        <option value="<?php echo $r_b_sede['id']; ?>"><?php echo $r_b_sede['nombre']; ?></option>
+                                                                                    <?php } ?> 
                                                                                 </select>
                                                                                 <br><br>
                                                                             </div>
@@ -157,10 +164,10 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Discapacidad : </label>
                                                                             <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                <select class="form-control" name="discacidad" id="discapacidad" required>
+                                                                                <select class="form-control" name="discapacidad" required>
                                                                                     <option value=""></option>
-                                                                                    <option value="">Si</option>
-                                                                                    <option value="">No</option>
+                                                                                    <option value="1">Si</option>
+                                                                                    <option value="0">No</option>
                                                                                 </select>
                                                                                 <br>
                                                                             </div>

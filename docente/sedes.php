@@ -91,68 +91,68 @@ include("../include/busquedas.php");
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Código : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="codigo">
+                                                                                <input type="text" maxlength="20" class="form-control" name="codigo" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="nombre">
+                                                                                <input type="text" maxlength="50" class="form-control" name="nombre" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Departamento : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="departamento">
+                                                                                <input type="text" maxlength="50" class="form-control" name="departamento" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Provincia : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="provincia">
+                                                                                <input type="text" maxlength="50" class="form-control" name="provincia" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Distrito : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="distrito">
+                                                                                <input type="text" maxlength="50" class="form-control" name="distrito" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Direccion : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="direccion">
+                                                                                <input type="text" maxlength="50" class="form-control" name="direccion" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="telefono">
+                                                                                <input type="text" maxlength="20" class="form-control" name="telefono" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="email" maxlength="150" class="form-control" name="correo">
+                                                                                <input type="email" maxlength="150" class="form-control" name="correo" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Responsable : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="responsable" id="" class="form-control" >
+                                                                                <select name="responsable" id="" class="form-control" required>
                                                                                     <option value=""></option>
-                                                                                    <?php $b_director = buscar_docentePorCargo($conexion, "Director"); 
-                                                                                        while ($r_b_director = mysqli_fetch_array($b_director)) {
+                                                                                    <?php $b_director = buscar_docentePorCargo($conexion, "Director");
+                                                                                    while ($r_b_director = mysqli_fetch_array($b_director)) {
                                                                                     ?>
-                                                                                    <option value="<?php echo $r_b_director['id']; ?>"><?php echo $r_b_director['apellidos_nombres']; ?></option>
+                                                                                        <option value="<?php echo $r_b_director['id']; ?>"><?php echo $r_b_director['apellidos_nombres']; ?></option>
                                                                                     <?php } ?>
                                                                                 </select>
                                                                                 <br>
@@ -161,7 +161,7 @@ include("../include/busquedas.php");
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="tipo_sede" id="" class="form-control" >
+                                                                                <select name="tipo_sede" id="" class="form-control" required>
                                                                                     <option value=""></option>
                                                                                     <option value="EBR">EBR</option>
                                                                                     <option value="EBA">EBA</option>
@@ -169,7 +169,7 @@ include("../include/busquedas.php");
                                                                                 <br>
                                                                             </div>
                                                                         </div>
-                                                                        
+
                                                                         <div align="center">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
@@ -200,28 +200,28 @@ include("../include/busquedas.php");
                                                         </tr>
                                                     </thead>
 
-                                                    
+
                                                     <tbody>
                                                         <?php
                                                         $b_sedes = buscar_sedes($conexion);
-                                                        $cont=0;
+                                                        $cont = 0;
                                                         while ($r_b_sedes = mysqli_fetch_array($b_sedes)) {
-                                                            $cont ++;
+                                                            $cont++;
                                                         ?>
                                                             <tr>
                                                                 <td><?php echo $cont; ?></td>
                                                                 <td><?php echo $r_b_sedes['codigo']; ?></td>
                                                                 <td><?php echo $r_b_sedes['nombre']; ?></td>
                                                                 <td><?php echo $r_b_sedes['direccion']; ?></td>
-                                                                <?php $b_docente_id = buscar_docentePorId($conexion, $r_b_sedes['id_responsable']); 
+                                                                <?php $b_docente_id = buscar_docentePorId($conexion, $r_b_sedes['id_responsable']);
                                                                 $r_b_docente_id = mysqli_fetch_array($b_docente_id);
                                                                 ?>
                                                                 <td><?php echo $r_b_docente_id['apellidos_nombres']; ?></td>
                                                                 <td><?php echo $r_b_sedes['tipo']; ?></td>
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i;?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_sedes['id']; ?>">Editar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
-                                                            <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal fade editar<?php echo $r_b_sedes['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg">
                                                                     <div class="modal-content">
 
@@ -239,87 +239,98 @@ include("../include/busquedas.php");
                                                                                     <div class="clearfix"></div>
                                                                                 </div>
                                                                                 <div class="x_content">
-                                                                                    <br/>
-                                                                                    <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                                                                    <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Código : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="codigo">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="nombre">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Departamento : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="departamento">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Provincia : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="provincia">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Distrito : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="distrito">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Direccion : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="distrito">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="telefono">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="email" maxlength="150" class="form-control" name="telefono">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Responsable : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="responsable" id="" class="form-control" >
-                                                                                    <option value=""></option>
-                                                                                    <option value="">Docente 1</option>
-                                                                                    <option value="">Docente 2</option>
-                                                                                    <option value="">Docente 3</option>
-                                                                                </select>
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="tipo_sede" id="" class="form-control" >
-                                                                                    <option value=""></option>
-                                                                                    <option value="">EBR</option>
-                                                                                    <option value="">EBA</option>
-                                                                                </select>
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
+                                                                                    <br />
+                                                                                    <form role="form" action="operaciones/editar_sede.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Código : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="20" class="form-control" name="codigo" value="<?php echo $r_b_sedes['codigo']; ?>" disabled>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="50" class="form-control" name="nombre" value="<?php echo $r_b_sedes['nombre']; ?>" required>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Departamento : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="50" class="form-control" name="departamento" value="<?php echo $r_b_sedes['departamento']; ?>" required>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Provincia : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="50" class="form-control" name="provincia" value="<?php echo $r_b_sedes['provincia']; ?>" required>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Distrito : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="50" class="form-control" name="distrito" value="<?php echo $r_b_sedes['distrito']; ?>" required>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Direccion : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="50" class="form-control" name="direccion" value="<?php echo $r_b_sedes['direccion']; ?>" required>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="20" class="form-control" name="telefono" value="<?php echo $r_b_sedes['telefono']; ?>" required>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="email" maxlength="150" class="form-control" name="correo" value="<?php echo $r_b_sedes['correo']; ?>" required>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Responsable : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <select name="responsable" id="" class="form-control" required>
+                                                                                                    <option value=""></option>
+                                                                                                    <?php $b_docente_editar = buscar_docentePorCargo($conexion, "Director");
+                                                                                                    while ($r_b_docente_editar = mysqli_fetch_array($b_docente_editar)) {
+                                                                                                    ?>
+                                                                                                        <option value="<?php echo $r_b_docente_editar['id']; ?>" <?php if ($r_b_docente_editar['id'] == $r_b_sedes['id_responsable']) {
+                                                                                                                                                                        echo "selected";
+                                                                                                                                                                    } ?>><?php echo $r_b_docente_editar['apellidos_nombres']; ?></option>
+                                                                                                    <?php
+                                                                                                    }
+                                                                                                    ?>
+                                                                                                </select>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <select name="tipo_sede" id="" class="form-control" required>
+                                                                                                    <option value=""></option>
+                                                                                                    <option value="EBR" <?php if ($r_b_sedes['tipo'] == "EBR") {
+                                                                                                                            echo "selected";
+                                                                                                                        } ?>>EBR</option>
+                                                                                                    <option value="EBA" <?php if ($r_b_sedes['tipo'] == "EBA") {
+                                                                                                                            echo "selected";
+                                                                                                                        } ?>>EBA</option>
+                                                                                                </select>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <input type="hidden" name="data_editar" value="<?php echo $r_b_sedes['id']; ?>">
                                                                                         <div align="center">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
