@@ -11,7 +11,7 @@ $turno = $_POST['turno'];
 $seccion = $_POST['seccion'];
 
 // Realiza la inserción en la base de datos
-$consulta = "INSERT INTO Estudiantes (DNI, ApellidosNombres, NivelAcademico, GradoAcademico, Turno, Seccion) VALUES ('$dni', '$apellidos_nombres', '$nivel_academico', '$grado_academico', '$turno', '$seccion')";
+$consulta = "INSERT INTO Estudiantes (dni, apellidos_nombres, NivelAcademico, GradoAcademico, Turno, Seccion) VALUES ('$dni', '$apellidos_nombres', '$nivel_academico', '$grado_academico', '$turno', '$seccion')";
 $resultado = mysqli_query($conexion, $consulta);
 
 if ($resultado) {

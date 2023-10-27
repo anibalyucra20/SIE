@@ -85,23 +85,23 @@
                                                                     <br />
                                                                     <form role="form" action="operaciones/registrar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre : </label>
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre: </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control">
+                                                                                <input type="text" maxlength="20" class="form-control" name="nombre" value="<?php echo $r_b_periodo_lectivo['nombre']; ?>" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Inicio : </label>
                                                                             <div class="col-md-4 col-sm-4 col-xs-12">
-                                                                                <input type="date" class="form-control" name="fecha_inicio" required="required">
+                                                                                <input type="date" class="form-control" name="fecha_inicio" required="required" value="<?php echo $r_b_periodo_lectivo['fecha_inicio']; ?>">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Fin : </label>
                                                                             <div class="col-md-4 col-sm-4 col-xs-12">
-                                                                                <input type="date" class="form-control" name="fecha_fin" required="required">
+                                                                                <input type="date" class="form-control" name="fecha_fin" required="required" value="<?php echo $r_b_periodo_lectivo['fecha_fin']; ?>">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -134,7 +134,7 @@
                                                         </tr>
                                                     </thead>
 
-                                                    
+
                                                     <tbody>
                                                         <?php
                                                         for ($i = 1; $i <= 4; $i++) {
@@ -147,7 +147,7 @@
                                                                 <td><?php echo $i; ?>System Architect</td>
                                                                 <td><?php echo $i; ?>Edinburgh</td>
                                                                 <td><?php echo $i; ?>61</td>
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i;?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
                                                             <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -157,7 +157,7 @@
                                                                         <div class="modal-header">
                                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                                             </button>
-                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registrar Periodo Léctivo</h4>
+                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Periodo Léctivo</h4>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <!--INICIO CONTENIDO DE MODAL-->
