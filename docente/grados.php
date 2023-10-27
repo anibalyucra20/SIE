@@ -1,3 +1,7 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -38,7 +42,7 @@
                 <div class="left_col scroll-view">
 
 
-                    <?php include("include/menu_secretaria_academica.php.php"); ?>
+                    <?php include("include/menu_secretaria_academica.php"); ?>
 
                     <!-- page content -->
                     <div class="right_col" role="main">
@@ -83,10 +87,10 @@
                                                                 </div>
                                                                 <div class="x_content">
                                                                     <br />
-                                                                    <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                    <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST" enctype="multipart/form-data">
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nivel : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">                                                                                
                                                                                 <select name="nivel" id="" class="form-control">
                                                                                     <option value=""></option>
                                                                                     <option value="">Inicial</option>

@@ -60,7 +60,7 @@ include("../include/busquedas.php");
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Relación de Estudiantes</h2>
+                                            <h2>Estudiantes</h2>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
@@ -87,7 +87,7 @@ include("../include/busquedas.php");
                                                                 </div>
                                                                 <div class="x_content">
                                                                     <br />
-                                                                    <form role="form" action="operaciones/registrar_estudiante.php" class="form-horizontal form-label-left input_mask" method="POST"  enctype="multipart/form-data">
+                                                                    <form role="form" action="operaciones/registrar_estudiante.php" class="form-horizontal form-label-left input_mask" method="POST" enctype="multipart/form-data">
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">DNI : </label>
                                                                             <div class="row">
@@ -111,18 +111,17 @@ include("../include/busquedas.php");
                                                                                 <br>
                                                                             </div>
                                                                         </div>
-
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Direción : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" class="form-control" name="direccion" required="required">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Teléfono : </label>
                                                                             <div class="col-md-3 col-sm-3 col-xs-6">
                                                                                 <input type="number" class="form-control" name="telefono" required="required">
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Direción : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <input type="text" class="form-control" name="direccion" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -145,18 +144,24 @@ include("../include/busquedas.php");
                                                                                 <br><br>
                                                                             </div>
                                                                         </div>
-                                                                        
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto : </label>
+                                                                            <div class="col-md-3 col-sm-3 col-xs-6">
+                                                                                <input type="file" class="form-control" name="foto" required="required">
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede :
                                                                             </label>
                                                                             <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                <select class="form-control" name="sede"required>
+                                                                                <select class="form-control" name="sede" required>
                                                                                     <option value=""></option>
-                                                                                    <?php 
+                                                                                    <?php
                                                                                     $b_sede = buscar_sedes($conexion);
                                                                                     while ($r_b_sede = mysqli_fetch_array($b_sede)) { ?>
                                                                                         <option value="<?php echo $r_b_sede['id']; ?>"><?php echo $r_b_sede['nombre']; ?></option>
-                                                                                    <?php } ?> 
+                                                                                    <?php } ?>
                                                                                 </select>
                                                                                 <br><br>
                                                                             </div>
@@ -172,13 +177,7 @@ include("../include/busquedas.php");
                                                                                 <br>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto : </label>
-                                                                            <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                <input type="file" class="form-control" name="foto" required="required">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
+
                                                                         <div align="center">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
