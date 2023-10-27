@@ -34,6 +34,15 @@ function buscar_estudiantePorDniNombres($conexion, $dni, $nombres){
     $consulta = "SELECT * FROM estudiante WHERE dni='$dni' AND apellidos_nombres='$nombres'";
     return mysqli_query($conexion, $consulta);
 }
+//buscar apoderados
+function buscar_apoderados($conexion){
+    $consulta = "SELECT * FROM apoderado";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_apoderadoPorId($conexion, $id){
+    $consulta = "SELECT * FROM apoderado WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
 
 // busquedas sedes
 
@@ -46,6 +55,11 @@ function buscar_sedesPorId($conexion, $id){
     return mysqli_query($conexion, $consulta);
 }
 
+//busquedas datos institucionales
+function buscar_datos_institucionales($conexion){
+    $consulta = "SELECT * FROM datos_institucionales";
+    return mysqli_query($conexion, $consulta);
+}
 
 
 ?>

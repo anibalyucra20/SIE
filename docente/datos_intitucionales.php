@@ -4,426 +4,242 @@ include("../include/busquedas.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="es-ES">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  
+    <title>Datos Institucionales<?php include ("../include/header_title.php"); ?></title>
+    <!--icono en el titulo-->
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <!-- Bootstrap -->
+    <link href="../Gentella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../Gentella/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../Gentella/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../Gentella/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="../Gentella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../Gentella/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../Gentella/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../Gentella/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../Gentella/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- Meta, title, CSS, favicons, etc. -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Custom Theme Style -->
+    <link href="../Gentella/build/css/custom.min.css" rel="stylesheet">
+    <!-- Script obtenido desde CDN jquery -->
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+  </head>
 
-  <title>Datos Institucionales | SIE</title>
-  <!--icono en el titulo-->
-  <link rel="shortcut icon" href="">
+  <body class="nav-md" onload="desactivar_controles();">
+    <div class="container body">
+      <div class="main_container">
+        <!--menu-->
+          <?php 
+          include ("include/menu_secretaria.php"); ?>
 
-  <!-- Bootstrap -->
-  <link href="../plantilla/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link href="../plantilla/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <!-- NProgress -->
-  <link href="../plantilla/vendors/nprogress/nprogress.css" rel="stylesheet">
-  <!-- iCheck -->
-  <link href="../plantilla/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  <!-- Datatables -->
-  <link href="../plantilla/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-  <link href="../plantilla/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-  <link href="../plantilla/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-  <link href="../plantilla/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-  <link href="../plantilla/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+           
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="">
+                    <h2 align="center">Datos Institucionales</h2>
+                   
 
-  <!-- Custom Theme Style -->
-  <link href="../plantilla/build/css/custom.min.css" rel="stylesheet">
-</head>
-
-<body class="nav-md">
-  <div class="container body">
-    <div class="main_container">
-      <div class="col-md-3 left_col">
-        <div class="left_col scroll-view">
-
-
-          <?php include("include/menu_secretaria_academica.php"); ?>
-
-          <!-- page content -->
-          <div class="right_col" role="main">
-            <div class="">
-              <div class="page-title">
-                <div class="title_left">
-
-                </div>
-
-
-              </div>
-              <div class="clearfix"></div>
-
-              <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
                   <div class="x_panel">
-                    <div class="x_title">
-                      <h2>Docente</h2>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                      <button type="button" class="btn btn-success" data-toggle="modal" data-target=".registrar"><i class="fa fa-plus-square"></i> Nuevo</button>
-
-
-                      <!--MODAL REGISTRAR-->
-                      <div class="modal fade registrar" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                          <div class="modal-content">
-
-                            <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                              </button>
-                              <h4 class="modal-title" id="myModalLabel" align="center">Datos Institucionales</h4>
-                            </div>
-                            <div class="modal-body">
-                              <!--INICIO CONTENIDO DE MODAL-->
-                              <div class="x_panel">
-
-                                <div class="" align="center">
-                                  <h2></h2>
-                                  <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-                                  <br />
-                                  <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                    
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Ruc: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="number" maxlength="150" class="form-control" name="ruc" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Codigo Modular: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" maxlength="150" class="form-control" name="codigo_modular" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Razon Social: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" maxlength="150" class="form-control" name="razon_social" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Departamento: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" maxlength="150" class="form-control" name="departamento" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Provincia: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" maxlength="150" class="form-control" name="Provincia" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Distrito: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" maxlength="150" class="form-control" name="Provincia" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Dirección: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" maxlength="150" class="form-control" name="direccion" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="number" maxlength="150" class="form-control" name="telefono" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo: </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" maxlength="150" class="form-control" name="correo" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-                                    
-
-                                    <div align="center">
-                                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-
-                                      <button type="submit" class="btn btn-primary">Guardar</button>
-                                    </div>
-                                  </form>
-                                </div>
-                              </div>
-                              <!--FIN DE CONTENIDO DE MODAL-->
-                            </div>
-                          </div>
+                    <?php
+                    $buscar = buscarDatosGenerales($conexion);
+                    $res = mysqli_fetch_array($buscar);
+                    ?>
+                  <div class="x_content">
+                    <br />
+                    <form role="form" id="myform" action="operaciones/actualizar_datos_institucion.php" class="form-horizontal form-label-left input_mask" method="POST" enctype="multipart/form-data">
+                      <input type="hidden" name="id" value="<?php echo $res['id']; ?>">
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Código Modular : </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="number" class="form-control" name="cod_modular" id="cod_modular" required="" value="<?php echo $res['cod_modular']; ?>"  style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                          <br>
                         </div>
                       </div>
-
-                      <!-- FIN MODAL REGISTRAR-->
-                      <br />
-                      <div class="x_content">
-                        <table id="example" class="table table-striped table-bordered">
-                          <thead>
-                            <tr>
-                              <th>Nro</th>
-                              <th>Año</th>
-                              <th>Sede</th>
-                              <th>Fecha Inicio</th>
-                              <th>Fecha Fin</th>
-                              <th>Director</th>
-                              <th>Secretario</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          
-                                                        <?php
-                                                        $b_datos_institucionales = buscar_datos_institucionales($conexion);
-                                                        $cont = 0;
-                                                        while ($r_b_datos_institucionales = mysqli_fetch_array($b_sedes)) {
-                                                            $cont++;
-                                                        ?>
-                                                            <tr>
-                                                                <td><?php echo $cont; ?></td>
-                                                                <td><?php echo $r_b_sedes['codigo']; ?></td>
-                                                                <td><?php echo $r_b_sedes['nombre']; ?></td>
-                                                                <td><?php echo $r_b_sedes['direccion']; ?></td>
-                                                                <?php $b_docente_id = buscar_docentePorId($conexion, $r_b_sedes['id_responsable']);
-                                                                $r_b_docente_id = mysqli_fetch_array($b_docente_id);
-                                                                ?>
-                                                                <td><?php echo $r_b_docente_id['apellidos_nombres']; ?></td>
-                                                                <td><?php echo $r_b_sedes['tipo']; ?></td>
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_sedes['id']; ?>">Editar</button></td>
-                                                            </tr>
-                                                            <!--MODAL EDITAR-->
-                                                            <div class="modal fade editar<?php echo $r_b_datos_institucionales['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
-                                                                <div class="modal-dialog modal-lg">
-                                                                    <div class="modal-content">
-
-                                                                        <div class="modal-header">
-                                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                                                                            </button>
-                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Datos Institucionales</h4>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <!--INICIO CONTENIDO DE MODAL-->
-                                                                            <div class="x_panel">
-
-                                                                                <div class="" align="center">
-                                                                                    <h2></h2>
-                                                                                    <div class="clearfix"></div>
-                                                                                </div>
-                                                                                <div class="x_content">
-                                                                                    <br />
-                                                                                    <form role="form" action="operaciones/editar_sede.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ruc : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="20" class="form-control" name="ruc" value="<?php echo $r_b_datos_institucionales['ruc']; ?>" disabled>
-                                                                                                <br>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">codigo Modular : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="50" class="form-control" name="cod_modular" value="<?php echo $r_b_datos_institucionales['cod_modular']; ?>" required>
-                                                                                                <br>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Razón Social : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="50" class="form-control" name="razon_social" value="<?php echo $r_b_datos_institucionales['razon_social']; ?>" required>
-                                                                                                <br>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Departamento : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="50" class="form-control" name="departamento" value="<?php echo $r_b_datos_institucionales['departamento']; ?>" required>
-                                                                                                <br>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Provincia : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="50" class="form-control" name="provincia" value="<?php echo $r_b_sedes['provincia']; ?>" required>
-                                                                                                <br>
-                                                                                            </div>
-                                                                                        </div> 
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Direccion : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="50" class="form-control" name="direccion" value="<?php echo $r_b_sedes['direccion']; ?>" required>
-                                                                                                <br>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Telefono : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="20" class="form-control" name="telefono" value="<?php echo $r_b_sedes['telefono']; ?>" required>
-                                                                                                <br>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="email" maxlength="150" class="form-control" name="correo" value="<?php echo $r_b_sedes['correo']; ?>" required>
-                                                                                                <br>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Responsable : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <select name="responsable" id="" class="form-control" required>
-                                                                                                    <option value=""></option>
-                                                                                                    <?php $b_docente_editar = buscar_docentePorCargo($conexion, "Director");
-                                                                                                    while ($r_b_docente_editar = mysqli_fetch_array($b_docente_editar)) {
-                                                                                                    ?>
-                                                                                                        <option value="<?php echo $r_b_docente_editar['id']; ?>" <?php if ($r_b_docente_editar['id'] == $r_b_sedes['id_responsable']) {
-                                                                                                                                                                        echo "selected";
-                                                                                                                                                                    } ?>><?php echo $r_b_docente_editar['apellidos_nombres']; ?></option>
-                                                                                                    <?php
-                                                                                                    }
-                                                                                                    ?>
-                                                                                                </select>
-                                                                                                <br>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <select name="tipo_sede" id="" class="form-control" required>
-                                                                                                    <option value=""></option>
-                                                                                                    <option value="EBR" <?php if ($r_b_sedes['tipo'] == "EBR") {
-                                                                                                                            echo "selected";
-                                                                                                                        } ?>>EBR</option>
-                                                                                                    <option value="EBA" <?php if ($r_b_sedes['tipo'] == "EBA") {
-                                                                                                                            echo "selected";
-                                                                                                                        } ?>>EBA</option>
-                                                                                                </select>
-                                                                                                <br>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <input type="hidden" name="data_editar" value="<?php echo $r_b_sedes['id']; ?>">
-                                                                                        <div align="center">
-                                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-
-                                                                                            <button type="submit" class="btn btn-primary">Guardar</button>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!--FIN DE CONTENIDO DE MODAL-->
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- FIN MODAL EDITAR-->
-
-
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </tbody>
-
-
-
-
-                        </table>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Ruc : </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="number" class="form-control" name="ruc" id="ruc" required="" value="<?php echo $res['ruc']; ?>"  style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                          <br>
+                        </div>
                       </div>
-
-
-
-
-
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de Institución : </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control" name="nombre" id="nombre" required="" value="<?php echo $res['nombre_institucion']; ?>"  style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                          
+                          <br>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Departamento : </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control" name="dep" id="dep" required="" value="<?php echo $res['departamento']; ?>"  style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                          
+                          <br>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Provincia : </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" name="provincia" id="provincia" required="" value="<?php echo $res['provincia']; ?>">
+                          <br>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Distrito : </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" name="distrito" id="distrito" required="" value="<?php echo $res['distrito']; ?>">
+                          <br>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Dirección : </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" name="direccion" id="direccion" required="" value="<?php echo $res['direccion']; ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                          <br>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Teléfono : </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="number" class="form-control" name="telefono" id="telefono" required="" value="<?php echo $res['telefono']; ?>" >
+                          <br>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" name="email" id="email" required="" value="<?php echo $res['correo']; ?>">
+                          <br>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Resulución : </label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" name="resolucion" id="resolucion" required="" value="<?php echo $res['nro_resolucion']; ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                          <br>
+                          <br>
+                        </div>
+                      </div>
+                      <div align="center">
+                        <button type="submit" class="btn btn-primary" id="btn_guardar">Guardar</button> 
+                        <button type="button" class="btn btn-warning" id="btn_cancelar" onclick="desactivar_controles(); cancelar();">Cancelar</button>
                     </div>
+                      </div>
+                    </form>
+                    <div align="center">
+                    <button type="button" class="btn btn-success" id="btn_editar" onclick="activar_controles();">Editar Datos</button>
                   </div>
                 </div>
-              </div>
-            </div>
+                          <!--FIN DE CONTENIDO DE MODAL-->
+                 
+            
+
+
           </div>
-          <!-- /page content -->
-
-          <!-- footer content -->
-          <footer>
-            <div class="pull-right">
-              Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-            </div>
-            <div class="clearfix"></div>
-          </footer>
-          <!-- /footer content -->
+          </div>
+          </div>
+          </div>
+          </div>
         </div>
+        <!-- /page content -->
+
+         <!-- footer content -->
+         <?php
+        include ("../include/footer.php"); 
+        ?>
+        <!-- /footer content -->
       </div>
+    </div>
 
-      <!-- jQuery -->
-      <script src="../plantilla/vendors/jquery/dist/jquery.min.js"></script>
-      <!-- Bootstrap -->
-      <script src="../plantilla/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-      <!-- FastClick -->
-      <script src="../plantilla/vendors/fastclick/lib/fastclick.js"></script>
-      <!-- NProgress -->
-      <script src="../plantilla/vendors/nprogress/nprogress.js"></script>
-      <!-- iCheck -->
-      <script src="../plantilla/vendors/iCheck/icheck.min.js"></script>
-      <!-- Datatables -->
-      <script src="../plantilla/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-      <script src="../plantilla/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-      <script src="../plantilla/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-      <script src="../plantilla/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-      <script src="../plantilla/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-      <script src="../plantilla/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-      <script src="../plantilla/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-      <script src="../plantilla/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-      <script src="../plantilla/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-      <script src="../plantilla/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-      <script src="../plantilla/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-      <script src="../plantilla/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-      <script src="../plantilla/vendors/jszip/dist/jszip.min.js"></script>
-      <script src="../plantilla/vendors/pdfmake/build/pdfmake.min.js"></script>
-      <script src="../plantilla/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- jQuery -->
+   <script src="../Gentella/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../Gentella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../Gentella/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../Gentella/vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../Gentella/vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="../Gentella/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../Gentella/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../Gentella/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../Gentella/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../Gentella/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../Gentella/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../Gentella/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../Gentella/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../Gentella/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../Gentella/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../Gentella/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../Gentella/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../Gentella/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../Gentella/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../Gentella/vendors/pdfmake/build/vfs_fonts.js"></script>
 
-      <!-- Custom Theme Scripts -->
-      <script src="../plantilla/build/js/custom.min.js"></script>
-
-      <script>
-        $(document).ready(function() {
-          $('#example').DataTable({
-            "language": {
-              "processing": "Procesando...",
-              "lengthMenu": "Mostrar _MENU_ registros",
-              "zeroRecords": "No se encontraron resultados",
-              "emptyTable": "Ningún dato disponible en esta tabla",
-              "sInfo": "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
-              "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-              "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-              "search": "Buscar:",
-              "infoThousands": ",",
-              "loadingRecords": "Cargando...",
-              "paginate": {
-                "first": "Primero",
-                "last": "Último",
-                "next": "Siguiente",
-                "previous": "Anterior"
-              },
-            }
-          });
-
-        });
-      </script>
-
-</body>
-
+    <!-- Custom Theme Scripts -->
+    <script src="../Gentella/build/js/custom.min.js"></script>
+    <script type="text/javascript">
+        function desactivar_controles(){
+            document.getElementById('cod_modular').disabled = true
+            document.getElementById('ruc').disabled = true
+            document.getElementById('nombre').disabled = true
+            document.getElementById('dep').disabled = true
+            document.getElementById('provincia').disabled = true
+            document.getElementById('distrito').disabled = true
+            document.getElementById('direccion').disabled = true
+            document.getElementById('telefono').disabled = true
+            document.getElementById('email').disabled = true
+            document.getElementById('resolucion').disabled = true
+            document.getElementById('btn_cancelar').style.display = 'none'
+            document.getElementById('btn_guardar').style.display = 'none'
+            document.getElementById('btn_editar').style.display = ''
+        };
+        function activar_controles(){
+            document.getElementById('cod_modular').disabled = false
+            document.getElementById('ruc').disabled = false
+            document.getElementById('nombre').disabled = false
+            document.getElementById('dep').disabled = false
+            document.getElementById('provincia').disabled = false
+            document.getElementById('distrito').disabled = false
+            document.getElementById('direccion').disabled = false
+            document.getElementById('telefono').disabled = false
+            document.getElementById('email').disabled = false
+            document.getElementById('resolucion').disabled = false
+            document.getElementById('btn_cancelar').removeAttribute('style')
+            document.getElementById('btn_guardar').removeAttribute('style')
+            document.getElementById('btn_editar').style.display = 'none'
+        };
+        function cancelar(){
+            document.getElementById('myform').reset();
+        }
+    </script>
+    
+     <?php mysqli_close($conexion); ?>
+  </body>
 </html>
