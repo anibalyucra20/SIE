@@ -55,7 +55,7 @@
       </li>
       <li><a><i class="fa fa-clone"></i>Mantenimiento <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="datos_intitucionales.php">Datos Institucionales</a></li>
+          <li><a href="datos_institucionales.php">Datos Institucionales</a></li>
           <li><a href="sedes.php">Sedes</a></li>
           <li><a href="periodo_lectivo.php">Periodo Léctivo</a></li>
           <li><a href="niveles.php">Niveles</a></li>
