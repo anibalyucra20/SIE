@@ -198,20 +198,16 @@ include("../include/busquedas.php");
                                                 <table id="example" class="table table-striped table-bordered">
                                                     <thead>
                                                         <tr>
+                                                            <!--Mostrar solo datos necesarios-->
+                                                            <th>Nro</th>
                                                             <th>DNI</th>
+                                                            <th>Foto</th>
                                                             <th>Apellidos Y Nombres</th>
-                                                            <th>Correo</th>
-                                                            <th>Telefono</th>
-                                                            <th>Direccion</th>
-                                                            <th>fecha de Nacimiento</th>
-                                                            <th>Genero</th>
-                                                            <th>Goto</th>
                                                             <th>Sede</th>
-                                                            <th>Discapacidad</th>
+                                                            <th>Telefono</th>
                                                             <th>Genero</th>
-                                                            <th>Password</th>
                                                             <th>Activo</th>
-
+                                                            <th>Acciones</th>
                                                         </tr>
                                                     </thead>
 
@@ -224,26 +220,32 @@ include("../include/busquedas.php");
                                                             $cont++;
                                                         ?>
                                                             <tr>
+                                                                <!-- los datos a imprimir tiene que ser de la BaseDatos-->
                                                                 <td><?php echo $cont; ?></td>
-                                                                <td><?php echo $b_estudiante['dni']; ?></td>
-                                                                <td><?php echo $b_estudiante['apellidos_nombres']; ?></td>
-                                                                <td><?php echo $b_estudiante['correo']; ?></td>
-                                                                <td><?php echo $b_estudiante['telefono']; ?></td>
-                                                                <td><?php echo $b_estudiante['direccion']; ?></td>
-                                                                <td><?php echo $b_estudiante['fecha_nac']; ?></td>
-                                                                <td><?php echo $b_estudiante['genero']; ?></td>
-                                                                <td><?php echo $b_estudiante['foto']; ?></td>
-                                                                <td><?php echo $b_estudiante['id_sede']; ?></td>
-                                                                <td><?php echo $b_estudiante['discapacidad']; ?></td>
-                                                                td><?php echo $b_estudiante['password']; ?></td>
-                                                                td><?php echo $b_estudiante['activo']; ?></td>
+                                                                <td><?php echo $r_b_estudiante['dni']; ?></td>
+                                                                <td ><img src="<?php echo "../estudiante/".$r_b_estudiante['foto']; ?>" alt="" width="90px"></td>
+                                                                <td><?php echo $r_b_estudiante['apellidos_nombres']; ?></td>
+                                                                <?php 
+                                                                // codigo para buscar el nombre de la sede con el id_sede
+                                                                $b_sede = buscar_sedesPorId($conexion, $r_b_estudiante['id_sede']);
+                                                                $r_b_sede = mysqli_fetch_array($b_sede);
+                                                                ?>
+                                                                <td><?php echo $r_b_sede['nombre']; ?></td>
+                                                                <td><?php echo $r_b_estudiante['telefono']; ?></td>
+                                                                <td><?php echo $r_b_estudiante['genero']; ?></td>
+                                                                <td><?php if ($r_b_estudiante['activo']==1) {
+                                                                    echo "Si";
+                                                                }else {
+                                                                    echo "No";
+                                                                } ?></td>
+                                                                
 
 
                                                                 <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_estudiante['id']; ?>">Editar</button></td>
                                                             </tr>
 
                                                             <!--MODAL EDITAR-->
-                                                            <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal fade editar<?php echo $r_b_estudiante['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg">
                                                                     <div class="modal-content">
 
@@ -356,8 +358,14 @@ include("../include/busquedas.php");
                                                                                                 <div class="col-md-3 col-sm-3 col-xs-6">
                                                                                                     <select class="form-control" name="genero" id="genero" required>
                                                                                                         <option value=""></option>
-                                                                                                        <option value="Huanta">HUANTA</option>
-                                                                                                        <option value="Huamanga">HUAMANGA</option>
+                                                                                                        <?php
+                                                                                                        $b_sedes = buscar_sedes($conexion);
+                                                                                                        while ($r_b_sedes = mysqli_fetch_array($b_sedes)) {
+                                                                                                        ?>
+                                                                                                        <option value="<?php echo $r_b_sedes['id']; ?>" <?php if($r_b_sedes['id']== $r_b_estudiante['id_sede']){ echo "selected";} ?>><?php echo $r_b_sedes['nombre']; ?></option>
+                                                                                                        <?php
+                                                                                                        }
+                                                                                                        ?>
                                                                                                     </select>
 
                                                                                                 </div>
@@ -369,8 +377,8 @@ include("../include/busquedas.php");
                                                                                                 <div class="col-md-3 col-sm-3 col-xs-6">
                                                                                                     <select class="form-control" name="genero" id="genero" required>
                                                                                                         <option value=""></option>
-                                                                                                        <option value="">Si</option>
-                                                                                                        <option value="">No</option>
+                                                                                                        <option value="1" <?php if($r_b_estudiante['discapacidad']==1){echo "selected";} ?>>Si</option>
+                                                                                                        <option value="0" <?php if($r_b_estudiante['discapacidad']==0){echo "selected";} ?>>No</option>
                                                                                                     </select>
                                                                                                     <br>
                                                                                                 </div>
