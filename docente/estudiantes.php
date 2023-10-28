@@ -198,33 +198,50 @@ include("../include/busquedas.php");
                                                 <table id="example" class="table table-striped table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th>Nro</th>
-                                                            <th>Año</th>
+                                                            <th>DNI</th>
+                                                            <th>Apellidos Y Nombres</th>
+                                                            <th>Correo</th>
+                                                            <th>Telefono</th>
+                                                            <th>Direccion</th>
+                                                            <th>fecha de Nacimiento</th>
+                                                            <th>Genero</th>
+                                                            <th>Goto</th>
                                                             <th>Sede</th>
-                                                            <th>Fecha Inicio</th>
-                                                            <th>Fecha Fin</th>
-                                                            <th>Director</th>
-                                                            <th>Secretario</th>
+                                                            <th>Discapacidad</th>
+                                                            <th>Genero</th>
+                                                            <th>Password</th>
+                                                            <th>Activo</th>
+
                                                         </tr>
                                                     </thead>
 
 
                                                     <tbody>
                                                         <?php
-                                                        for ($i = 1; $i <= 5; $i++) {
-
-
+                                                        $b_estudiante = buscar_estudiante($conexion);
+                                                        $cont = 0;
+                                                        while ($r_b_estudiante = mysqli_fetch_array($b_estudiante)) {
+                                                            $cont++;
                                                         ?>
                                                             <tr>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td><?php echo $i; ?>Tiger Nixon</td>
-                                                                <td><?php echo $i; ?>System Architect</td>
-                                                                <td><?php echo $i; ?>Edinburgh</td>
-                                                                <td><?php echo $i; ?>61</td>
-                                                                <td><?php echo $i; ?>2011/04/25</td>
-                                                                <td><?php echo $i; ?>$320,800</td>
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                                <td><?php echo $cont; ?></td>
+                                                                <td><?php echo $b_estudiante['dni']; ?></td>
+                                                                <td><?php echo $b_estudiante['apellidos_nombres']; ?></td>
+                                                                <td><?php echo $b_estudiante['correo']; ?></td>
+                                                                <td><?php echo $b_estudiante['telefono']; ?></td>
+                                                                <td><?php echo $b_estudiante['direccion']; ?></td>
+                                                                <td><?php echo $b_estudiante['fecha_nac']; ?></td>
+                                                                <td><?php echo $b_estudiante['genero']; ?></td>
+                                                                <td><?php echo $b_estudiante['foto']; ?></td>
+                                                                <td><?php echo $b_estudiante['id_sede']; ?></td>
+                                                                <td><?php echo $b_estudiante['discapacidad']; ?></td>
+                                                                td><?php echo $b_estudiante['password']; ?></td>
+                                                                td><?php echo $b_estudiante['activo']; ?></td>
+
+
+                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_estudiante['id']; ?>">Editar</button></td>
                                                             </tr>
+
                                                             <!--MODAL EDITAR-->
                                                             <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg">
@@ -251,7 +268,7 @@ include("../include/busquedas.php");
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">DNI : </label>
                                                                                                 <div class="row">
                                                                                                     <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                        <input type="number" class="form-control" name="fecha_inicio" required="required">
+                                                                                                        <input type="number" class="form-control" name="fecha_inicio" required="required" value="<?php echo $r_b_estudiante['dni']; ?>" required>
 
                                                                                                     </div>
                                                                                                 </div>
@@ -261,7 +278,7 @@ include("../include/busquedas.php");
                                                                                             <div class="row">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Apellidos y Nombres : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="text" class="form-control" name="fecha_inicio" required="required">
+                                                                                                    <input type="text" class="form-control" name="fecha_inicio" required="required" value="<?php echo $r_b_estudiante['apellidos_nombres']; ?>" required>
 
                                                                                                 </div>
                                                                                             </div>
@@ -270,7 +287,7 @@ include("../include/busquedas.php");
                                                                                             <div class="row">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="email" class="form-control" name="fecha_inicio" required="required">
+                                                                                                    <input type="email" class="form-control" name="fecha_inicio" required="required" value="<?php echo $r_b_estudiante['correo']; ?>" required>>
 
                                                                                                 </div>
                                                                                             </div>
@@ -280,7 +297,7 @@ include("../include/busquedas.php");
                                                                                             <div class="row">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Direción : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="text" class="form-control" name="fecha_inicio" required="required">
+                                                                                                    <input type="text" class="form-control" name="fecha_inicio" required="required" value="<?php echo $r_b_estudiante['direccion']; ?>" required>> >
 
                                                                                                 </div>
                                                                                             </div>
@@ -289,7 +306,7 @@ include("../include/busquedas.php");
                                                                                             <div class="row">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Teléfono : </label>
                                                                                                 <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                    <input type="number" class="form-control" name="fecha_inicio" required="required">
+                                                                                                    <input type="number" class="form-control" name="fecha_inicio" required="required" value="<?php echo $r_b_estudiante['telefono']; ?>" required>>
 
                                                                                                 </div>
                                                                                             </div>
@@ -298,30 +315,37 @@ include("../include/busquedas.php");
                                                                                             <div class="row">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento : </label>
                                                                                                 <div class="col-md-3 col-sm-3 col-xs-9">
-                                                                                                    <input type="date" class="form-control" name="fecha_fin" required="required">
+                                                                                                    <input type="date" class="form-control" name="fecha_fin" required="required" value="<?php echo $r_b_estudiante['fecha_nac']; ?>" required>>
 
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <div class="row">
-                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Género :
-                                                                                                </label>
-                                                                                                <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                    <select class="form-control" name="genero" id="genero" required>
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Genero: </label>
+                                                                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                    <select class="form-control" name="editar_genero" id="genero" required>
                                                                                                         <option value=""></option>
-                                                                                                        <option value="2021">Masculino</option>
-                                                                                                        <option value="2022">Femenino</option>
+                                                                                                        <option value="M" <?php if ($r_b_estudiante['genero'] == "M") {
+                                                                                                                                echo "selected";
+                                                                                                                            } ?>>Masculino</option>
+                                                                                                        <option value="F" <?php if ($r_b_estudiante['genero'] == "F") {
+                                                                                                                                echo "selected";
+                                                                                                                            } ?>>Femenino</option>
                                                                                                     </select>
+                                                                                                    <br>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
+
                                                                                         <div class="form-group">
                                                                                             <div class="row">
-                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto : </label>
-                                                                                                <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                    <input type="file" class="form-control" name="fecha_fin" required="required">
-
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto: </label>
+                                                                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                    <img src="<?php echo $r_b_estudiante['foto']; ?>" alt="" width="50px">
+                                                                                                    <br>
+                                                                                                    <input type="file" class="form-control" name="editar_foto" accept="image/jpg">
+                                                                                                    <br>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -332,8 +356,8 @@ include("../include/busquedas.php");
                                                                                                 <div class="col-md-3 col-sm-3 col-xs-6">
                                                                                                     <select class="form-control" name="genero" id="genero" required>
                                                                                                         <option value=""></option>
-                                                                                                        <option value="2021">HUANTA</option>
-                                                                                                        <option value="2022">HUAMANGA</option>
+                                                                                                        <option value="Huanta">HUANTA</option>
+                                                                                                        <option value="Huamanga">HUAMANGA</option>
                                                                                                     </select>
 
                                                                                                 </div>
