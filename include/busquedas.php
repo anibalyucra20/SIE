@@ -43,7 +43,10 @@ function buscar_apoderadoPorId($conexion, $id){
     $consulta = "SELECT * FROM apoderado WHERE id='$id'";
     return mysqli_query($conexion, $consulta);
 }
-
+function buscar_apoderadoPorDni($conexion, $dni){
+    $consulta = "SELECT * FROM apoderado WHERE dni='$dni'";
+    return mysqli_query($conexion, $consulta);
+}
 // busquedas sedes
 
 function buscar_sedes($conexion){
