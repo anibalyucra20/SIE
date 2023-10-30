@@ -4,7 +4,7 @@ include("../../include/busquedas.php");
 include("../../include/funciones.php");
 
 //no recibir dni  buscar dn BD     --- los datos de la variable  son del formulario 
-$id = $_POST['id_estudiantes'];
+$id = $_POST['id_estudiante'];
 $dni = $_POST['editar_dni'];
 $apellidos_nombres = $_POST['editar_apellidos_nombres'];
 $correo = $_POST['editar_correo'];
