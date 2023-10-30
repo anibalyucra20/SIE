@@ -38,7 +38,7 @@
                 <div class="left_col scroll-view">
 
 
-                    <?php include("include/menu_secretaria_academica.php.php"); ?>
+                    <?php include("include/menu_secretaria_academica.php"); ?>
 
                     <!-- page content -->
                     <div class="right_col" role="main">
@@ -74,6 +74,8 @@
                                                             <h4 class="modal-title" id="myModalLabel" align="center">Niveles</h4>
                                                         </div>
                                                         <div class="modal-body">
+
+
                                                             <!--INICIO CONTENIDO DE MODAL-->
                                                             <div class="x_panel">
 
@@ -103,14 +105,9 @@
 
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede: </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select class="form-control" name="genero" id="sede" required>
-                                                                                    <option value=""></option>
-                                                                                    <option value="2021">HUANTA</option>
-                                                                                    <option value="2022">HUAMANGA</option>
-                                                                                </select>
-                                                                                <br>
-                                                                            </div>
+                                                                            
+                                                                            
+                                                                            
                                                                         </div>
 
                                                                         <div align="center">

@@ -64,5 +64,10 @@ function buscar_datos_institucionales($conexion){
     return mysqli_query($conexion, $consulta);
 }
 
+//busqueda niveles 
+function buscar_nivel($conexion){
+    $consulta = "SELECT * FROM nivel";
+    return mysqli_query($conexion, $consulta);
+}
 
 ?>

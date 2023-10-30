@@ -193,6 +193,8 @@ include("../include/busquedas.php");
                                             </div>
 
                                             <!-- FIN MODAL REGISTRAR-->
+
+
                                             <br />
                                             <div class="x_content">
                                                 <table id="example" class="table table-striped table-bordered">
@@ -264,13 +266,15 @@ include("../include/busquedas.php");
                                                                                 </div>
                                                                                 <div class="x_content">
                                                                                     <br />
-                                                                                    <form role="form" action="operaciones/registrar_periodo_academico.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                
+                                                                                    <form role="form" action="operaciones/editar_estudiante.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                                         <div class="form-group">
+                                                                                            <input type="hidden" value="<?php echo $r_b_estudiante['id']; ?>" name="id_estudiante">
                                                                                             <div class="row">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">DNI : </label>
                                                                                                 <div class="row">
                                                                                                     <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                        <input type="number" class="form-control" name="fecha_inicio" required="required" value="<?php echo $r_b_estudiante['dni']; ?>" required>
+                                                                                                        <input type="number" class="form-control" name="editar_dni" required="required" value="<?php echo $r_b_estudiante['dni']; ?>" required>
 
                                                                                                     </div>
                                                                                                 </div>
@@ -280,7 +284,7 @@ include("../include/busquedas.php");
                                                                                             <div class="row">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Apellidos y Nombres : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="text" class="form-control" name="fecha_inicio" required="required" value="<?php echo $r_b_estudiante['apellidos_nombres']; ?>" required>
+                                                                                                    <input type="text" class="form-control" name="editar_apellidos_nombres" required="required" value="<?php echo $r_b_estudiante['apellidos_nombres']; ?>" required>
 
                                                                                                 </div>
                                                                                             </div>
@@ -289,7 +293,7 @@ include("../include/busquedas.php");
                                                                                             <div class="row">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="email" class="form-control" name="fecha_inicio" required="required" value="<?php echo $r_b_estudiante['correo']; ?>" required>>
+                                                                                                    <input type="email" class="form-control" name="editar_correo" required="required" value="<?php echo $r_b_estudiante['correo']; ?>" required>>
 
                                                                                                 </div>
                                                                                             </div>
@@ -299,7 +303,7 @@ include("../include/busquedas.php");
                                                                                             <div class="row">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Direción : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="text" class="form-control" name="fecha_inicio" required="required" value="<?php echo $r_b_estudiante['direccion']; ?>" required>> >
+                                                                                                    <input type="text" class="form-control" name="editar_direccion" required="required" value="<?php echo $r_b_estudiante['direccion']; ?>" required>> >
 
                                                                                                 </div>
                                                                                             </div>
@@ -308,7 +312,7 @@ include("../include/busquedas.php");
                                                                                             <div class="row">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Teléfono : </label>
                                                                                                 <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                    <input type="number" class="form-control" name="fecha_inicio" required="required" value="<?php echo $r_b_estudiante['telefono']; ?>" required>>
+                                                                                                    <input type="number" class="form-control" name="editar_telefono" required="required" value="<?php echo $r_b_estudiante['telefono']; ?>" required>>
 
                                                                                                 </div>
                                                                                             </div>
@@ -317,7 +321,7 @@ include("../include/busquedas.php");
                                                                                             <div class="row">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento : </label>
                                                                                                 <div class="col-md-3 col-sm-3 col-xs-9">
-                                                                                                    <input type="date" class="form-control" name="fecha_fin" required="required" value="<?php echo $r_b_estudiante['fecha_nac']; ?>" required>>
+                                                                                                    <input type="date" class="form-control" name="editar_fecha_nacimiento" required="required" value="<?php echo $r_b_estudiante['fecha_nac']; ?>" required>>
 
                                                                                                 </div>
                                                                                             </div>
@@ -353,10 +357,10 @@ include("../include/busquedas.php");
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <div class="row">
-                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede :
-                                                                                                </label>
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede: </label>
+                                                                                                
                                                                                                 <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                    <select class="form-control" name="genero" id="genero" required>
+                                                                                                    <select class="form-control" name="editar_sede" id="sede" required>
                                                                                                         <option value=""></option>
                                                                                                         <?php
                                                                                                         $b_sedes = buscar_sedes($conexion);
@@ -367,15 +371,16 @@ include("../include/busquedas.php");
                                                                                                         }
                                                                                                         ?>
                                                                                                     </select>
-
                                                                                                 </div>
+
+
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <div class="row">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Discapacidad : </label>
                                                                                                 <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                    <select class="form-control" name="genero" id="genero" required>
+                                                                                                    <select class="form-control" name="editar_discapacidad" id="genero" required>
                                                                                                         <option value=""></option>
                                                                                                         <option value="1" <?php if($r_b_estudiante['discapacidad']==1){echo "selected";} ?>>Si</option>
                                                                                                         <option value="0" <?php if($r_b_estudiante['discapacidad']==0){echo "selected";} ?>>No</option>
@@ -384,6 +389,8 @@ include("../include/busquedas.php");
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
+
+                                                                                        
                                                                                         <div align="center">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
