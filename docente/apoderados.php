@@ -89,6 +89,7 @@ include("../include/busquedas.php");
                                                                     <br />
                                                                     <form role="form" action="operaciones/registrar_apoderados.php" class="form-horizontal form-label-left input_mask" method="POST" enctype="multipart/form-data">
                                                                         <div class="form-group">
+                                                                            
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">DNI : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                 <input type="number" maxlength="8" class="form-control" name="dni" required="required">
@@ -219,6 +220,7 @@ include("../include/busquedas.php");
                                                                                 <br />
                                                                                 <form role="form" action="operaciones/editar_apoderado.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                                     <div class="form-group">
+                                                                                    <input type="hidden" name="id_apoderado" value="<?php echo $r_b_apoderados['id']; ?>">
                                                                                         <div class="row">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">DNI : </label>
                                                                                             <div class="row">
@@ -242,7 +244,7 @@ include("../include/busquedas.php");
                                                                                         <div class="row">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="email" class="form-control" name="editar_coreo" required="required"value="<?php echo $r_b_apoderados['correo']; ?>">
+                                                                                                <input type="email" class="form-control" name="editar_correo" required="required"value="<?php echo $r_b_apoderados['correo']; ?>">
 
                                                                                             </div>
                                                                                         </div>
@@ -296,7 +298,7 @@ include("../include/busquedas.php");
                                                                                         <div class="row">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Estudiante(s) : </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" class="form-control" name="id_estudiante" required="required"value="<?php echo $r_b_apoderados['id_estudiantes']; ?>">
+                                                                                                <input type="text" class="form-control" name="id_estudiantes" required="required"value="<?php echo $r_b_apoderados['id_estudiantes']; ?>">
 
                                                                                             </div>
                                                                                         </div>
