@@ -1,3 +1,7 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -83,19 +87,14 @@
                                                                 </div>
                                                                 <div class="x_content">
                                                                     <br />
-                                                                    <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                    <form role="form" action="operaciones/registrar_turno.php" class="form-horizontal form-label-left input_mask" method="POST">
 
 
 
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Turno : </label>
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre del Turno : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="turno" id="" class="form-control">
-                                                                                    <option value=""></option>
-                                                                                    <option value="">Mañana</option>
-                                                                                    <option value="">Tarde</option>
-                                                                                    <option value="">Noche</option>
-                                                                                </select>
+                                                                                <input type="text" maxlength="20" class="form-control" name="turno" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -115,8 +114,9 @@
                                                 </div>
                                             </div>
 
-
                                             <!-- FIN MODAL REGISTRAR-->
+
+
                                             <br />
                                             <div class="x_content">
                                                 <table id="example" class="table table-striped table-bordered">
@@ -124,26 +124,29 @@
                                                         <tr>
                                                             <th>Nro</th>
                                                             <th>Nombre del turno</th>
+                                                        
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>
 
 
+                                                   
                                                     <tbody>
                                                         <?php
-                                                        for ($i = 1; $i <= 4; $i++) {
-
-
+                                                        $b_turno = buscar_turno($conexion);
+                                                        $cont = 0;
+                                                        while ($r_b_turno = mysqli_fetch_array($b_turno)) {
+                                                            $cont++;
                                                         ?>
                                                             <tr>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td><?php echo $i; ?>Nombre de sede</td>
-                                                             
-                                                              
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                                <td><?php echo $cont; ?></td>
+                                                                <td><?php echo $r_b_turno['nombre']; ?></td>
+                                                                
+                                                            
+                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_turno['id']; ?>">Editar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
-                                                            <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal fade editar<?php echo $r_b_turno['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg">
                                                                     <div class="modal-content">
 
@@ -167,7 +170,7 @@
                                                                                         <div class="form-group">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre Turno : </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="50" class="form-control" name="nombre_turno">
+                                                                                                <input type="text" maxlength="50" class="form-control" name="editar_turno">
                                                                                                 <br>
                                                                                             </div>
                                                                                         </div>
