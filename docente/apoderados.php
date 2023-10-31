@@ -1,3 +1,7 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Estudiantes | SIE</title>
+    <title>Apoderados | SIE</title>
     <!--icono en el titulo-->
     <link rel="shortcut icon" href="">
 
@@ -56,7 +60,7 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Relación de Apoderados</h2>
+                                            <h2>Apoderados</h2>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
@@ -83,27 +87,25 @@
                                                                 </div>
                                                                 <div class="x_content">
                                                                     <br />
-                                                                    <form role="form" action="operaciones/registrar_periodo_academico.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                    <form role="form" action="operaciones/registrar_apoderados.php" class="form-horizontal form-label-left input_mask" method="POST" enctype="multipart/form-data">
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">DNI : </label>
-                                                                            <div class="row">
-                                                                                <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                    <input type="number" class="form-control" name="fecha_inicio" required="required">
-                                                                                    <br>
-                                                                                </div>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <input type="number" maxlength="8" class="form-control" name="dni" required="required">
+                                                                                <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Apellidos y Nombres : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" class="form-control" name="fecha_inicio" required="required">
+                                                                                <input type="text" maxlength="150" class="form-control" name="apellidos_nombres" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="email" class="form-control" name="fecha_inicio" required="required">
+                                                                                <input type="email" maxlength="150" class="form-control" name="correo" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -111,25 +113,32 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Direción : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" class="form-control" name="fecha_inicio" required="required">
+                                                                                <input type="text" maxlength="150" class="form-control" name="direccion" required="required">
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de nacimiento : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <input type="date" class="form-control" name="fec_nacimiento" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Teléfono : </label>
                                                                             <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                <input type="number" class="form-control" name="fecha_inicio" required="required">
+                                                                                <input type="number" maxlength="11" class="form-control" name="telefono" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                        <div class="row">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Estudiante(s) : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" class="form-control" name="fecha_inicio" required="required">
+                                                                            <div class="row">
+                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Estudiante(s) : </label>
+                                                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                    <input type="text" maxlength="150" class="form-control" name="estudiantes" required="required">
 
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
                                                                         </div>
                                                                 </div>
                                                                 <div align="center">
@@ -153,41 +162,50 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Nro</th>
-                                                        <th>Año</th>
-                                                        <th>Sede</th>
-                                                        <th>Fecha Inicio</th>
-                                                        <th>Fecha Fin</th>
-                                                        <th>Director</th>
-                                                        <th>Secretario</th>
+                                                        <th>DNI</th>
+                                                        <th>Apellidos y Nombres</th>
+                                                        <th>Correo</th>
+                                                        <th>Teléfono</th>
+                                                        <th>Direccion</th>
+                                                        <th>Fecha de Nacimiento</th>
+                                                        <th>Genero</th>
+                                                        <th>Acciones</th>
+                                                        
                                                     </tr>
                                                 </thead>
 
 
                                                 <tbody>
                                                     <?php
-                                                    for ($i = 1; $i <= 5; $i++) {
+                                                    $b_apoderado = buscar_apoderados($conexion);
+                                                    $cont = 0;
+                                                    while ($r_b_apoderados = mysqli_fetch_array($b_apoderado)) {
+                                                        $cont++;
+
 
 
                                                     ?>
                                                         <tr>
-                                                            <td><?php echo $i; ?></td>
-                                                            <td><?php echo $i; ?>Tiger Nixon</td>
-                                                            <td><?php echo $i; ?>System Architect</td>
-                                                            <td><?php echo $i; ?>Edinburgh</td>
-                                                            <td><?php echo $i; ?>61</td>
-                                                            <td><?php echo $i; ?>2011/04/25</td>
-                                                            <td><?php echo $i; ?>$320,800</td>
-                                                            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                            <td><?php echo $cont; ?></td>
+                                                            <td><?php echo $r_b_apoderados['dni']; ?></td>
+                                                            <td><?php echo $r_b_apoderados['apellidos_nombres']; ?></td>
+                                                            <td><?php echo $r_b_apoderados['correo']; ?></td>
+                                                            <td><?php echo $r_b_apoderados['telefono']; ?></td>
+                                                            <td><?php echo $r_b_apoderados['direccion']; ?></td>
+                                                            <td><?php echo $r_b_apoderados['fecha_nac']; ?></td>
+                                                            <td><?php echo $r_b_apoderados['genero']; ?></td>
+
+                                                            <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_apoderados['id']; ?>">Editar</button></td>
                                                         </tr>
                                                         <!--MODAL EDITAR-->
-                                                        <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal fade editar<?php echo $r_b_apoderados['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                             <div class="modal-dialog modal-lg">
                                                                 <div class="modal-content">
 
                                                                     <div class="modal-header">
                                                                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                                         </button>
-                                                                        <h4 class="modal-title" id="myModalLabel" align="center">Registrar Apoderado</h4>
+                                                                        <h4 class="modal-title" id="myModalLabel" align="center">Editar Apoderado</h4>
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <!--INICIO CONTENIDO DE MODAL-->
@@ -199,13 +217,13 @@
                                                                             </div>
                                                                             <div class="x_content">
                                                                                 <br />
-                                                                                <form role="form" action="operaciones/registrar_periodo_academico.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                <form role="form" action="operaciones/editar_apoderado.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                                     <div class="form-group">
                                                                                         <div class="row">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">DNI : </label>
                                                                                             <div class="row">
                                                                                                 <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                    <input type="number" class="form-control" name="fecha_inicio" required="required">
+                                                                                                    <input type="number" class="form-control" value="<?php echo $r_b_apoderados['dni']; ?>" name="editar_dni" readonly>
 
                                                                                                 </div>
                                                                                             </div>
@@ -215,7 +233,7 @@
                                                                                         <div class="row">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Apellidos y Nombres : </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" class="form-control" name="fecha_inicio" required="required">
+                                                                                                <input type="text" class="form-control" value="<?php echo $r_b_apoderados['apellidos_nombres']; ?>" name="editar_apellidos_nombres">
 
                                                                                             </div>
                                                                                         </div>
@@ -224,7 +242,7 @@
                                                                                         <div class="row">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Correo : </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="email" class="form-control" name="fecha_inicio" required="required">
+                                                                                                <input type="email" class="form-control" name="editar_coreo" required="required"value="<?php echo $r_b_apoderados['correo']; ?>">
 
                                                                                             </div>
                                                                                         </div>
@@ -234,7 +252,16 @@
                                                                                         <div class="row">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Direción : </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" class="form-control" name="fecha_inicio" required="required">
+                                                                                                <input type="text" class="form-control" name="editar_direccion" required="required" value="<?php echo $r_b_apoderados['direccion']; ?>">
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <div class="row">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">fecha de Nacimiento : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" class="form-control" name="editar_fecha_nacimiento" required="required" value="<?php echo $r_b_apoderados['fecha_nac']; ?>">
 
                                                                                             </div>
                                                                                         </div>
@@ -243,21 +270,25 @@
                                                                                         <div class="row">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Teléfono : </label>
                                                                                             <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                <input type="number" class="form-control" name="fecha_inicio" required="required">
+                                                                                                <input type="number" class="form-control" name="editar_telefono" required="required" value="<?php echo $r_b_apoderados['telefono']; ?>">
 
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <div class="row">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Género :
-                                                                                            </label>
-                                                                                            <div class="col-md-3 col-sm-3 col-xs-6">
-                                                                                                <select class="form-control" name="genero" id="genero" required>
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Genero: </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <select class="form-control" name="editar_genero" id="genero" required value="<?php echo $r_b_apoderados['genero']; ?>">
                                                                                                     <option value=""></option>
-                                                                                                    <option value="2021">Masculino</option>
-                                                                                                    <option value="2022">Femenino</option>
+                                                                                                    <option value="M" <?php if ($r_b_apoderados['genero'] == "M") {
+                                                                                                                            echo "selected";
+                                                                                                                        } ?>>Masculino</option>
+                                                                                                    <option value="F" <?php if ($r_b_apoderados['genero'] == "F") {
+                                                                                                                            echo "selected";
+                                                                                                                        } ?>>Femenino</option>
                                                                                                 </select>
+                                                                                                <br>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -265,7 +296,7 @@
                                                                                         <div class="row">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Estudiante(s) : </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" class="form-control" name="fecha_inicio" required="required">
+                                                                                                <input type="text" class="form-control" name="id_estudiante" required="required"value="<?php echo $r_b_apoderados['id_estudiantes']; ?>">
 
                                                                                             </div>
                                                                                         </div>
