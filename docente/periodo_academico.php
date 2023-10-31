@@ -1,3 +1,8 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -90,12 +95,16 @@
                                         <div class="col-md-3 col-sm-3 col-xs-6">
                                           <select class="form-control" name="anio" id="anio" required>
                                             <option value=""></option>
-                                            <option value="2021">2021</option>
-                                            <option value="2022">2022</option>
-                                            <option value="2023">2023</option>
-                                            <option value="2024">2024</option>
-                                            <option value="2025">2025</option>
-                                            <option value="2026">2026</option>
+                                            <?php
+                                            $anio = date("Y");
+                                            for ($i = $anio; $i < $anio + 4; $i++) {
+                                            ?>
+                                              <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                            <?php
+                                            }
+                                            ?>
+
+
                                           </select>
                                           <br>
                                         </div>
@@ -103,12 +112,15 @@
                                     </div>
                                     <div class="form-group">
                                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede : </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="form-control" id="director" name="director" value="" required="required">
+                                      <div class="col-md-3 col-sm-3 col-xs-6">
+                                        <select class="form-control" id="sede" name="sede" value="" required="required">
                                           <option></option>
-                                          <option value="10">HUAMANGA</option>
-                                          <option value="10">HUANTA</option>
-                                          <option value="10">LURICOCHA</option>
+                                          <?php
+                                          $b_sedes = buscar_sedes($conexion);
+                                          while ($r_b_sedes = mysqli_fetch_array($b_sedes)) { ?>
+                                            <option value="<?php echo $r_b_sedes['id']; ?>"><?php echo $r_b_sedes['nombre']; ?></option>
+                                          <?php } ?>
+
                                         </select>
                                         <br>
                                       </div>
@@ -118,9 +130,11 @@
                                       <div class="col-md-9 col-sm-9 col-xs-12">
                                         <select class="form-control" id="director" name="director" value="" required="required">
                                           <option></option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                          <?php
+                                          $b_director = buscar_docentePorCargo($conexion, "Director");
+                                          while ($r_b_director = mysqli_fetch_array($b_director)) { ?>
+                                            <option value="<?php echo $r_b_director['id']; ?>"><?php echo $r_b_director['apellidos_nombres']; ?></option>
+                                          <?php } ?>
                                         </select>
                                         <br>
                                       </div>
@@ -128,11 +142,13 @@
                                     <div class="form-group">
                                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Secretario Académico : </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="form-control" id="director" name="director" value="" required="required">
+                                        <select class="form-control" id="secretario" name="secretario" value="" required="required">
                                           <option></option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
+                                          <?php
+                                          $b_secretaria = buscar_docentePorCargo($conexion, "Secretario Academico");
+                                          while ($r_b_secretaria = mysqli_fetch_array($b_secretaria)) { ?>
+                                            <option value="<?php echo $r_b_secretaria['id']; ?>"><?php echo $r_b_secretaria['apellidos_nombres']; ?></option>
+                                          <?php } ?>
                                         </select>
                                         <br>
                                       </div>
@@ -140,21 +156,21 @@
 
                                     <div class="form-group">
                                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Inicio : </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                      <div class="col-md-3 col-sm-3 col-xs-6">
                                         <input type="date" class="form-control" name="fecha_inicio" required="required">
                                         <br>
                                       </div>
                                     </div>
                                     <div class="form-group">
                                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Fin : </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                      <div class="col-md-3 col-sm-3 col-xs-6">
                                         <input type="date" class="form-control" name="fecha_fin" required="required">
                                         <br>
                                       </div>
                                     </div>
 
 
-
+                                    <!--
                                     <div class="form-group">
                                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Cursos a Programar :
                                       </label>
@@ -175,6 +191,7 @@
                                         <br><br>
                                       </div>
                                     </div>
+                                          -->
                                     <div align="center">
                                       <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
@@ -210,22 +227,34 @@
 
                           <tbody>
                             <?php
-                            for ($i = 1; $i <= 5; $i++) {
+                            $cont = 0;
+                            $b_periodo_academicos = buscar_anio_academico($conexion);
+                            while ($r_b_periodo_academicos = mysqli_fetch_array($b_periodo_academicos)) {
+                              $cont++;
 
 
                             ?>
                               <tr>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $i; ?>Tiger Nixon</td>
-                                <td><?php echo $i; ?>System Architect</td>
-                                <td><?php echo $i; ?>Edinburgh</td>
-                                <td><?php echo $i; ?>61</td>
-                                <td><?php echo $i; ?>2011/04/25</td>
-                                <td><?php echo $i; ?>$320,800</td>
-                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                <td><?php echo $cont; ?></td>
+                                <td><?php echo $r_b_periodo_academicos['nombre']; ?></td>
+                                <?php $b_sedes = buscar_sedesPorId($conexion, $r_b_periodo_academicos['id_sede']);
+                                $r_b_sedes = mysqli_fetch_array($b_sedes);
+                                ?>
+                                <td><?php echo $r_b_sedes['nombre']; ?></td>
+                                <td><?php echo $r_b_periodo_academicos['fecha_inicio']; ?></td>
+                                <td><?php echo $r_b_periodo_academicos['fecha_fin']; ?></td>
+                                <?php $b_director = buscar_docentePorId($conexion, $r_b_periodo_academicos['id_director']);
+                                $r_b_director = mysqli_fetch_array($b_director);
+                                ?>
+                                <td><?php echo $r_b_director['apellidos_nombres']; ?></td>
+                                <?php $b_secretario = buscar_docentePorId($conexion, $r_b_periodo_academicos['id_secretario']);
+                                $r_b_secretario = mysqli_fetch_array($b_secretario);
+                                ?>
+                                <td><?php echo $r_b_secretario['apellidos_nombres']; ?></td>
+                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_periodo_academicos['id']; ?>">Editar</button></td>
                               </tr>
                               <!--MODAL EDITAR-->
-                              <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                              <div class="modal fade editar<?php echo $r_b_periodo_academicos['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                   <div class="modal-content">
 
@@ -245,74 +274,97 @@
                                         <div class="x_content">
                                           <br />
                                           <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                          <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Periodo Académico : </label>
-                                      <div class="row">
-                                        <div class="col-md-3 col-sm-3 col-xs-6">
-                                          <select class="form-control" name="anio" id="anio" required>
-                                            <option value=""></option>
-                                            <option value="2021">2021</option>
-                                            <option value="2022">2022</option>
-                                            <option value="2023">2023</option>
-                                            <option value="2024">2024</option>
-                                            <option value="2025">2025</option>
-                                            <option value="2026">2026</option>
-                                          </select>
-                                          <br>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede : </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="form-control" id="director" name="director" value="" required="required">
-                                          <option></option>
-                                          <option value="10">HUAMANGA</option>
-                                          <option value="10">HUANTA</option>
-                                          <option value="10">LURICOCHA</option>
-                                        </select>
-                                        <br>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Director : </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="form-control" id="director" name="director" value="" required="required">
-                                          <option></option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                        </select>
-                                        <br>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Secretario Académico : </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <select class="form-control" id="director" name="director" value="" required="required">
-                                          <option></option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                          <option value="10">Ing. VILLANTOY PALOMINO ESAÚ</option>
-                                        </select>
-                                        <br>
-                                      </div>
-                                    </div>
+                                            <input type="hidden" name="data" value="<?php echo $r_b_periodo_academicos['id']; ?>" >
+                                            <div class="row">
+                                              <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Periodo Académico : </label>
 
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Inicio : </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="date" class="form-control" name="fecha_inicio" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Fin : </label>
-                                      <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="date" class="form-control" name="fecha_fin" required="required">
-                                        <br>
-                                      </div>
-                                    </div>
+                                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                                  <select class="form-control" name="editar_anio" id="editar_anio" required value="<?php echo $r_b_periodo_academicos['nombre']; ?>">
+                                                    <option value=""></option>
+                                                    <?php
+                                                    $anio = date("Y");
+                                                    for ($i = $anio; $i < $anio + 4; $i++) {
+                                                    ?>
+                                                      <option value="<?php echo $i; ?>"<?php if($r_b_periodo_academicos['nombre'] == $i){ echo "selected";} ?>><?php echo $i; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+
+
+                                                  </select>
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede : </label>
+                                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                                  <select class="form-control" id="editar_sede" name="editar_sede" value="<?php echo $r_b_periodo_academicos['id_sede']; ?>" required="required">
+                                                    <option></option>
+                                                    <?php
+                                                    $b_sedes = buscar_sedes($conexion);
+                                                    while ($r_b_sedes = mysqli_fetch_array($b_sedes)) { ?>
+                                                      <option value="<?php echo $r_b_sedes['id']; ?>"<?php if($r_b_periodo_academicos['id_sede'] == $r_b_sedes['id']){ echo "selected";} ?>><?php echo $r_b_sedes['nombre']; ?></option>
+                                                    <?php } ?>
+
+                                                  </select>
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Director : </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <select class="form-control" id="editar_director" name="editar_director" value="<?php echo $r_b_periodo_academicos['id_director']; ?>" required="required">
+                                                    <option></option>
+                                                    <?php
+                                                    $b_director = buscar_docentePorCargo($conexion, "Director");
+                                                    while ($r_b_director = mysqli_fetch_array($b_director)) { ?>
+                                                      <option value="<?php echo $r_b_director['id']; ?>" <?php if($r_b_periodo_academicos['id_director'] == $r_b_director['id']){ echo "selected";} ?>><?php echo $r_b_director['apellidos_nombres']; ?></option>
+                                                    <?php } ?>
+                                                  </select>
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Secretario Académico : </label>
+                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                  <select class="form-control" id="editar_secretario" name="editar_secretario" value="<?php echo $r_b_periodo_academicos['id_secretario']; ?>" required="required">
+                                                    <option></option>
+                                                    <?php
+                                                    $b_secretario = buscar_docentePorCargo($conexion, "Secretario Academico");
+                                                    while ($r_b_secretario = mysqli_fetch_array($b_secretario)) { ?>
+                                                      <option value="<?php echo $r_b_secretario['id']; ?>" <?php if($r_b_periodo_academicos['id_secretario'] == $r_b_secretario['id']){ echo "selected";} ?>><?php echo $r_b_secretario['apellidos_nombres']; ?></option>
+                                                    <?php } ?>
+                                                  </select>
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                            <div class="row">
+                                              <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Inicio : </label>
+                                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                                  <input type="date" class="form-control" name="editar_fecha_inicio" required="required" value="<?php echo $r_b_periodo_academicos['fecha_inicio']; ?>">
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Fin : </label>
+                                                <div class="col-md-3 col-sm-3 col-xs-6">
+                                                  <input type="date" class="form-control" name="editar_fecha_fin" required="required" value="<?php echo $r_b_periodo_academicos['fecha_fin']; ?>">
+                                                  <br>
+                                                </div>
+                                              </div>
+                                            </div>
 
                                             <div align="center">
                                               <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
