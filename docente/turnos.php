@@ -38,7 +38,7 @@
                 <div class="left_col scroll-view">
 
 
-                    <?php include("include/menu_secretaria_academica.php.php"); ?>
+                    <?php include("include/menu_secretaria_academica.php"); ?>
 
                     <!-- page content -->
                     <div class="right_col" role="main">
@@ -56,7 +56,7 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Sedes</h2>
+                                            <h2>Turnos</h2>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
@@ -90,7 +90,7 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Turno : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="responsable" id="" class="form-control">
+                                                                                <select name="turno" id="" class="form-control">
                                                                                     <option value=""></option>
                                                                                     <option value="">Mañana</option>
                                                                                     <option value="">Tarde</option>
@@ -115,6 +115,7 @@
                                                 </div>
                                             </div>
 
+
                                             <!-- FIN MODAL REGISTRAR-->
                                             <br />
                                             <div class="x_content">
@@ -123,7 +124,6 @@
                                                         <tr>
                                                             <th>Nro</th>
                                                             <th>Nombre del turno</th>
-                                                        
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>

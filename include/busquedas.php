@@ -70,4 +70,33 @@ function buscar_nivel($conexion){
     return mysqli_query($conexion, $consulta);
 }
 
+function buscar_nivel_id($conexion, $id){
+    $consulta = "SELECT * FROM nivel WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+
+//busqueda niveles 
+function buscar_turno($conexion){
+    $consulta = "SELECT * FROM turno";
+    return mysqli_query($conexion, $consulta);
+}
+
+function buscar_turno_id($conexion, $id){
+    $consulta = "SELECT * FROM turno WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+
+//busqueda año academico
+function buscar_anio_academico($conexion){
+    $consulta = "SELECT * FROM anio_academico";
+    return mysqli_query($conexion, $consulta);
+}
+
+function buscar_anio_academico_id($conexion, $id){
+    $consulta = "SELECT * FROM anio_academico WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+
+
+
 ?>
