@@ -58,7 +58,7 @@
           <li><a href="datos_institucionales.php">Datos Institucionales</a></li>
           <li><a href="sedes.php">Sedes</a></li>
           <li><a href="periodo_lectivo.php">Periodo Léctivo</a></li>
-          <li><a href="niveles.php">Niveles</a></li>
+          <li><a href="nivel.php">Niveles</a></li>
           <li><a href="ciclos.php">Ciclos</a></li>
           <li><a href="grados.php">Grados</a></li>
           <li><a href="turnos.php">Turnos</a></li>
