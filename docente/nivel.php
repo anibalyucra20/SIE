@@ -1,3 +1,7 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -56,7 +60,7 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Niveles</h2>
+                                            <h2>Nivel</h2>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
@@ -71,7 +75,7 @@
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                             </button>
-                                                            <h4 class="modal-title" id="myModalLabel" align="center">Niveles</h4>
+                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registrar Nivel</h4>
                                                         </div>
                                                         <div class="modal-body">
 
@@ -85,7 +89,7 @@
                                                                 </div>
                                                                 <div class="x_content">
                                                                     <br />
-                                                                    <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                    <form role="form" action="operaciones/registrar_nivel.php" class="form-horizontal form-label-left input_mask" method="POST">
 
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Codigo Modular: </label>
@@ -95,9 +99,9 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre del Nivel: </label>
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nivel: </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="150" class="form-control" name="codigo_modular" required="required">
+                                                                                <input type="text" maxlength="150" class="form-control" name="nombre" required="required">
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -105,9 +109,16 @@
 
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede: </label>
-                                                                            
-                                                                            
-                                                                            
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <select class="form-control" name="id_sede" id="sede" required>
+                                                                                    <option value=""></option>
+                                                                                    <option value="M">HUANTA</option>
+                                                                                    <option value="F">HUAMANGA</option>
+                                                                                </select>
+                                                                                <br>
+                                                                            </div>
+
+
                                                                         </div>
 
                                                                         <div align="center">
@@ -131,41 +142,40 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Nro</th>
-                                                            <th>Año</th>
+                                                            <th>Cod. Modular</th>
+                                                            <th>Nombre</th>
                                                             <th>Sede</th>
-                                                            <th>Fecha Inicio</th>
-                                                            <th>Fecha Fin</th>
-                                                            <th>Director</th>
-                                                            <th>Secretario</th>
+                                                            <th>Acciones</th>
                                                         </tr>
                                                     </thead>
 
 
                                                     <tbody>
                                                         <?php
-                                                        for ($i = 1; $i <= 5; $i++) {
+                                                        $b_nivel = buscar_nivel($conexion);
+                                                        $cont = 0;
+                                                        while ($r_b_nivel = mysqli_fetch_array($b_nivel)) {
+                                                            $cont++;
 
 
                                                         ?>
                                                             <tr>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td><?php echo $i; ?>Tiger Nixon</td>
-                                                                <td><?php echo $i; ?>System Architect</td>
-                                                                <td><?php echo $i; ?>Edinburgh</td>
-                                                                <td><?php echo $i; ?>61</td>
-                                                                <td><?php echo $i; ?>2011/04/25</td>
-                                                                <td><?php echo $i; ?>$320,800</td>
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                                <td><?php echo $cont; ?></td>
+                                                                <td><?php echo $r_b_nivel['cod_modular  ']; ?></td>
+                                                                <td><?php echo $r_b_nivel['nombre']; ?></td>
+                                                                <td><?php echo $r_b_nivel['id_sede']; ?></td>
+
+                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_nivel['id']; ?>">Editar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
-                                                            <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal fade editar<?php echo $r_b_nivel; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg">
                                                                     <div class="modal-content">
 
                                                                         <div class="modal-header">
                                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                                             </button>
-                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Modificar Nivel</h4>
+                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Nivel</h4>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <!--INICIO CONTENIDO DE MODAL-->
@@ -177,34 +187,39 @@
                                                                                 </div>
                                                                                 <div class="x_content">
                                                                                     <br />
-                                                                                    <form role="form" action="operaciones/registrar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                                                                    <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Codigo Modular: </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="150" class="form-control" name="codigo_modular" required="required">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre del Nivel: </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="150" class="form-control" name="codigo_modular" required="required">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
+                                                                                    <form role="form" action="operaciones/iditar_nivel.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                        <div class="form-group">
+                                                                                        <input type="hidden" name="id_apoderado" value="<?php echo $r_b_nivel['id']; ?>">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Codigo Modular: </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="150" class="form-control" value="<?php echo $r_b_nive['codigo_modular'];?>" name="editar_codigo_modular" required="required">
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre del Nivel: </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="150" class="form-control" value="<?php echo $r_b_nive['nombre'];?>" name="editar_nombre" required="required">
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
 
 
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede: </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select class="form-control" name="genero" id="sede" required>
-                                                                                    <option value=""></option>
-                                                                                    <option value="2021">HUANTA</option>
-                                                                                    <option value="2022">HUAMANGA</option>
-                                                                                </select>
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede: </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <select class="form-control" value="<?php echo $r_b_nive['sede'];?>" name="editar_sede" id="sede" required>
+                                                                                                    <option value=""></option>
+                                                                                                    <option value="Hta" <?php if ($r_b_nivel['sede'] == "Hta") {
+                                                                                                                            echo "selected";
+                                                                                                                        } ?>>HUANTA</option>
+                                                                                                    <option value="Hga" <?php if ($r_b_nivel['sede'] == "Hga") {
+                                                                                                                            echo "selected";
+                                                                                                                        } ?>>HUAMANGA</option>
+                                                                                                </select>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
                                                                                         <div align="center">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
