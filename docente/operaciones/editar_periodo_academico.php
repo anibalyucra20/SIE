@@ -12,12 +12,20 @@ $fecha_inicio = $_POST['fecha_inicio'];
 $fecha_fin = $_POST['fecha_fin'];
 
 // Realiza la actualización en la base de datos
-$consulta = "UPDATE periodo_lectivo SET sede = '$sede', director = '$director', secretario_academico = '$secretario_academico', fecha_inicio = '$fecha_inicio', fecha_fin = '$fecha_fin' WHERE id = $id_periodo";
+$consulta = "UPDATE anio_academico SET sede = '$sede', director = '$director', secretario_academico = '$secretario_academico', fecha_inicio = '$fecha_inicio', fecha_fin = '$fecha_fin' WHERE id = $id_periodo";
 $resultado = mysqli_query($conexion, $consulta);
 
 if ($resultado) {
-    echo "Los cambios se guardaron correctamente.";
+    echo "<script>
+                alert('Datos Actualizados Correctamente');
+                window.location= '../periodo_academico.php';
+                </script>
+                ";
 } else {
-    echo "Hubo un error al guardar los cambios.";
+    echo "<script>
+        alert('Error, Error al Actualizar Datos');
+        window.history.back();
+    </script>
+    ";
 }
 ?>

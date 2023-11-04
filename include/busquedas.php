@@ -97,6 +97,12 @@ function buscar_anio_academico_id($conexion, $id){
     return mysqli_query($conexion, $consulta);
 }
 
+// busquedas periodo academico
+
+function buscar_periodos($conexion){
+    $consulta = "SELECT * FROM periodo_lectivo";
+    return mysqli_query($conexion, $consulta);
+}
 
 
 ?>
