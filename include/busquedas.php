@@ -104,5 +104,12 @@ function buscar_periodos($conexion){
     return mysqli_query($conexion, $consulta);
 }
 
+// busquedas seccioes
+
+function buscar_seccion($conexion){
+    $consulta = "SELECT * FROM seccion";
+    return mysqli_query($conexion, $consulta);
+}
+
 
 ?>
