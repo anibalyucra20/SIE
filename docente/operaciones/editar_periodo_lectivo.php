@@ -1,36 +1,29 @@
+
 <?php
 include("../../include/conexion.php");
 include("../../include/busquedas.php");
 include("../../include/funciones.php");
-
-//no recibir dni  buscar dn BD
+// Recoge los datos del formulario
 $id = $_POST['data'];
-$nombre = $_POST['editar_anio'];
-$sede = $_POST['editar_sede'];
-$director = $_POST['editar_director'];
-$secretario = $_POST['editar_secretario'];
-$fecha_inicio = $_POST['editar_fecha_inicio'];
-$fecha_fin = $_POST['editar_fecha_fin'];
+$nombre = $_POST['editar_nombre'];
+$fecha_inicio = $_POST['fecha_inicio'];
+$fecha_fin = $_POST['fecha_fin'];
 
+// Realiza la actualización en la base de datos
+$consulta = "UPDATE periodo_lectivo SET nombre = '$nombre',fecha_inicio = '$fecha_inicio', fecha_fin = '$fecha_fin' WHERE id = $id";
+$resultado = mysqli_query($conexion, $consulta);
 
-$consulta = "UPDATE anio_academico SET nombre='$nombre', id_director='$director', id_secretario='$secretario',fecha_inicio='$fecha_inicio',fecha_fin='$fecha_fin', id_sede='$sede' WHERE id='$id'";
-
-
-$ejecutar_consulta = mysqli_query($conexion, $consulta);
-if ($ejecutar_consulta) {
+if ($resultado) {
     echo "<script>
                 alert('Datos Actualizados Correctamente');
-                window.location= '../periodo_academico.php';
+                window.location= '../periodo_lectivo.php';
                 </script>
                 ";
-}else {
+} else {
     echo "<script>
         alert('Error, Error al Actualizar Datos');
         window.history.back();
     </script>
     ";
 }
-
-
-
 ?>
