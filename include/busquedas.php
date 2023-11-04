@@ -111,5 +111,12 @@ function buscar_seccion($conexion){
     return mysqli_query($conexion, $consulta);
 }
 
+// busquedas curso
+
+function buscar_curso($conexion){
+    $consulta = "SELECT * FROM curso";
+    return mysqli_query($conexion, $consulta);
+}
+
 
 ?>

@@ -134,8 +134,6 @@ include("../include/busquedas.php");
                                                             $cont++;
                                                         ?>
                                                         
-
-
                                                         ?>
                                                             <tr>
                                                                     <td><?php echo $cont; ?></td>

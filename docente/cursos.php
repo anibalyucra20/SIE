@@ -1,3 +1,7 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -45,10 +49,7 @@
                         <div class="">
                             <div class="page-title">
                                 <div class="title_left">
-
                                 </div>
-
-
                             </div>
                             <div class="clearfix"></div>
 
@@ -61,8 +62,6 @@
                                         </div>
                                         <div class="x_content">
                                             <button type="button" class="btn btn-success" data-toggle="modal" data-target=".registrar"><i class="fa fa-plus-square"></i> Nuevo</button>
-
-
                                             <!--MODAL REGISTRAR-->
                                             <div class="modal fade registrar" tabindex="-1" role="dialog" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
@@ -71,34 +70,32 @@
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                             </button>
-                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registrar Curoso</h4>
+                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registrar Curso</h4>
                                                         </div>
                                                         <div class="modal-body">
                                                             <!--INICIO CONTENIDO DE MODAL-->
                                                             <div class="x_panel">
-
                                                                 <div class="" align="center">
                                                                     <h2></h2>
                                                                     <div class="clearfix"></div>
                                                                 </div>
                                                                 <div class="x_content">
                                                                     <br />
-                                                                    <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                    <form role="form" action="operaciones/registrar_curso.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de Curso : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="nombre_curso">
+                                                                                <input type="text" maxlength="20" class="form-control" name="nombre" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripcion de curso : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="descripcion_curso">
+                                                                                <input type="text" maxlength="50" class="form-control" name="descripcion" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
-                                                                        
                                                                         <div align="center">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
@@ -112,8 +109,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <!-- FIN MODAL REGISTRAR-->
+
+
+
                                             <br />
                                             <div class="x_content">
                                                 <table id="example" class="table table-striped table-bordered">
@@ -122,32 +121,32 @@
                                                             <th>Nro</th>
                                                             <th>Nombre del curso</th>
                                                             <th>Descripcion del curso </th>
-                                                           
                                                     </thead>
-
-                                                    
                                                     <tbody>
                                                         <?php
-                                                        for ($i = 1; $i <= 4; $i++) {
+                                                         $b_curso = buscar_curso($conexion);
+                                                         $cont = 0;
+                                                         while ($r_b_curso = mysqli_fetch_array($b_curso)) {
+                                                             $cont++;
 
 
                                                         ?>
                                                             <tr>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td><?php echo $i; ?>Nombre de curso </td>
-                                                                <td><?php echo $i; ?>Descripcion del curso</td>
-                                                                
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i;?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                            <td><?php echo $cont; ?></td>
+                                                            <td><?php echo $r_b_curso['nombre']; ?></td>
+                                                            <td><?php echo $r_b_curso['descripcion']; ?></td>
+
+                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_curso['id']; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
-                                                            <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal fade editar<?php echo $r_b_curso['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg">
                                                                     <div class="modal-content">
 
-                                                                       <div class="modal-header">
+                                                                        <div class="modal-header">
                                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                                             </button>
-                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Sede</h4>
+                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Curso</h4>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <!--INICIO CONTENIDO DE MODAL-->
@@ -158,29 +157,30 @@
                                                                                     <div class="clearfix"></div>
                                                                                 </div>
                                                                                 <div class="x_content">
-                                                                                    <br/>
-                                                                                    <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                                                                    <div class="form-group">
-                                                                                    <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de Curso : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="nombre_curso">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripcion de curso : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="descripcion_curso">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        
-                                                                                        <div align="center">
-                                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                                                    <br />
+                                                                                    <form role="form" action="operaciones/editar_curso.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                        <div class="form-group">
+                                                                                        <input type="hidden" name="data" value="<?php echo $r_b_curso['id']; ?>">
+                                                                                            <div class="form-group">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de Curso : </label>
+                                                                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                    <input type="text" maxlength="20" class="form-control" name="editar_curso" value="<?php echo $r_b_curso['nombre']; ?>">
+                                                                                                    <br>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripcion de curso : </label>
+                                                                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                    <input type="text" maxlength="50" class="form-control" name="descripcion_curso" value="<?php echo $r_b_curso['descripcion']; ?>">
+                                                                                                    <br>
+                                                                                                </div>
+                                                                                            </div>
 
-                                                                                            <button type="submit" class="btn btn-primary">Guardar</button>
-                                                                                        </div>
+                                                                                            <div align="center">
+                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+
+                                                                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                                                                            </div>
                                                                                     </form>
                                                                                 </div>
                                                                             </div>
