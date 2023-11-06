@@ -7,14 +7,14 @@ $nombre = $_POST['nombre'];
 $id_sede = $_POST['id_sede'];
 
 
-$consulta = "INSERT INTO nivel (nombre, id_director, id_secretario, fecha_inicio, fecha_fin, id_sede) VALUES ('$anio', '$director', '$secretario', '$fecha_inicio', '$fecha_fin', '$sede')";
+$consulta = "INSERT INTO nivel (cod_modular, nombre, id_sede) VALUES ('$cod_modular', '$nombre', '$id_sede')";
 
 $ejecutar_consulta = mysqli_query($conexion, $consulta);
 
 if ($ejecutar_consulta) {
     echo "<script>
                 alert('Se realizó el registro con éxito');
-                window.location = '../periodo_academico.php';
+                window.location = '../nivel.php';
             </script>";
 }else {
     echo "<script>

@@ -3,9 +3,9 @@ include("../../include/conexion.php");
 include("../../include/busquedas.php");
 include("../../include/funciones.php");
 
-//no recibir dni  buscar dn BD
+$id_nivel= $_POST['data'];
 $codigo_modular= $_POST['editar_codigo_modular'];
-$nombre_nivel = $_POST['editar_codigo_modular'];
+$nombre_nivel = $_POST['editar_nombre'];
 $id_sede = $_POST['editar_sede'];
 
     $consulta = "UPDATE nivel SET cod_modular='$codigo_modular', nombre='$nombre_nivel', id_sede='$id_sede' WHERE id='$id_nivel'";

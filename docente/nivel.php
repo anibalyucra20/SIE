@@ -112,8 +112,11 @@ include("../include/busquedas.php");
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                 <select class="form-control" name="id_sede" id="sede" required>
                                                                                     <option value=""></option>
-                                                                                    <option value="M">HUANTA</option>
-                                                                                    <option value="F">HUAMANGA</option>
+                                                                                    <?php 
+                                                                                    $b_sedes = buscar_sedes($conexion); //bucar sedes
+                                                                                    while ($r_b_sedes = mysqli_fetch_array($b_sedes)) { ?>//separar el resultado de la busqueda
+                                                                                        <option value="<?php echo $r_b_sedes['id']; ?>"><?php echo $r_b_sedes['nombre']; ?></option>
+                                                                                    <?php } ?>
                                                                                 </select>
                                                                                 <br>
                                                                             </div>
@@ -143,7 +146,7 @@ include("../include/busquedas.php");
                                                         <tr>
                                                             <th>Nro</th>
                                                             <th>Cod. Modular</th>
-                                                            <th>Nombre</th>
+                                                            <th>Nivel</th>
                                                             <th>Sede</th>
                                                             <th>Acciones</th>
                                                         </tr>
@@ -161,14 +164,17 @@ include("../include/busquedas.php");
                                                         ?>
                                                             <tr>
                                                                 <td><?php echo $cont; ?></td>
-                                                                <td><?php echo $r_b_nivel['cod_modular  ']; ?></td>
+                                                                <td><?php echo $r_b_nivel['cod_modular']; ?></td>
                                                                 <td><?php echo $r_b_nivel['nombre']; ?></td>
-                                                                <td><?php echo $r_b_nivel['id_sede']; ?></td>
+                                                                <td><?php $b_sede = buscar_sedesPorId($conexion, $r_b_nivel['id_sede']);
+                                                                $r_b_sede = mysqli_fetch_array($b_sede);
+                                                                echo $r_b_sede['nombre'];
+                                                                ?></td>
 
                                                                 <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_nivel['id']; ?>">Editar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
-                                                            <div class="modal fade editar<?php echo $r_b_nivel; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal fade editar<?php echo $r_b_nivel['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg">
                                                                     <div class="modal-content">
 
@@ -187,19 +193,20 @@ include("../include/busquedas.php");
                                                                                 </div>
                                                                                 <div class="x_content">
                                                                                     <br />
-                                                                                    <form role="form" action="operaciones/iditar_nivel.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                                                                        <div class="form-group">
+                                                                                    <form role="form" action="operaciones/editar_nivel.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                    <input type="hidden" name="data" value="<?php echo $r_b_nivel['id']; ?>">    
+                                                                                    <div class="form-group">
                                                                                         <input type="hidden" name="id_apoderado" value="<?php echo $r_b_nivel['id']; ?>">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Codigo Modular: </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="150" class="form-control" value="<?php echo $r_b_nive['codigo_modular'];?>" name="editar_codigo_modular" required="required">
+                                                                                                <input type="text" maxlength="150" class="form-control" value="<?php echo $r_b_nivel['cod_modular']; ?>" name="editar_codigo_modular" required="required">
                                                                                                 <br>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre del Nivel: </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="150" class="form-control" value="<?php echo $r_b_nive['nombre'];?>" name="editar_nombre" required="required">
+                                                                                                <input type="text" maxlength="150" class="form-control" value="<?php echo $r_b_nivel['nombre']; ?>" name="editar_nombre" required="required">
                                                                                                 <br>
                                                                                             </div>
                                                                                         </div>
@@ -210,12 +217,11 @@ include("../include/busquedas.php");
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                                 <select class="form-control" value="<?php echo $r_b_nive['sede'];?>" name="editar_sede" id="sede" required>
                                                                                                     <option value=""></option>
-                                                                                                    <option value="Hta" <?php if ($r_b_nivel['sede'] == "Hta") {
-                                                                                                                            echo "selected";
-                                                                                                                        } ?>>HUANTA</option>
-                                                                                                    <option value="Hga" <?php if ($r_b_nivel['sede'] == "Hga") {
-                                                                                                                            echo "selected";
-                                                                                                                        } ?>>HUAMANGA</option>
+                                                                                                    <?php
+                                                                                                    $b_sedes = buscar_sedes($conexion);
+                                                                                                    while ($r_b_sedes = mysqli_fetch_array($b_sedes)) { ?>
+                                                                                                        <option value="<?php echo $r_b_sedes['id']; ?>" <?php if($r_b_sedes['id'] == $r_b_nivel['id_sede']){ echo "selected";} ?>><?php echo $r_b_sedes['nombre']; ?></option>
+                                                                                                    <?php } ?> 
                                                                                                 </select>
                                                                                                 <br>
                                                                                             </div>
