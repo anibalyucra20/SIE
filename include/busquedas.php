@@ -118,5 +118,11 @@ function buscar_curso($conexion){
     return mysqli_query($conexion, $consulta);
 }
 
+// busquedas copetencias
+
+function buscar_competencia($conexion){
+    $consulta = "SELECT * FROM competencia";
+    return mysqli_query($conexion, $consulta);
+}
 
 ?>
