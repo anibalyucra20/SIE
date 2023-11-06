@@ -1,3 +1,7 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -38,7 +42,7 @@
                 <div class="left_col scroll-view">
 
 
-                    <?php include("include/menu_secretaria_academica.php.php"); ?>
+                    <?php include("include/menu_secretaria_academica.php"); ?>
 
                     <!-- page content -->
                     <div class="right_col" role="main">
@@ -56,7 +60,7 @@
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Sedes</h2>
+                                            <h2>Secciones</h2>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
@@ -71,7 +75,7 @@
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                             </button>
-                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registar Seccion</h4>
+                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registar SecciÓn</h4>
                                                         </div>
                                                         <div class="modal-body">
                                                             <!--INICIO CONTENIDO DE MODAL-->
@@ -83,19 +87,15 @@
                                                                 </div>
                                                                 <div class="x_content">
                                                                     <br />
-                                                                    <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                    <form role="form" action="operaciones/registrar_seccion.php" class="form-horizontal form-label-left input_mask" method="POST">
 
 
 
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Sección : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="responsable" id="" class="form-control">
-                                                                                    <option value=""></option>
-                                                                                    <option value="">UNICA</option>
-                                                                                    <option value="">A</option>
-                                                                                    <option value="">B</option>
-                                                                                </select>
+                                                                            <input type="text" maxlength="20" class="form-control" name="seccion" required>
+                                                                                                                                                     
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -123,27 +123,27 @@
                                                         <tr>
                                                             <th>Nro</th>
                                                             <th>Nombre del sección</th>
-                                                        
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>
-
-
                                                     <tbody>
                                                         <?php
-                                                        for ($i = 1; $i <= 4; $i++) {
-
-
+                                                        $b_seccion = buscar_seccion($conexion);
+                                                        $cont = 0;
+                                                        while ($r_b_seccion = mysqli_fetch_array($b_seccion)) {
+                                                            $cont++;
+                                                        ?>
+                                                        
                                                         ?>
                                                             <tr>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td><?php echo $i; ?>Nombre de sección</td>
+                                                                    <td><?php echo $cont; ?></td>
+                                                                <td><?php echo $r_b_seccion['nombre']; ?></td>
                                                              
                                                               
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_seccion['id']; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
-                                                            <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal fade editar<?php echo $r_b_seccion['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg">
                                                                     <div class="modal-content">
 
@@ -162,12 +162,12 @@
                                                                                 </div>
                                                                                 <div class="x_content">
                                                                                     <br />
-                                                                                    <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
-
+                                                                                    <form role="form" action="operaciones/editar_seccion.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                    <input type="hidden" name="data" value="<?php echo $r_b_seccion['id']; ?>">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre Sección : </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="50" class="form-control" name="nombre_turno">
+                                                                                                <input type="text" maxlength="50" class="form-control" name="editar_seccion" value="<?php echo $r_b_seccion['nombre']; ?>">
                                                                                                 <br>
                                                                                             </div>
                                                                                         </div>

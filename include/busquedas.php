@@ -104,5 +104,25 @@ function buscar_periodos($conexion){
     return mysqli_query($conexion, $consulta);
 }
 
+// busquedas seccioes
+
+function buscar_seccion($conexion){
+    $consulta = "SELECT * FROM seccion";
+    return mysqli_query($conexion, $consulta);
+}
+
+// busquedas curso
+
+function buscar_curso($conexion){
+    $consulta = "SELECT * FROM curso";
+    return mysqli_query($conexion, $consulta);
+}
+
+// busquedas copetencias
+
+function buscar_competencia($conexion){
+    $consulta = "SELECT * FROM competencia";
+    return mysqli_query($conexion, $consulta);
+}
 
 ?>

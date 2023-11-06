@@ -5,17 +5,18 @@ include("../../include/funciones.php");
 
 //no recibir dni  buscar dn BD
 $id = $_POST['data'];
-$nombre = $_POST['editar_turno'];
+$nombre = $_POST['editar_curso'];
+$descripcion_curso = $_POST['descripcion_curso'];
 
 
-$consulta = "UPDATE turno SET nombre='$nombre' WHERE id='$id'";
+$consulta = "UPDATE curso SET nombre='$nombre', descripcion='$descripcion_curso' WHERE id='$id'";
 
 
 $ejecutar_consulta = mysqli_query($conexion, $consulta);
 if ($ejecutar_consulta) {
     echo "<script>
                 alert('Datos Actualizados Correctamente');
-                window.location= '../turnos.php';
+                window.location= '../cursos.php';
                 </script>
                 ";
 }else {

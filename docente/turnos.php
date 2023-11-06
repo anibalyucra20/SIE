@@ -89,8 +89,6 @@ include("../include/busquedas.php");
                                                                     <br />
                                                                     <form role="form" action="operaciones/registrar_turno.php" class="form-horizontal form-label-left input_mask" method="POST">
 
-
-
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre del Turno : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
@@ -124,13 +122,9 @@ include("../include/busquedas.php");
                                                         <tr>
                                                             <th>Nro</th>
                                                             <th>Nombre del turno</th>
-                                                        
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>
-
-
-                                                   
                                                     <tbody>
                                                         <?php
                                                         $b_turno = buscar_turno($conexion);
@@ -146,6 +140,7 @@ include("../include/busquedas.php");
                                                                 <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_turno['id']; ?>">Editar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
+                                                    
                                                             <div class="modal fade editar<?php echo $r_b_turno['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg">
                                                                     <div class="modal-content">
@@ -165,12 +160,12 @@ include("../include/busquedas.php");
                                                                                 </div>
                                                                                 <div class="x_content">
                                                                                     <br />
-                                                                                    <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
-
+                                                                                    <form role="form" action="operaciones/editar_turno.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                    <input type="hidden" name="data" value="<?php echo $r_b_turno['id']; ?>">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre Turno : </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="50" class="form-control" name="editar_turno">
+                                                                                                <input type="text" maxlength="50" class="form-control" name="editar_turno" value="<?php echo $r_b_turno['nombre']; ?>">
                                                                                                 <br>
                                                                                             </div>
                                                                                         </div>
