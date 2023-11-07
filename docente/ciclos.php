@@ -1,3 +1,7 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -83,24 +87,34 @@
                                 </div>
                                 <div class="x_content">
                                   <br />
-                                  <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                    
+                                  <form role="form" action="operaciones/registrar_ciclos.php" class="form-horizontal form-label-left input_mask" method="POST">
+
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Codigo Modular: </label>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de Ciclo: </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" maxlength="150" class="form-control" name="codigo_modular" required="required">
+                                        <input type="text" maxlength="150" class="form-control" name="nombre_ciclo" required="required">
                                         <br>
                                       </div>
                                     </div>
-                                                                        
-                            
                                     <div class="form-group">
-                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede: </label>
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripción: </label>
                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                      <select class="form-control" name="genero" id="sede" required>
+                                        <input type="text" maxlength="150" class="form-control" name="descripcion" required="required">
+                                        <br>
+                                      </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Nivel: </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control" name="id_nivel" id="sede" required>
                                           <option value=""></option>
-                                          <option value="2021">HUANTA</option>
-                                          <option value="2022">HUAMANGA</option> 
+                                          <?php
+                                          $b_nivel = buscar_nivel($conexion); //bucar competencia
+                                          while ($r_b_nivel = mysqli_fetch_array($b_nivel)) { ?>//separar el resultado de la busqueda
+                                          <option value="<?php echo $r_b_nivel['id']; ?>"><?php echo $r_b_nivel['nombre']; ?></option>
+                                        <?php } ?>
                                         </select>
                                         <br>
                                       </div>
@@ -127,31 +141,104 @@
                           <thead>
                             <tr>
                               <th>Nro</th>
-                              <th>Año</th>
-                              <th>Sede</th>
-                              <th>Fecha Inicio</th>
-                              <th>Fecha Fin</th>
-                              <th>Director</th>
-                              <th>Secretario</th>
+                              <th>nombre</th>
+                              <th>descripcion</th>
+                              <th>nivel</th>
+                              <th>Acciones</th>
+
                             </tr>
                           </thead>
 
 
                           <tbody>
                             <?php
-                            for ($i = 1; $i <= 5; $i++) {
+                            $b_ciclo = buscar_ciclos($conexion);
+                            $cont = 0;
+                            while ($r_b_ciclo    = mysqli_fetch_array($b_ciclo)) {
+                              $cont++;
 
 
                             ?>
                               <tr>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $i; ?>Tiger Nixon</td>
-                                <td><?php echo $i; ?>System Architect</td>
-                                <td><?php echo $i; ?>Edinburgh</td>
-                                <td><?php echo $i; ?>61</td>
-                                <td><?php echo $i; ?>2011/04/25</td>
-                                <td><?php echo $i; ?>$320,800</td>
+                                <td><?php echo $cont; ?></td>
+                                <td><?php echo $r_b_ciclo['nombre']; ?></td>
+                                <td><?php echo $r_b_ciclo['descripcion']; ?></td>
+                                <td><?php $b_nivel = buscar_nivel_id($conexion, $r_b_ciclo['id_nivel']);
+                                    $r_b_nivel = mysqli_fetch_array($b_nivel);
+                                    echo $r_b_nivel['nombre'];
+                                    ?></td>
+
+                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_ciclo['id']; ?>">Editar</button></td>
                               </tr>
+                              <!--MODAL EDITAR          //aqui para abrir boton editar-->
+                              <div class="modal fade editar<?php echo $r_b_ciclo['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                  <div class="modal-content">
+
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                      </button>
+                                      <h4 class="modal-title" id="myModalLabel" align="center">Editar Ciclo</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                      <!--INICIO CONTENIDO DE MODAL-->
+                                      <div class="x_panel">
+
+                                        <div class="" align="center">
+                                          <h2></h2>
+                                          <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                          <br />
+                                          <form role="form" action="operaciones/editar_ciclo.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                            <input type="hidden" name="data" value="<?php echo $r_b_ciclo['id']; ?>">
+
+                                            <div class="form-group">
+                                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre del Ciclo : </label>
+                                              <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" maxlength="50" class="form-control" name="nombre_ciclo" value="<?php echo $r_b_ciclo['nombre']; ?>" required>
+                                                <br>
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripción : </label>
+                                              <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <input type="text" maxlength="50" class="form-control" name="descripcion" required value="<?php echo $r_b_ciclo['descripcion']; ?>">
+                                                <br>
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Nivel : </label>
+                                              <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <select class="form-control" name="id_nivel" required value="<?php echo $r_b_ciclo['id_nivel']; ?>">
+                                                  <option value=""></option>
+                                                  <?php
+                                                  $b_nivel = buscar_nivel($conexion); //bucar nivel
+                                                  while ($r_b_nivel = mysqli_fetch_array($b_nivel)) { ?>//separar el resultado de la busqueda
+                                                  <option value="<?php echo $r_b_nivel['id']; ?>" <?php if ($r_b_nivel['id'] == $r_b_ciclo['id_nivel']) {
+                                                                                                    echo "selected";
+                                                                                                  } ?>><?php echo $r_b_nivel['nombre']; ?></option>
+                                                <?php } ?>
+                                                </select>
+                                                <br>
+                                              </div>
+                                            </div>
+
+                                            <div align="center">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+
+                                              <button type="submit" class="btn btn-primary">Guardar</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                      <!--FIN DE CONTENIDO DE MODAL-->
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- FIN MODAL EDITAR-->
                             <?php
                             }
                             ?>

@@ -75,7 +75,7 @@ function buscar_nivel_id($conexion, $id){
     return mysqli_query($conexion, $consulta);
 }
 
-//busqueda niveles 
+//busqueda turno 
 function buscar_turno($conexion){
     $consulta = "SELECT * FROM turno";
     return mysqli_query($conexion, $consulta);
@@ -124,5 +124,20 @@ function buscar_competencia($conexion){
     $consulta = "SELECT * FROM competencia";
     return mysqli_query($conexion, $consulta);
 }
+function buscar_competenciaPorId($conexion, $id){
+    $consulta = "SELECT * FROM competencia WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+// busquedas capacidad
 
+function buscar_capacidad($conexion){
+    $consulta = "SELECT * FROM capacidad" ;
+    return mysqli_query($conexion, $consulta);
+}
+// busquedas ciclos
+
+function buscar_ciclos($conexion){
+    $consulta = "SELECT * FROM ciclo" ;
+    return mysqli_query($conexion, $consulta);
+}
 ?>

@@ -1,3 +1,7 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -83,28 +87,35 @@
                                                                 </div>
                                                                 <div class="x_content">
                                                                     <br />
-                                                                    <form role="form" action="operaciones/registrar_programacion_clases.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                    <form role="form" action="operaciones/registrar_capacidades.php" class="form-horizontal form-label-left input_mask" method="POST">
 
 
 
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                            <input type="text" maxlength="50" class="form-control" name="nombre_turno">
+                                                                                <input type="text" maxlength="50" class="form-control" name="nombre" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripción : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                            <input type="text" maxlength="50" class="form-control" name="nombre_turno">
+                                                                                <input type="text" maxlength="50" class="form-control" name="descripcion" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Competencia : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                            <input type="text" maxlength="50" class="form-control" name="nombre_turno">
+                                                                                <select class="form-control" name="id_competencia"  required>
+                                                                                    <option value=""></option>
+                                                                                    <?php
+                                                                                    $b_competencia = buscar_competencia($conexion); //bucar competencia
+                                                                                    while ($r_b_competencia = mysqli_fetch_array($b_competencia)) { ?>//separar el resultado de la busqueda
+                                                                                    <option value="<?php echo $r_b_competencia['id']; ?>"><?php echo $r_b_competencia['nombre']; ?></option>
+                                                                                <?php } ?>
+                                                                                </select>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -132,7 +143,7 @@
                                                         <tr>
                                                             <th>Nro</th>
                                                             <th>Capacidades</th>
-                                                            <th>Descripción	</th>
+                                                            <th>Descripción </th>
                                                             <th>Competencias</th>
                                                             <th>Acciones</th>
                                                         </tr>
@@ -141,19 +152,26 @@
 
                                                     <tbody>
                                                         <?php
-                                                        for ($i = 1; $i <= 4; $i++) {
+                                                        $b_capacidad = buscar_capacidad($conexion);
+                                                        $cont = 0;
+                                                        while ($r_b_capacidad    = mysqli_fetch_array($b_capacidad)) {
+                                                            $cont++;
 
 
                                                         ?>
                                                             <tr>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td><?php echo $i; ?>Nombre de sección</td>
-                                                             
-                                                              
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                                <td><?php echo $cont; ?></td>
+                                                                <td><?php echo $r_b_capacidad['nombre']; ?></td>
+                                                                <td><?php echo $r_b_capacidad['descripcion']; ?></td>
+                                                                <td><?php $b_competencia = buscar_competenciaPorId($conexion, $r_b_capacidad['id_competencia']);
+                                                                    $r_b_competencia = mysqli_fetch_array($b_competencia);
+                                                                    echo $r_b_competencia['nombre'];
+                                                                    ?></td>
+
+                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_capacidad['id']; ?>">Editar</button></td>
                                                             </tr>
-                                                            <!--MODAL EDITAR-->
-                                                            <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <!--MODAL EDITAR          //aqui para abrir boton editar-->      
+                                                            <div class="modal fade editar<?php echo $r_b_capacidad['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg">
                                                                     <div class="modal-content">
 
@@ -172,16 +190,37 @@
                                                                                 </div>
                                                                                 <div class="x_content">
                                                                                     <br />
-                                                                                    <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                    <form role="form" action="operaciones/editar_capacidades.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                        <input type="hidden" name="data" value="<?php echo $r_b_capacidad['id']; ?>">
 
                                                                                         <div class="form-group">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre Capacidades : </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="50" class="form-control" name="nombre_turno">
+                                                                                                <input type="text" maxlength="50" class="form-control" name="nombre_capacidades" value="<?php echo $r_b_capacidad['nombre']; ?>" required>
                                                                                                 <br>
                                                                                             </div>
                                                                                         </div>
-                                                                                        
+                                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripción : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <input type="text" maxlength="50" class="form-control" name="descripcion" required value="<?php echo $r_b_capacidad['descripcion']; ?>">
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Competencia : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <select class="form-control" name="id_competencia" id="sede" required value="<?php echo $r_b_capacidad['id_competencia']; ?>">
+                                                                                    <option value=""></option>
+                                                                                    <?php
+                                                                                    $b_competencia = buscar_competencia($conexion); //bucar competencia
+                                                                                    while ($r_b_competencia = mysqli_fetch_array($b_competencia)) { ?>//separar el resultado de la busqueda
+                                                                                    <option value="<?php echo $r_b_competencia['id']; ?>"<?php if($r_b_competencia['id'] == $r_b_capacidad['id_competencia']){ echo "selected";} ?>><?php echo $r_b_competencia['nombre']; ?></option>
+                                                                                <?php } ?>
+                                                                                </select>
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
 
                                                                                         <div align="center">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
