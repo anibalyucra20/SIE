@@ -33,6 +33,12 @@ include("../include/busquedas.php");
 
     <!-- Custom Theme Style -->
     <link href="../plantilla/build/css/custom.min.css" rel="stylesheet">
+
+<!-- Script obtenido desde CDN jquery -->
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
 </head>
 
 <body class="nav-md">
@@ -89,6 +95,42 @@ include("../include/busquedas.php");
                                                                     <br />
                                                                     <form role="form" action="operaciones/registrar_competencia.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                         <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nivel : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <select name="nivel_m" id="nivel_m" class="form-control">
+                                                                                    <option value=""></option>
+                                                                                    <?php
+                                                                                    $b_nivel = buscar_nivel($conexion);
+                                                                                    while ($r_b_nivel = mysqli_fetch_array($b_nivel)) {
+                                                                                    ?>
+                                                                                        <option value="<?php echo $r_b_nivel['id'];  ?>"><?php echo $r_b_nivel['nombre'];  ?></option>
+                                                                                    <?php }
+                                                                                    ?>
+                                                                                </select>
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Grado : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <select name="grado" id="grado_m" class="form-control">
+                                                                                        <option value=""></option>
+                                                                                </select>
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Curso : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <div id="cursos">
+                                                                                    <select name="curso" id="" class="form-control">
+                                                                                        <option value=""></option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de la copetencia : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                 <input type="text" maxlength="20" class="form-control" name="nombre_competencia" required>
@@ -109,8 +151,8 @@ include("../include/busquedas.php");
                                                                                 <br>
                                                                             </div>
                                                                         </div>
-                                                                        
-                                                                        
+
+
                                                                         <div align="center">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
@@ -135,24 +177,24 @@ include("../include/busquedas.php");
                                                             <th>Nombre</th>
                                                             <th>Enfoque</th>
                                                             <th>Descripcion</th>
-                                                           
+
                                                         </tr>
                                                     </thead>
 
-                                                    
+
                                                     <tbody>
-                                                    <?php
-                                                         $b_competencia = buscar_competencia($conexion);
-                                                         $cont = 0;
-                                                         while ($r_b_competencia = mysqli_fetch_array($b_competencia)) {
-                                                             $cont++;
+                                                        <?php
+                                                        $b_competencia = buscar_competencia($conexion);
+                                                        $cont = 0;
+                                                        while ($r_b_competencia = mysqli_fetch_array($b_competencia)) {
+                                                            $cont++;
 
                                                         ?>
                                                             <tr>
-                                                            <td><?php echo $cont; ?></td>
-                                                            <td><?php echo $r_b_competencia['nombre']; ?></td>
-                                                            <td><?php echo $r_b_competencia['enfoque']; ?></td>
-                                                            <td><?php echo $r_b_competencia['descripcion']; ?></td>
+                                                                <td><?php echo $cont; ?></td>
+                                                                <td><?php echo $r_b_competencia['nombre']; ?></td>
+                                                                <td><?php echo $r_b_competencia['enfoque']; ?></td>
+                                                                <td><?php echo $r_b_competencia['descripcion']; ?></td>
                                                                 <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_competencia['id']; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
@@ -174,31 +216,31 @@ include("../include/busquedas.php");
                                                                                     <div class="clearfix"></div>
                                                                                 </div>
                                                                                 <div class="x_content">
-                                                                                    <br/>
+                                                                                    <br />
                                                                                     <form role="form" action="operaciones/editar_competencia.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                                                                    <div class="form-group">
-                                                                                    <input type="hidden" name="data" value="<?php echo $r_b_competencia['id']; ?>">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Competencia : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="editar_competencia" value="<?php echo $r_b_competencia['nombre']; ?>">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Enfoque : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="editar_enfoque" value="<?php echo $r_b_competencia['enfoque']; ?>">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripciónn : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="editar_descripcion_competencia" value="<?php echo $r_b_competencia['descripcion']; ?>">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                       
+                                                                                        <div class="form-group">
+                                                                                            <input type="hidden" name="data" value="<?php echo $r_b_competencia['id']; ?>">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Competencia : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="20" class="form-control" name="editar_competencia" value="<?php echo $r_b_competencia['nombre']; ?>">
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Enfoque : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="50" class="form-control" name="editar_enfoque" value="<?php echo $r_b_competencia['enfoque']; ?>">
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripciónn : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="50" class="form-control" name="editar_descripcion_competencia" value="<?php echo $r_b_competencia['descripcion']; ?>">
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+
                                                                                         <div align="center">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
@@ -301,6 +343,29 @@ include("../include/busquedas.php");
 
                 });
             </script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    recargargrado();
+                    $('#nivel_m').change(function() {
+                        recargargrado();
+                    });
+
+                })
+            </script>
+
+            <script type="text/javascript">
+                function recargargrado() {
+                    $.ajax({
+                        type: "POST",
+                        url: "operaciones/obtener_grados.php",
+                        data: "id_nivel=" + $('#nivel_m').val(),
+                        success: function(r) {
+                            $('#grado_m').html(r);
+                        }
+                    });
+                }
+            </script>
+            
 
 </body>
 

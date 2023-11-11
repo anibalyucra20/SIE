@@ -83,6 +83,27 @@ include("../include/busquedas.php");
                                                                     <br />
                                                                     <form role="form" action="operaciones/registrar_curso.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                         <div class="form-group">
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Grado : </label>
+                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                <select name="grado" id="" class="form-control">
+                                                                                    <option value=""></option>
+                                                                                    <?php
+                                                                                    $b_grado = buscar_grado($conexion);
+                                                                                    while ($r_b_grado = mysqli_fetch_array($b_grado)) {
+                                                                                        $b_ciclo = buscar_ciclosPorId($conexion, $r_b_grado['id_ciclo']);
+                                                                                        $r_b_ciclo = mysqli_fetch_array($b_ciclo);
+
+                                                                                        $b_nivel = buscar_nivel_id($conexion, $r_b_ciclo['id_nivel']);
+                                                                                        $r_b_nivel = mysqli_fetch_array($b_nivel);
+                                                                                    ?>
+                                                                                        <option value="<?php echo $r_b_grado['id'];  ?>"><?php echo $r_b_grado['nombre'] . " - " . $r_b_nivel['nombre'];  ?></option>
+                                                                                    <?php }
+                                                                                    ?>
+                                                                                </select>
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de Curso : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                 <input type="text" maxlength="20" class="form-control" name="nombre" required>
@@ -96,6 +117,7 @@ include("../include/busquedas.php");
                                                                                 <br>
                                                                             </div>
                                                                         </div>
+
                                                                         <div align="center">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
@@ -119,22 +141,34 @@ include("../include/busquedas.php");
                                                     <thead>
                                                         <tr>
                                                             <th>Nro</th>
+                                                            <th>Nivel</th>
+                                                            <th>Grado</th>
                                                             <th>Nombre del curso</th>
-                                                            <th>Descripcion del curso </th>
+                                                            <th>Acciones</th>
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                         $b_curso = buscar_curso($conexion);
-                                                         $cont = 0;
-                                                         while ($r_b_curso = mysqli_fetch_array($b_curso)) {
-                                                             $cont++;
+                                                        $b_curso = buscar_curso($conexion);
+                                                        $cont = 0;
+                                                        while ($r_b_curso = mysqli_fetch_array($b_curso)) {
+                                                            $cont++;
 
 
                                                         ?>
                                                             <tr>
-                                                            <td><?php echo $cont; ?></td>
-                                                            <td><?php echo $r_b_curso['nombre']; ?></td>
-                                                            <td><?php echo $r_b_curso['descripcion']; ?></td>
+                                                                <td><?php echo $cont; ?></td>
+                                                                <?php
+                                                                $b_grado = buscar_gradoPorId($conexion, $r_b_curso['id_grado']);
+                                                                $r_b_grado = mysqli_fetch_array($b_grado);
+                                                                $b_ciclo = buscar_ciclosPorId($conexion, $r_b_grado['id_ciclo']);
+                                                                $r_b_ciclo = mysqli_fetch_array($b_ciclo);
+
+                                                                $b_nivel = buscar_nivel_id($conexion, $r_b_ciclo['id_nivel']);
+                                                                $r_b_nivel = mysqli_fetch_array($b_nivel);
+                                                                ?>
+                                                                <td><?php echo $r_b_nivel['nombre']; ?></td>
+                                                                <td><?php echo $r_b_grado['nombre']; ?></td>
+                                                                <td><?php echo $r_b_curso['nombre']; ?></td>
 
                                                                 <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_curso['id']; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                                             </tr>
@@ -159,8 +193,32 @@ include("../include/busquedas.php");
                                                                                 <div class="x_content">
                                                                                     <br />
                                                                                     <form role="form" action="operaciones/editar_curso.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                                                                        <div class="form-group">
                                                                                         <input type="hidden" name="data" value="<?php echo $r_b_curso['id']; ?>">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Grado : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <select name="id_grado" id="" class="form-control">
+                                                                                                    <option value=""></option>
+                                                                                                    <?php
+                                                                                                    $b_grado = buscar_grado($conexion);
+                                                                                                    while ($r_b_grado = mysqli_fetch_array($b_grado)) {
+                                                                                                        $b_ciclo = buscar_ciclosPorId($conexion, $r_b_grado['id_ciclo']);
+                                                                                                        $r_b_ciclo = mysqli_fetch_array($b_ciclo);
+
+                                                                                                        $b_nivel = buscar_nivel_id($conexion, $r_b_ciclo['id_nivel']);
+                                                                                                        $r_b_nivel = mysqli_fetch_array($b_nivel);
+                                                                                                    ?>
+                                                                                                        <option value="<?php echo $r_b_grado['id'];  ?>" <?php if ($r_b_curso['id_grado'] == $r_b_grado['id']) {
+                                                                                                                                                                echo "selected";
+                                                                                                                                                            } ?>><?php echo $r_b_grado['nombre'] . " - " . $r_b_nivel['nombre'];  ?></option>
+                                                                                                    <?php }
+                                                                                                    ?>
+                                                                                                </select>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de Curso : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
@@ -168,19 +226,20 @@ include("../include/busquedas.php");
                                                                                                     <br>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="form-group">
-                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripcion de curso : </label>
-                                                                                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="text" maxlength="50" class="form-control" name="descripcion_curso" value="<?php echo $r_b_curso['descripcion']; ?>">
-                                                                                                    <br>
-                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripcion de curso : </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <input type="text" maxlength="50" class="form-control" name="descripcion_curso" value="<?php echo $r_b_curso['descripcion']; ?>">
+                                                                                                <br>
                                                                                             </div>
+                                                                                        </div>
 
-                                                                                            <div align="center">
-                                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                                                        <div align="center">
+                                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
-                                                                                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                                                                            </div>
+                                                                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                                                                        </div>
                                                                                     </form>
                                                                                 </div>
                                                                             </div>

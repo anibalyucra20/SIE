@@ -1,3 +1,7 @@
+<?php
+include("../include/conexion.php");
+include("../include/busquedas.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -73,7 +77,7 @@
                                                             </button>
                                                             <h4 class="modal-title" id="myModalLabel" align="center">Registrar Modalidad</h4>
                                                         </div>
-                                                        
+
                                                         <div class="modal-body">
                                                             <!--INICIO CONTENIDO DE MODAL-->
                                                             <div class="x_panel">
@@ -85,22 +89,22 @@
                                                                 <div class="x_content">
                                                                     <br />
                                                                     <form role="form" action="operaciones/registrar_modalidad.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                                                        
-                                                
+
+
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12"> Modalidad: </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select name="responsable" id="" class="form-control" >
+                                                                                <select name="modalidad" id="" class="form-control">
                                                                                     <option value=""></option>
-                                                                                    <option value="">Presencial</option>
-                                                                                    <option value="">Virtual</option>
-                                                                                    <option value="">Semi Presenciañ</option>
+                                                                                    <option value="Presencial">Presencial</option>
+                                                                                    <option value="Virtual">Virtual</option>
+                                                                                    <option value="Semi Presencial">Semi Presencial</option>
                                                                                 </select>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
-                                                                        
-                                                                        
+
+
                                                                         <div align="center">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
@@ -122,26 +126,28 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Nro</th>
-                                                            <th>Nombre de Modalidad</th>
-                                                            
+                                                            <th>Tipo de Modalidad</th>
+                                                            <th>Acciones</th>
+
                                                         </tr>
                                                     </thead>
 
-                                                    
+
                                                     <tbody>
                                                         <?php
-                                                        for ($i = 1; $i <= 4; $i++) {
-
-
+                                                        $b_modalidad = buscar_modalidad($conexion);
+                                                        $cont = 0;
+                                                        while ($r_b_modalidad = mysqli_fetch_array($b_modalidad)) {
+                                                            $cont++;
                                                         ?>
                                                             <tr>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td><?php echo $i; ?>Nombre</td>
-                                                                
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i;?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                                <td><?php echo $cont; ?></td>
+                                                                <td><?php echo $r_b_modalidad['detalle']; ?></td>
+
+                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_modalidad['id']; ?>">Editar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
-                                                            <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal fade editar<?php echo $r_b_modalidad['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg">
                                                                     <div class="modal-content">
 
@@ -159,16 +165,22 @@
                                                                                     <div class="clearfix"></div>
                                                                                 </div>
                                                                                 <div class="x_content">
-                                                                                    <br/>
-                                                                                    <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                    <br />
+                                                                                    <form role="form" action="operaciones/editar_modalidad.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                                                    <input type="hidden" name="data" value="<?php echo $r_b_modalidad['id']; ?>">    
                                                                                     <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Modalidad : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="modadalidad">
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-                                                                        
+                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"> Modalidad: </label>
+                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                <select name="modalidad" id="" class="form-control">
+                                                                                                    <option value=""></option>
+                                                                                                    <option value="Presencial" <?php if($r_b_modalidad['detalle']=="Presencial"){ echo "selected";} ?>>Presencial</option>
+                                                                                                    <option value="Virtual" <?php if($r_b_modalidad['detalle']=="Virtual"){ echo "selected";} ?>>Virtual</option>
+                                                                                                    <option value="Semi Presencial" <?php if($r_b_modalidad['detalle']=="Semi Presencial"){ echo "selected";} ?>>Semi Presencial</option>
+                                                                                                </select>
+                                                                                                <br>
+                                                                                            </div>
+                                                                                        </div>
+
                                                                                         <div align="center">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 

@@ -2,18 +2,16 @@
 include("../../include/conexion.php");
 include("../../include/busquedas.php");
 
-$grado = $_POST['grado'];
-$nombre = $_POST['nombre'];
-$descripcion = $_POST['descripcion'];
+$modalidad = $_POST['modalidad'];
 
-$consulta = "INSERT INTO curso (nombre,descripcion,id_grado) VALUES ( '$nombre', '$descripcion', '$grado')";
+$consulta = "INSERT INTO modalidad (detalle) VALUES ('$modalidad')";
 
 $ejecutar_consulta = mysqli_query($conexion, $consulta);
 
 if ($ejecutar_consulta) {
     echo "<script>
                 alert('Se realizó el registro con éxito');
-                window.location = '../cursos.php';
+                window.location = '../modalidad.php';
             </script>";
 }else {
     echo "<script>
@@ -21,4 +19,3 @@ if ($ejecutar_consulta) {
                 window.history.back();
             </script>";
 }
-?>

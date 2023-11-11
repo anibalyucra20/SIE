@@ -140,4 +140,40 @@ function buscar_ciclos($conexion){
     $consulta = "SELECT * FROM ciclo" ;
     return mysqli_query($conexion, $consulta);
 }
+function buscar_ciclosPorId($conexion, $id){
+    $consulta = "SELECT * FROM ciclo WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_ciclosPorIdNivel($conexion, $id_nivel){
+    $consulta = "SELECT * FROM ciclo WHERE id_nivel='$id_nivel'";
+    return mysqli_query($conexion, $consulta);
+}
+
+
+
+// busquedas grado
+
+function buscar_grado($conexion){
+    $consulta = "SELECT * FROM grado";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_gradoPorId($conexion, $id){
+    $consulta = "SELECT * FROM grado WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_gradoPorIdCiclo($conexion, $id_ciclo){
+    $consulta = "SELECT * FROM grado WHERE id_ciclo='$id_ciclo'";
+    return mysqli_query($conexion, $consulta);
+}
+
+// busquedas grado
+
+function buscar_modalidad($conexion){
+    $consulta = "SELECT * FROM modalidad";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_modalidadPorId($conexion, $id){
+    $consulta = "SELECT * FROM modalidad WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
 ?>

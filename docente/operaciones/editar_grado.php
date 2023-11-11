@@ -3,21 +3,17 @@ include("../../include/conexion.php");
 include("../../include/busquedas.php");
 include("../../include/funciones.php");
 
-//no recibir dni  buscar dn BD
-$id = $_POST['data'];
-$nombre = $_POST['editar_curso'];
-$descripcion_curso = $_POST['descripcion_curso'];
-$id_grado = $_POST['id_grado'];
+$id_grado= $_POST['data'];
+$editar_ciclo= $_POST['editar_ciclo'];
+$editar_grado = $_POST['editar_grado'];
 
-
-$consulta = "UPDATE curso SET nombre='$nombre', descripcion='$descripcion_curso', id_grado='$id_grado' WHERE id='$id'";
-
+    $consulta = "UPDATE grado SET nombre='$editar_grado', id_ciclo='$editar_ciclo' WHERE id='$id_grado'";
 
 $ejecutar_consulta = mysqli_query($conexion, $consulta);
 if ($ejecutar_consulta) {
     echo "<script>
                 alert('Datos Actualizados Correctamente');
-                window.location= '../cursos.php';
+                window.location= '../grados.php';
                 </script>
                 ";
 }else {
@@ -27,7 +23,3 @@ if ($ejecutar_consulta) {
     </script>
     ";
 }
-
-
-
-?>
