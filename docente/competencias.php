@@ -34,11 +34,8 @@ include("../include/busquedas.php");
     <!-- Custom Theme Style -->
     <link href="../plantilla/build/css/custom.min.css" rel="stylesheet">
 
-<!-- Script obtenido desde CDN jquery -->
-<script
-  src="https://code.jquery.com/jquery-3.6.0.js"
-  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
+    <!-- Script obtenido desde CDN jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 
 <body class="nav-md">
@@ -114,7 +111,7 @@ include("../include/busquedas.php");
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Grado : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                 <select name="grado" id="grado_m" class="form-control">
-                                                                                        <option value=""></option>
+                                                                                    <option value=""></option>
                                                                                 </select>
                                                                                 <br>
                                                                             </div>
@@ -122,32 +119,30 @@ include("../include/busquedas.php");
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Curso : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <div id="cursos">
-                                                                                    <select name="curso" id="" class="form-control">
-                                                                                        <option value=""></option>
-                                                                                    </select>
-                                                                                </div>
+                                                                                <select name="curso" id="curso_m" class="form-control">
+                                                                                    <option value=""></option>
+                                                                                </select>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de la copetencia : </label>
+                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de la competencia : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="nombre_competencia" required>
+                                                                                <input type="text" maxlength="100" class="form-control" name="nombre" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Enfoque : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="nombre_enfoque" required>
+                                                                                <input type="text" maxlength="500" class="form-control" name="enfoque" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripcion : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="100" class="form-control" name="descripcion_competencia" required>
+                                                                                <input type="text" maxlength="1000" class="form-control" name="descripcion" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -174,10 +169,9 @@ include("../include/busquedas.php");
                                                     <thead>
                                                         <tr>
                                                             <th>Nro</th>
+                                                            <th>Curso - Grado - Nivel</th>
                                                             <th>Nombre</th>
-                                                            <th>Enfoque</th>
-                                                            <th>Descripcion</th>
-
+                                                            <th>Acciones</th>
                                                         </tr>
                                                     </thead>
 
@@ -189,12 +183,20 @@ include("../include/busquedas.php");
                                                         while ($r_b_competencia = mysqli_fetch_array($b_competencia)) {
                                                             $cont++;
 
+                                                            $b_curso = buscar_cursoPorId($conexion, $r_b_competencia['id_curso']);
+                                                            $r_b_curso = mysqli_fetch_array($b_curso);
+                                                            $b_grado = buscar_gradoPorId($conexion, $r_b_curso['id_grado']);
+                                                            $r_b_grado = mysqli_fetch_array($b_grado);
+                                                            $b_ciclo = buscar_ciclosPorId($conexion, $r_b_grado['id_ciclo']);
+                                                            $r_b_ciclo = mysqli_fetch_array($b_ciclo);
+                                                            $b_nivel = buscar_nivel_id($conexion, $r_b_ciclo['id_nivel']);
+                                                            $r_b_nivel = mysqli_fetch_array($b_nivel);
+
                                                         ?>
                                                             <tr>
                                                                 <td><?php echo $cont; ?></td>
+                                                                <td><?php echo $r_b_curso['nombre']." - ".$r_b_grado['nombre']." - ".$r_b_nivel['nombre']; ?></td>
                                                                 <td><?php echo $r_b_competencia['nombre']; ?></td>
-                                                                <td><?php echo $r_b_competencia['enfoque']; ?></td>
-                                                                <td><?php echo $r_b_competencia['descripcion']; ?></td>
                                                                 <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_competencia['id']; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
@@ -346,13 +348,17 @@ include("../include/busquedas.php");
             <script type="text/javascript">
                 $(document).ready(function() {
                     recargargrado();
+                    recargarcursos();
                     $('#nivel_m').change(function() {
                         recargargrado();
+                    });
+                    $('#grado_m').change(function() {
+                        recargarcursos();
                     });
 
                 })
             </script>
-
+            <!-- funcion para recargar grados segun el nivel seleccionado-->
             <script type="text/javascript">
                 function recargargrado() {
                     $.ajax({
@@ -365,7 +371,20 @@ include("../include/busquedas.php");
                     });
                 }
             </script>
-            
+            <!-- funcion para recargar cursos segun el grado seleccionado-->
+            <script type="text/javascript">
+                function recargarcursos() {
+                    $.ajax({
+                        type: "POST",
+                        url: "operaciones/obtener_cursos.php",
+                        data: "id_grado=" + $('#grado_m').val(),
+                        success: function(r) {
+                            $('#curso_m').html(r);
+                        }
+                    });
+                }
+            </script>
+
 
 </body>
 

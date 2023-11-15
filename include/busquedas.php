@@ -117,6 +117,14 @@ function buscar_curso($conexion){
     $consulta = "SELECT * FROM curso";
     return mysqli_query($conexion, $consulta);
 }
+function buscar_cursoPorId($conexion, $id){
+    $consulta = "SELECT * FROM curso WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_cursoPorIdGrado($conexion, $id_grado){
+    $consulta = "SELECT * FROM curso WHERE id_grado='$id_grado'";
+    return mysqli_query($conexion, $consulta);
+}
 
 // busquedas copetencias
 

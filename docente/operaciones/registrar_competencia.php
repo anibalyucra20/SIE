@@ -2,11 +2,12 @@
 include("../../include/conexion.php");
 include("../../include/busquedas.php");
 
-$nombre = $_POST['nombre_competencia'];
-$enfoque = $_POST['nombre_enfoque'];
-$descripcion = $_POST['descripcion_competencia'];
+$nombre = $_POST['nombre'];
+$enfoque = $_POST['enfoque'];
+$descripcion = $_POST['descripcion'];
+$id_curso = $_POST['curso'];
 
-$consulta = "INSERT INTO competencia (nombre,enfoque,descripcion) VALUES ( '$nombre', '$enfoque','$descripcion')";
+$consulta = "INSERT INTO competencia (nombre,enfoque,descripcion,id_curso) VALUES ( '$nombre', '$enfoque','$descripcion','$id_curso')";
 
 $ejecutar_consulta = mysqli_query($conexion, $consulta);
 
