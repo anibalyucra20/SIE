@@ -110,6 +110,10 @@ function buscar_seccion($conexion){
     $consulta = "SELECT * FROM seccion";
     return mysqli_query($conexion, $consulta);
 }
+function buscar_seccionPorid($conexion, $id){
+    $consulta = "SELECT * FROM seccion WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
 
 // busquedas curso
 
