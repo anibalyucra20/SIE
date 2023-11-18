@@ -55,6 +55,7 @@ if ($r_b_trabajador['resset_password']==0 && !password_verify($r_b_trabajador['t
                     <div class="form-items">
                         <h3 class="form-title">Recuperar Contraseña</h3>
                         <form action="registrar_nuevo_password.php" role="form" method="POST">
+                            <input type="hidden" name="data" value="<?php echo $id_usuario; ?>">
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="ingrese su nueva contraseña" required>
                                 <input type="password" class="form-control" name="password_b" placeholder="repetir la contraseña" required>
