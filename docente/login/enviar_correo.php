@@ -1,6 +1,7 @@
 <?php
 include "../../include/conexion.php";
 include '../../include/busquedas.php';
+include '../../include/funciones.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -79,7 +80,7 @@ if ($enviar) {
         $mail->Subject = $asunto;
 
 
-        $link = 'https://sie.cecitec.pe/docente/login/recuperar_password.php?id=' . $id_docente . '&token='.$token;
+        $link = 'https://sie.cecitec.pe/docente/login/generar_password.php?id=' . $id_docente . '&token='.$token;
         $mail->Body = '<!DOCTYPE html>
                     <html lang="es">
                     <head>
