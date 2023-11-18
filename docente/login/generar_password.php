@@ -1,3 +1,26 @@
+<?php
+
+include('../../include/conexion.php');
+include('../../include/busquedas.php');
+
+$id_usuario = $_GET['id'];
+$token = $_GET['token'];
+
+$b_trabajador = buscar_docentePorId($conexion, $id_usuario);
+$r_b_trabajador = mysqli_fetch_array($b_trabajador);
+
+if ($r_b_trabajador['resset_password']==0 && !password_verify($r_b_trabajador['token_password'],$token)) {
+        echo "<script>
+                alert('Error, Este Link ya fue utilizado para el cambio de contraseña');
+                window.location = '../login/';
+            </script>";
+}else{
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,10 +54,10 @@
                 <div class="form-content form-sm">
                     <div class="form-items">
                         <h3 class="form-title">Recuperar Contraseña</h3>
-                        <form action="enviar_correo.php" role="form" method="POST">
+                        <form action="registrar_nuevo_password.php" role="form" method="POST">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="dni" placeholder="DNI" required>
-                                <input type="email" class="form-control" name="correo" placeholder="Correo" required>
+                                <input type="password" class="form-control" name="password" placeholder="ingrese su nueva contraseña" required>
+                                <input type="password" class="form-control" name="password_b" placeholder="repetir la contraseña" required>
                             </div>
                             <div class="form-button text-right">
                                     <button id="submit" type="submit" class="ibtn">Recuperar</button>
@@ -51,3 +74,7 @@
 <script src="js/main.js"></script>
 </body>
 </html>
+
+
+<?php 
+}
