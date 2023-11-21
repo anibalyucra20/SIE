@@ -93,7 +93,7 @@
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
             <li><a href="javascript:;"> Mi perfil</a></li>
-            <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión </a></li>
+            <li><a href="../include/cerrar_sesion.php"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión </a></li>
           </ul>
         </li>
       </ul>
