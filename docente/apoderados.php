@@ -1,6 +1,19 @@
 <?php
+session_start();
 include("../include/conexion.php");
 include("../include/busquedas.php");
+
+include("include/verificar_sesion.php");
+
+$cargo = verificar_sesion($conexion);
+if($cargo!="Secretario Academico"){
+    echo "<script>
+					alert('Error, Usted no cuenta con los permisos para acceder a esta página');
+					window.history.back();
+				</script>
+			";
+}else{
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -409,3 +422,6 @@ include("../include/busquedas.php");
 </body>
 
 </html>
+
+<?php
+}

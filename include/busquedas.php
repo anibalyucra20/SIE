@@ -96,6 +96,10 @@ function buscar_anio_academico_id($conexion, $id){
     $consulta = "SELECT * FROM anio_academico WHERE id='$id'";
     return mysqli_query($conexion, $consulta);
 }
+function buscar_anio_academicoultimo($conexion){
+    $consulta = "SELECT * FROM anio_academico ORDER BY id DESC LIMIT 1";
+    return mysqli_query($conexion, $consulta);
+}
 
 // busquedas periodo academico
 
@@ -186,6 +190,20 @@ function buscar_modalidad($conexion){
 }
 function buscar_modalidadPorId($conexion, $id){
     $consulta = "SELECT * FROM modalidad WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+
+
+
+// busquedas sesiones
+
+function buscar_sesion_porID($conexion, $id){
+    $consulta = "SELECT * FROM sesiones WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+
+function buscar_docente_sesion($conexion, $id_sesion, $token){
+    $consulta = "SELECT * FROM sesiones WHERE id='$id_sesion' AND token='$token'";
     return mysqli_query($conexion, $consulta);
 }
 ?>
