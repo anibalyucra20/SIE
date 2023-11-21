@@ -7,7 +7,7 @@ include("../include/funciones.php");
 include("include/verificar_sesion.php");
 
 $cargo = verificar_sesion($conexion);
-if($cargo!="Secretario_Academico"){
+if($cargo!="Secretario Academico"){
     echo "<script>
 					alert('Error, Usted no cuenta con los permisos para acceder a esta página');
 					window.history.back();
