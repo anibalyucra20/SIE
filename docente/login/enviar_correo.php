@@ -52,7 +52,7 @@ if ($enviar) {
 
     try {
         //Server settings
-        $mail->SMTPDebug = 1;                      //Enable verbose debug output
+        $mail->SMTPDebug = 0;                      //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'sie.cecitec.pe';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
