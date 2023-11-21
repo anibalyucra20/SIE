@@ -4,7 +4,7 @@ function verificar_sesion($conexion){
 	if (isset($_SESSION['id_sesion_sie'])) {
 
 
-		$b_sesion = buscar_docente_sesion($conexion, $_SESSION['id_sesion_sie'], $_SESSION['token_sie']);
+		$b_sesion = buscar_sesion_porID($conexion, $_SESSION['id_sesion_sie']);
         $r_b_sesion = mysqli_fetch_array($b_sesion);
         $id_trabajador = $r_b_sesion['id_trabajador'];
 
