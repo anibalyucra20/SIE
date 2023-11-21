@@ -21,11 +21,8 @@ function verificar_sesion($conexion){
     		</script>";
 		}else {
 
-			if ($cargo != "") {
 				return $cargo;
-			}else {
-				return "";
-			}
+			
 		}
 		
 	}else {
