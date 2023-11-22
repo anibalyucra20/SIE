@@ -192,8 +192,9 @@ if($cargo!="Secretario Academico"){
                                                                                 <select name="docente" id="docente" class="form-control">
                                                                                     <option value=""></option>
                                                                                     <?php
-                                                                                        $b_docente = buscar_docente($conexion);
-                                                                                        while ($r_b_docente = mysqli_fetch_array($b_docente)) { ?>
+                                                                                        $b_docente = buscar_docenteOrdenAp($conexion);
+                                                                                        while ($r_b_docente = mysqli_fetch_array($b_docente)) { 
+                                                                                            ?>
                                                                                             <option value="<?php echo $r_b_docente['id']; ?>"><?php echo $r_b_docente['apellidos_nombres']; ?></option>
                                                                                        <?php }
                                                                                     ?>

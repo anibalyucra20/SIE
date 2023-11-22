@@ -287,7 +287,7 @@ if($cargo!="Secretario Academico"){
                                         </div>
                                         <div class="x_content">
                                           <br />
-                                          <form role="form" action="operaciones/editar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                          <form role="form" action="operaciones/editar_periodo_academico.php" class="form-horizontal form-label-left input_mask" method="POST">
                                             <input type="hidden" name="data" value="<?php echo $r_b_periodo_academicos['id']; ?>" >
                                             <div class="row">
                                               <div class="form-group">

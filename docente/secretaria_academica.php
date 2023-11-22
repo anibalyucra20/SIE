@@ -14,6 +14,11 @@ if($cargo!="Secretario Academico"){
 				</script>
 			";
 }else{
+$b_sesion = buscar_sesion_porID($conexion, $_SESSION['id_sesion_sie']);
+$r_b_sesion = mysqli_fetch_array($b_sesion);
+$id_trabajador = $r_b_sesion['id_trabajador'];
+$b_docente = buscar_docentePorId($conexion, $id_trabajador);
+$r_b_docente = mysqli_fetch_array($b_docente);
 
 ?>
 
@@ -27,7 +32,7 @@ if($cargo!="Secretario Academico"){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>Secretaria Académica | </title>
 
     <!-- Bootstrap -->
     <link href="../plantilla/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

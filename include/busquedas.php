@@ -16,6 +16,10 @@ function buscar_docentePorCargo($conexion, $cargo){
     $consulta = "SELECT * FROM trabajador WHERE cargo='$cargo'";
     return mysqli_query($conexion, $consulta);
 }
+function buscar_docenteOrdenAp($conexion){
+    $consulta = "SELECT * FROM trabajador ORDER BY apellidos_nombres ASC";
+    return mysqli_query($conexion, $consulta);
+}
 
 // busquedas estudiantes
 function buscar_estudiante($conexion){
@@ -89,6 +93,10 @@ function buscar_turno_id($conexion, $id){
 //busqueda año academico
 function buscar_anio_academico($conexion){
     $consulta = "SELECT * FROM anio_academico";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_anio_academicoInvertido($conexion){
+    $consulta = "SELECT * FROM anio_academico ORDER BY id DESC";
     return mysqli_query($conexion, $consulta);
 }
 
@@ -199,11 +207,6 @@ function buscar_modalidadPorId($conexion, $id){
 
 function buscar_sesion_porID($conexion, $id){
     $consulta = "SELECT * FROM sesiones WHERE id='$id'";
-    return mysqli_query($conexion, $consulta);
-}
-
-function buscar_docente_sesion($conexion, $id_sesion, $token){
-    $consulta = "SELECT * FROM sesiones WHERE id='$id_sesion' AND token='$token'";
     return mysqli_query($conexion, $consulta);
 }
 ?>
