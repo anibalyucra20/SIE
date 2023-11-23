@@ -120,7 +120,7 @@ if($cargo!="Secretario Academico"){
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de Curso : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="20" class="form-control" name="nombre" required>
+                                                                                <input type="text" maxlength="50" class="form-control" name="nombre" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -183,8 +183,8 @@ if($cargo!="Secretario Academico"){
                                                                 <td><?php echo $r_b_nivel['nombre']; ?></td>
                                                                 <td><?php echo $r_b_grado['nombre']; ?></td>
                                                                 <td><?php echo $r_b_curso['nombre']; ?></td>
-
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_curso['id']; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_curso['id']; ?>">Editar</button>
+                                                                <a href="competencias.php?curso=<?php echo $r_b_curso['id']; ?>" class="btn btn-warning">Competencias</a>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
                                                             <div class="modal fade editar<?php echo $r_b_curso['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">

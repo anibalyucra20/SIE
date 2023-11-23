@@ -15,6 +15,8 @@ if($cargo!="Secretario Academico"){
 			";
 }else{
 
+$id_curso = $_GET['curso'];
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -48,8 +50,6 @@ if($cargo!="Secretario Academico"){
     <!-- Custom Theme Style -->
     <link href="../plantilla/build/css/custom.min.css" rel="stylesheet">
 
-    <!-- Script obtenido desde CDN jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 
 <body class="nav-md">
@@ -77,7 +77,7 @@ if($cargo!="Secretario Academico"){
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Competencias</h2>
+                                            <h2>Competencias - </h2>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
@@ -359,45 +359,7 @@ if($cargo!="Secretario Academico"){
 
                 });
             </script>
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    recargargrado();
-                    recargarcursos();
-                    $('#nivel_m').change(function() {
-                        recargargrado();
-                    });
-                    $('#grado_m').change(function() {
-                        recargarcursos();
-                    });
-
-                })
-            </script>
-            <!-- funcion para recargar grados segun el nivel seleccionado-->
-            <script type="text/javascript">
-                function recargargrado() {
-                    $.ajax({
-                        type: "POST",
-                        url: "operaciones/obtener_grados.php",
-                        data: "id_nivel=" + $('#nivel_m').val(),
-                        success: function(r) {
-                            $('#grado_m').html(r);
-                        }
-                    });
-                }
-            </script>
-            <!-- funcion para recargar cursos segun el grado seleccionado-->
-            <script type="text/javascript">
-                function recargarcursos() {
-                    $.ajax({
-                        type: "POST",
-                        url: "operaciones/obtener_cursos.php",
-                        data: "id_grado=" + $('#grado_m').val(),
-                        success: function(r) {
-                            $('#curso_m').html(r);
-                        }
-                    });
-                }
-            </script>
+            
 
 
 </body>
