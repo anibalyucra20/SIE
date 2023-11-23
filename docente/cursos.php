@@ -127,7 +127,7 @@ if($cargo!="Secretario Academico"){
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripcion de curso : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="descripcion" required>
+                                                                                <textarea name="descripcion" cols="30" rows="10" class="form-control" required></textarea>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
@@ -236,7 +236,7 @@ if($cargo!="Secretario Academico"){
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de Curso : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="text" maxlength="20" class="form-control" name="editar_curso" value="<?php echo $r_b_curso['nombre']; ?>">
+                                                                                                    <input type="text" maxlength="50" class="form-control" name="editar_curso" value="<?php echo $r_b_curso['nombre']; ?>">
                                                                                                     <br>
                                                                                                 </div>
                                                                                             </div>
@@ -244,7 +244,9 @@ if($cargo!="Secretario Academico"){
                                                                                         <div class="form-group">
                                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripcion de curso : </label>
                                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="50" class="form-control" name="descripcion_curso" value="<?php echo $r_b_curso['descripcion']; ?>">
+                                                                                                <textarea name="descripcion_curso" id="" cols="30" rows="10" class="form-control">
+                                                                                                <?php echo $r_b_curso['descripcion']; ?>
+                                                                                                </textarea>
                                                                                                 <br>
                                                                                             </div>
                                                                                         </div>
