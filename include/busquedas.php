@@ -67,6 +67,11 @@ function buscar_datos_institucionales($conexion){
     $consulta = "SELECT * FROM datos_institucionales";
     return mysqli_query($conexion, $consulta);
 }
+//busquedas datos de sistema
+function buscar_datos_sistema($conexion){
+    $consulta = "SELECT * FROM datos_sistema";
+    return mysqli_query($conexion, $consulta);
+}
 
 //busqueda niveles 
 function buscar_nivel($conexion){
