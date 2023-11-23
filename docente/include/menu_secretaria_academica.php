@@ -99,32 +99,11 @@
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <?php
-            $busc_anio_id = buscar_anio_academico_id($conexion, $_SESSION['anio_lectivo']);
-            $res_busc_anio_id = mysqli_fetch_array($busc_anio_id);
-            echo $res_busc_anio_id['nombre']; ?>
-            <span class=" fa fa-angle-down"></span>
-          </a>
-          <ul class="dropdown-menu dropdown-usermenu pull-right">
-            <?php
-            $buscar_anios_Acad = buscar_anio_academicoInvertido($conexion);
-            while ($res_buscar_anios_Acad = mysqli_fetch_array($buscar_anios_Acad)) {
-            ?>
-              <li><a href="operaciones/actualizar_sesion_anio_acad.php?dato=<?php echo $res_buscar_anios_Acad['id']; ?>"><?php if ($res_buscar_anios_Acad['id'] == $_SESSION['anio_lectivo']) {
-                                                                                                                          echo "<b>";
-                                                                                                                        } ?><?php echo $res_buscar_anios_Acad['nombre']; ?><?php if ($res_buscar_anios_Acad['id'] == $_SESSION['anio_lectivo']) {
-                                                                                                                                                                          echo "</b>";
-                                                                                                                                                                        } ?></a></li>
-            <?php
-            }
-            ?>
-          </ul>
-        </li>
-        <li class="">
-          <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <?php
             $busc_sede_id = buscar_sedesPorId($conexion, $_SESSION['id_sede']);
             $res_busc_sede_id = mysqli_fetch_array($busc_sede_id);
-            echo $res_busc_sede_id['nombre']; ?>
+            echo $res_busc_sede_id['nombre'];
+            
+            ?>
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -133,15 +112,46 @@
             while ($res_buscar_sedes = mysqli_fetch_array($buscar_sedes)) {
             ?>
               <li><a href="operaciones/actualizar_sesion_sede.php?dato=<?php echo $res_buscar_sedes['id']; ?>"><?php if ($res_buscar_sedes['id'] == $_SESSION['id_sede']) {
-                                                                                                                      echo "<b>";
-                                                                                                                    } ?><?php echo $res_buscar_sedes['nombre']; ?><?php if ($res_buscar_sedes['id'] == $_SESSION['id_sede']) {
-                                                                                                                                                                      echo "</b>";
-                                                                                                                                                                    } ?></a></li>
+                                                                                                                  echo "<b>";
+                                                                                                                } ?><?php echo $res_buscar_sedes['nombre']; ?><?php if ($res_buscar_sedes['id'] == $_SESSION['id_sede']) {
+                                                                                                                                                                    echo "</b>";
+                                                                                                                                                                  } ?></a></li>
             <?php
             }
             ?>
           </ul>
         </li>
+        <li class="">
+          <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <?php
+            $busc_anio_id = buscar_anio_academico_id($conexion, $_SESSION['anio_lectivo']);
+            $res_busc_anio_id = mysqli_fetch_array($busc_anio_id);
+            echo $res_busc_anio_id['nombre'];
+            session_start();
+            if ($_SESSION['anio_lectivo'] != '') {
+              $b_ultimo_anio_acad = buscar_anio_academicoultimoporSede($conexion, $_SESSION['id_sede']);
+              $rb_ultimo_sede = mysqli_fetch_array($b_ultimo_anio_acad);
+              $_SESSION['anio_lectivo'] = $rb_ultimo_sede['id'];
+            }
+            ?>
+            <span class=" fa fa-angle-down"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-usermenu pull-right">
+            <?php
+            $buscar_anios_Acad = buscar_anio_academicoInvertidoporSede($conexion, $_SESSION['id_sede']);
+            while ($res_buscar_anios_Acad = mysqli_fetch_array($buscar_anios_Acad)) {
+            ?>
+              <li><a href="operaciones/actualizar_sesion_anio_acad.php?dato=<?php echo $res_buscar_anios_Acad['id']; ?>"><?php if ($res_buscar_anios_Acad['id'] == $_SESSION['anio_lectivo']) {
+                                                                                                                            echo "<b>";
+                                                                                                                          } ?><?php echo $res_buscar_anios_Acad['nombre']; ?><?php if ($res_buscar_anios_Acad['id'] == $_SESSION['anio_lectivo']) {
+                                                                                                                                                                              echo "</b>";
+                                                                                                                                                                            } ?></a></li>
+            <?php
+            }
+            ?>
+          </ul>
+        </li>
+
       </ul>
     </nav>
   </div>

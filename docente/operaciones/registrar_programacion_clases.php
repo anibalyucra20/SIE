@@ -15,7 +15,9 @@ $anio_acad = $_SESSION['anio_lectivo'];
 $hoy = date('Y-m-d');
 $b_anio_acad = buscar_anio_academico_id($conexion, $anio_acad);
 $rb_anio_acad = mysqli_fetch_array($b_anio_acad);
-$fecha_fin_anio_acad = date('Y-m-d',$rb_anio_acad['fecha_fin']);
+$fecha_fin_anio_acad = $rb_anio_acad['fecha_fin'];
+echo $fecha_fin_anio_acad;
+echo $hoy;
 
 if($hoy <= $fecha_fin_anio_acad){
     $consulta = "INSERT INTO programacion_cursos (id_sede,id_anio_academico,id_curso,id_seccion,id_turno,id_modalidad,id_docente) VALUES ('$id_sede','$anio_acad','$id_curso','$seccion','$turno','$modalidad','$docente')";
@@ -33,10 +35,10 @@ if($hoy <= $fecha_fin_anio_acad){
     }
 
 }else{
-    /*echo "<script>
+    echo "<script>
                     alert('Error, No puede programar cursos fuera de la fecha');
                     window.history.back();
-                </script>";*/
+                </script>";
 }
 
 

@@ -95,13 +95,21 @@ function buscar_anio_academico($conexion){
     $consulta = "SELECT * FROM anio_academico";
     return mysqli_query($conexion, $consulta);
 }
-function buscar_anio_academicoInvertido($conexion){
-    $consulta = "SELECT * FROM anio_academico ORDER BY id DESC";
+function buscar_anio_academicoInvertidoporSede($conexion,$sede){
+    $consulta = "SELECT * FROM anio_academico WHERE id_sede='$sede' ORDER BY id DESC";
     return mysqli_query($conexion, $consulta);
 }
 
 function buscar_anio_academico_id($conexion, $id){
     $consulta = "SELECT * FROM anio_academico WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_anio_academico_id_sede($conexion, $id_sede){
+    $consulta = "SELECT * FROM anio_academico WHERE id_sede='$id_sede'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_anio_academicoultimoporSede($conexion,$id_sede){
+    $consulta = "SELECT * FROM anio_academico WHERE id_sede='$id_sede' ORDER BY id DESC LIMIT 1";
     return mysqli_query($conexion, $consulta);
 }
 function buscar_anio_academicoultimo($conexion){
@@ -207,6 +215,16 @@ function buscar_modalidadPorId($conexion, $id){
 
 function buscar_sesion_porID($conexion, $id){
     $consulta = "SELECT * FROM sesiones WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+
+
+
+
+// busquedas cursos programados
+
+function buscar_cursos_prog_porSede_Anio($conexion, $sede, $anio){
+    $consulta = "SELECT * FROM programacion_cursos WHERE id_sede='$sede' AND id_anio_academico='$anio'";
     return mysqli_query($conexion, $consulta);
 }
 ?>

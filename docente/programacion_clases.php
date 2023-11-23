@@ -224,10 +224,13 @@ if($cargo!="Secretario Academico"){
                                                     <thead>
                                                         <tr>
                                                             <th>Nro</th>
-                                                            <th>Año Académico</th>
-                                                            <th>Nombre</th>
-                                                            <th>Fecha Inicio</th>
-                                                            <th>Fecha Fin</th>
+                                                            <th>Año</th>
+                                                            <th>Nivel</th>
+                                                            <th>Grado</th>
+                                                            <th>Seccion</th>
+                                                            <th>Turno</th>
+                                                            <th>Curso</th>
+                                                            <th>Docente</th>
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>
@@ -235,16 +238,55 @@ if($cargo!="Secretario Academico"){
 
                                                     <tbody>
                                                         <?php
-                                                        for ($i = 1; $i <= 4; $i++) {
+                                                        $b_cursos_programados = buscar_cursos_prog_porSede_Anio($conexion, $_SESSION['id_sede'], $_SESSION['anio_lectivo']);
+                                                        $cont = 0;
+                                                        while($rb_cursos_programados = mysqli_fetch_array($b_cursos_programados)){
+                                                        $cont++;
+                                                        //buscar anio
+                                                        $b_anio = buscar_anio_academico_id($conexion, $rb_cursos_programados['id_anio_academico']);
+                                                        $rb_anio = mysqli_fetch_array($b_anio);
 
+                                                        //buscar sede
+                                                        $b_sede = buscar_sedesPorId($conexion, $rb_cursos_programados['id_sede']);
+                                                        $rb_sede = mysqli_fetch_array($b_sede);
+
+                                                        //buscar seccion
+                                                        $b_seccion = buscar_seccionPorid($conexion, $rb_cursos_programados['id_seccion']);
+                                                        $rb_seccion = mysqli_fetch_array($b_seccion);
+
+                                                        //buscar turno
+                                                        $b_turno = buscar_turno_id($conexion, $rb_cursos_programados['id_turno']);
+                                                        $rb_turno = mysqli_fetch_array($b_turno);
+
+                                                        // buscar curso
+                                                        $b_curso = buscar_cursoPorId($conexion, $rb_cursos_programados['id_curso']);
+                                                        $rb_curso = mysqli_fetch_array($b_curso);
+
+                                                        // buscar grado
+                                                        $b_grado = buscar_gradoPorId($conexion, $rb_curso['id_grado']);
+                                                        $rb_grado = mysqli_fetch_array($b_grado);
+                                                         // buscar ciclo
+                                                         $b_ciclo = buscar_ciclosPorId($conexion, $rb_grado['id_ciclo']);
+                                                         $rb_ciclo = mysqli_fetch_array($b_ciclo);
+
+                                                        //buscar nivel
+                                                        $b_nivel = buscar_nivel_id($conexion, $rb_ciclo['id_nivel']);
+                                                        $rb_nivel = mysqli_fetch_array($b_nivel);
+
+                                                        //buscar docente
+                                                        $b_docente = buscar_docentePorId($conexion, $rb_cursos_programados['id_docente']);
+                                                        $rb_docente= mysqli_fetch_array($b_docente);
 
                                                         ?>
                                                             <tr>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td><?php echo $i; ?>Tiger Nixon</td>
-                                                                <td><?php echo $i; ?>System Architect</td>
-                                                                <td><?php echo $i; ?>Edinburgh</td>
-                                                                <td><?php echo $i; ?>61</td>
+                                                                <td><?php echo $cont; ?></td>
+                                                                <td><?php echo $rb_anio['nombre']; ?></td>
+                                                                <td><?php echo $rb_nivel['nombre']; ?></td>
+                                                                <td><?php echo $rb_grado['nombre']; ?></td>
+                                                                <td><?php echo $rb_seccion['nombre']; ?></td>
+                                                                <td><?php echo $rb_turno['nombre']; ?></td>
+                                                                <td><?php echo $rb_curso['nombre']; ?></td>
+                                                                <td><?php echo $rb_docente['apellidos_nombres']; ?></td>
                                                                 <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->

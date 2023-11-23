@@ -12,6 +12,7 @@ $fecha_contrato = $_POST['fecha_contrato'];
 $grado_academico = $_POST['grado_academico'];
 $condicion_laboral = $_POST['condicion_laboral'];
 $cargo = $_POST['cargo'];
+$sede = $_POST['sede'];
 
 $ruta_archivo = "../img_docente/" . $dni . ".jpg";
 $nombre_archivo = "img_docente/" . $dni . ".jpg";
@@ -27,8 +28,8 @@ if ($contar_docentes > 0) {
     </script>";
 } else {
     if (move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_archivo)) {
-        $consulta = "INSERT INTO trabajador (dni, apellidos_nombres, correo, telefono, direccion, fecha_nac, genero, fecha_contrato, grado_academico, cond_laboral, cargo, foto, password, estado, reset_password, token_password)
-        VALUES ('$dni', '$apellidos_nombres', '$correo', '$telefono', '$direccion', '$fecha_nacimiento', '$genero', '$fecha_contrato', '$grado_academico', '$condicion_laboral', '$cargo', '$nombre_archivo', '', 1, 0, '')";
+        $consulta = "INSERT INTO trabajador (dni, apellidos_nombres, correo, telefono, direccion, fecha_nac, genero, fecha_contrato, grado_academico, cond_laboral, cargo, foto,id_sede, password, estado, reset_password, token_password)
+        VALUES ('$dni', '$apellidos_nombres', '$correo', '$telefono', '$direccion', '$fecha_nacimiento', '$genero', '$fecha_contrato', '$grado_academico', '$condicion_laboral', '$cargo', '$nombre_archivo','$sede', '', 1, 0, '')";
 
         $ejecutar_consulta = mysqli_query($conexion, $consulta);
 

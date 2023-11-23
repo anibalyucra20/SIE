@@ -194,6 +194,21 @@ if($cargo!="Secretario Academico"){
                                         <br>
                                       </div>
                                     </div>
+                                    <div class="form-group">
+                                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede: </label>
+                                      <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <select class="form-control" name="sede" id="sede" required>
+                                          <option value=""></option>
+                                          <?php
+                                          $b_sede = buscar_sedes($conexion);
+                                          while ($r_b_sede = mysqli_fetch_array($b_sede)) { ?>
+                                            <option value="<?php echo $r_b_sede['id']; ?>"><?php echo $r_b_sede['nombre']; ?></option>
+                                          <?php } ?>
+                                          
+                                        </select>
+                                        <br>
+                                      </div>
+                                    </div>
 
                                     <div class="form-group">
                                       <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto: </label>
