@@ -180,7 +180,9 @@ if ($cargo != "Secretario Academico") {
                                                                     <td><?php echo $cont; ?></td>
                                                                     <td><?php echo $r_b_curso['nombre'] . " - " . $r_b_grado['nombre'] . " - " . $r_b_nivel['nombre']; ?></td>
                                                                     <td><?php echo $r_b_competencia['nombre']; ?></td>
-                                                                    <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_competencia['id']; ?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+                                                                    <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_competencia['id']; ?>">Editar</button>
+                                                                    <a href="capacidades.php?competencia=<?php echo $r_b_competencia['id']; ?>" class="btn btn-warning">Capacidades</a>
+                                                                    </td>
                                                                 </tr>
                                                                 <!--MODAL EDITAR-->
                                                                 <div class="modal fade editar<?php echo $r_b_competencia['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
