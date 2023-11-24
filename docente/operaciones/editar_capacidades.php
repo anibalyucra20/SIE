@@ -7,11 +7,10 @@ include("../../include/funciones.php");
 $id = $_POST['data'];
 $nombre = $_POST['nombre_capacidades'];
 $descripcion = $_POST['descripcion'];
-$id_competencia = $_POST['id_competencia'];
 
 
 
-$consulta = "UPDATE capacidad SET nombre='$nombre', descripcion='$descripcion', id_competencia='$id_competencia'WHERE id='$id'";
+$consulta = "UPDATE capacidad SET nombre='$nombre', descripcion='$descripcion' WHERE id='$id'";
 
 
 $ejecutar_consulta = mysqli_query($conexion, $consulta);
