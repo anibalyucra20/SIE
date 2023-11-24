@@ -15,6 +15,10 @@ if($cargo!="Secretario Academico"){
 			";
 }else{
 
+$id_competencia = $_GET['competencia'];
+$b_competencia = buscar_competenciaPorId($conexion, $id_competencia);
+$r_b_competencia = mysqli_fetch_array($b_competencia);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,7 +30,7 @@ if($cargo!="Secretario Academico"){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Secciones | SIE</title>
+    <title>Capacidades | SIE</title>
     <!--icono en el titulo-->
     <link rel="shortcut icon" href="">
 
@@ -74,7 +78,7 @@ if($cargo!="Secretario Academico"){
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Capacidades</h2>
+                                            <h2>Capacidades - Competencia : <?php echo $r_b_competencia['nombre'] ?></h2>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
@@ -102,39 +106,21 @@ if($cargo!="Secretario Academico"){
                                                                 <div class="x_content">
                                                                     <br />
                                                                     <form role="form" action="operaciones/registrar_capacidades.php" class="form-horizontal form-label-left input_mask" method="POST">
-
-
-
+                                                                        <input type="hidden" name="id_competencia" value="<?php echo $id_competencia; ?>">
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="nombre" required>
+                                                                                <input type="text" maxlength="100" class="form-control" name="nombre" required>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripción : </label>
                                                                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <input type="text" maxlength="50" class="form-control" name="descripcion" required>
+                                                                                <textarea name="descripcion" id="" cols="30" rows="10" class="form-control" required></textarea>
                                                                                 <br>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Competencia : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                <select class="form-control" name="id_competencia"  required>
-                                                                                    <option value=""></option>
-                                                                                    <?php
-                                                                                    $b_competencia = buscar_competencia($conexion); //bucar competencia
-                                                                                    while ($r_b_competencia = mysqli_fetch_array($b_competencia)) { ?>//separar el resultado de la busqueda
-                                                                                    <option value="<?php echo $r_b_competencia['id']; ?>"><?php echo $r_b_competencia['nombre']; ?></option>
-                                                                                <?php } ?>
-                                                                                </select>
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-
-
                                                                         <div align="center">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
