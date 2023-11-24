@@ -65,8 +65,8 @@
           <li><a href="secciones.php">Secciones</a></li>
           <li><a href="cursos.php">Cursos</a></li>
           <li><a href="modalidad.php">Modalidades</a></li>
-          <li><a href="competencias.php">Competencias</a></li>
-          <li><a href="capacidades.php">Capacidades</a></li>
+          <!--<li><a href="competencias.php">Competencias</a></li>
+          <li><a href="capacidades.php">Capacidades</a></li>-->
           <li><a href="datos_sistema.php">Datos de Sistema</a></li>
         </ul>
       </li>
