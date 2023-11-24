@@ -124,15 +124,15 @@
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <?php
-            $busc_anio_id = buscar_anio_academico_id($conexion, $_SESSION['anio_lectivo']);
-            $res_busc_anio_id = mysqli_fetch_array($busc_anio_id);
-            echo $res_busc_anio_id['nombre'];
-            session_start();
-            if ($_SESSION['anio_lectivo'] != '') {
+            
+            if ($_SESSION['anio_lectivo'] == '') {
               $b_ultimo_anio_acad = buscar_anio_academicoultimoporSede($conexion, $_SESSION['id_sede']);
               $rb_ultimo_sede = mysqli_fetch_array($b_ultimo_anio_acad);
               $_SESSION['anio_lectivo'] = $rb_ultimo_sede['id'];
             }
+            $busc_anio_id = buscar_anio_academico_id($conexion, $_SESSION['anio_lectivo']);
+            $res_busc_anio_id = mysqli_fetch_array($busc_anio_id);
+            echo $res_busc_anio_id['nombre'];
             ?>
             <span class=" fa fa-angle-down"></span>
           </a>

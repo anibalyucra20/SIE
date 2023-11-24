@@ -1,3 +1,25 @@
+<?php
+session_start();
+include("../include/conexion.php");
+include("../include/busquedas.php");
+include("../include/funciones.php");
+
+include("include/verificar_sesion.php");
+
+$cargo = verificar_sesion($conexion);
+if ($cargo != "Secretario Academico") {
+    echo "<script>
+					alert('Error, Usted no cuenta con los permisos para acceder a esta página');
+					window.history.back();
+				</script>
+			";
+} else {
+
+    $id_competencia = $_GET['competencia'];
+    $b_competencia = buscar_competenciaPorId($conexion, $id_competencia);
+    $r_b_competencia = mysqli_fetch_array($b_competencia);
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -244,3 +266,4 @@
 </body>
 
 </html>
+<?php }

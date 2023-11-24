@@ -25,7 +25,7 @@ if (($cont==1)&&(password_verify($password, $r_b_usuario['password']))) {
     if($id_session!=0){
         $_SESSION['id_sesion_sie'] = $id_session;
         $_SESSION['token_sie'] = $token;
-        //$_SESSION['anio_lectivo'] = $id_anio_acad;
+        $_SESSION['anio_lectivo'] = '';
         $_SESSION['id_sede'] = $r_b_usuario['id_sede'];
         echo "<script>
                 window.location= '../../docente/';
