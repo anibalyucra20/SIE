@@ -152,7 +152,7 @@ $r_b_competencia = mysqli_fetch_array($b_competencia);
 
                                                     <tbody>
                                                         <?php
-                                                        $b_capacidad = buscar_capacidad($conexion);
+                                                        $b_capacidad = buscar_capacidadPorIdCompetencia($conexion, $id_competencia);
                                                         $cont = 0;
                                                         while ($r_b_capacidad    = mysqli_fetch_array($b_capacidad)) {
                                                             $cont++;

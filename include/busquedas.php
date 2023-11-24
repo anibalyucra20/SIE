@@ -165,10 +165,22 @@ function buscar_competenciaPorId($conexion, $id){
     $consulta = "SELECT * FROM competencia WHERE id='$id'";
     return mysqli_query($conexion, $consulta);
 }
+function buscar_competenciaPorIdCurso($conexion, $id){
+    $consulta = "SELECT * FROM competencia WHERE id_curso='$id'";
+    return mysqli_query($conexion, $consulta);
+}
 // busquedas capacidad
 
 function buscar_capacidad($conexion){
     $consulta = "SELECT * FROM capacidad" ;
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_capacidadPorId($conexion, $id){
+    $consulta = "SELECT * FROM capacidad WHERE id='$id'" ;
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_capacidadPorIdCompetencia($conexion, $id){
+    $consulta = "SELECT * FROM capacidad WHERE id_competencia='$id'" ;
     return mysqli_query($conexion, $consulta);
 }
 // busquedas ciclos

@@ -161,7 +161,7 @@ if ($cargo != "Secretario Academico") {
 
                                                         <tbody>
                                                             <?php
-                                                            $b_competencia = buscar_competencia($conexion);
+                                                            $b_competencia = buscar_competenciaPorIdCurso($conexion, $id_curso);
                                                             $cont = 0;
                                                             while ($r_b_competencia = mysqli_fetch_array($b_competencia)) {
                                                                 $cont++;
