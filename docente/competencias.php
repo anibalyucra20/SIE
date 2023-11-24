@@ -205,6 +205,7 @@ if ($cargo != "Secretario Academico") {
                                                                                         <form role="form" action="operaciones/editar_competencia.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                                             <div class="form-group">
                                                                                                 <input type="hidden" name="data" value="<?php echo $r_b_competencia['id']; ?>">
+                                                                                                <input type="hidden" name="curso" value="<?php echo $id_curso; ?>">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Competencia : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                                     <input type="text" maxlength="20" class="form-control" name="editar_competencia" value="<?php echo $r_b_competencia['nombre']; ?>">

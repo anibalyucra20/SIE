@@ -14,7 +14,7 @@ $ejecutar_consulta = mysqli_query($conexion, $consulta);
 if ($ejecutar_consulta) {
     echo "<script>
                 alert('Se realizó el registro con éxito');
-                window.location = '../competencias.php';
+                window.location = '../competencias.php?curso=".$id_curso."';
             </script>";
 }else {
     echo "<script>

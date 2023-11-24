@@ -13,7 +13,7 @@ $ejecutar_consulta = mysqli_query($conexion, $consulta);
 if ($ejecutar_consulta) {
     echo "<script>
                 alert('Se realizó el registro con éxito');
-                window.location = '../capacidades.php';
+                window.location = '../capacidades.php?competencia=".$id_competencia."';
             </script>";
 }else {
     echo "<script>

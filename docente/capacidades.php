@@ -192,7 +192,7 @@ if ($cargo != "Secretario Academico") {
                                                                                         <br />
                                                                                         <form role="form" action="operaciones/editar_capacidades.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                                             <input type="hidden" name="data" value="<?php echo $r_b_capacidad['id']; ?>">
-
+                                                                                            <input type="hidden" name="id_competencia" value="<?php echo $id_competencia; ?>">
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre Capacidades : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">

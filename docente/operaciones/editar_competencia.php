@@ -4,6 +4,7 @@ include("../../include/busquedas.php");
 include("../../include/funciones.php");
 
 //no recibir dni  buscar dn BD
+$id_curso = $_POST['curso'];
 $id = $_POST['data'];
 $nombre = $_POST['editar_competencia'];
 $enfoque = $_POST['editar_enfoque'];
@@ -18,7 +19,7 @@ $ejecutar_consulta = mysqli_query($conexion, $consulta);
 if ($ejecutar_consulta) {
     echo "<script>
                 alert('Datos Actualizados Correctamente');
-                window.location= '../competencias.php';
+                window.location= '../competencias.php?curso=".$id_curso."';
                 </script>
                 ";
 }else {
