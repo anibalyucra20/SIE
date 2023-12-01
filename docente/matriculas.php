@@ -82,7 +82,7 @@ if ($cargo != "Secretario Academico") {
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
-                                            <a href="registrar_matricula.php" class="btn btn-success"><i class="fa fa-plus-square"></i> Nuevo</a>
+                                            <a href="matricula.php" class="btn btn-success"><i class="fa fa-plus-square"></i> Nuevo</a>
                                             <br />
                                             <div class="x_content">
                                                 <table id="example" class="table table-striped table-bordered">

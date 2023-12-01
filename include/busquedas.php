@@ -83,6 +83,10 @@ function buscar_nivel_id($conexion, $id){
     $consulta = "SELECT * FROM nivel WHERE id='$id'";
     return mysqli_query($conexion, $consulta);
 }
+function buscar_nivel_idSede($conexion, $idsede){
+    $consulta = "SELECT * FROM nivel WHERE id_sede='$idsede'";
+    return mysqli_query($conexion, $consulta);
+}
 
 //busqueda turno 
 function buscar_turno($conexion){
@@ -242,6 +246,18 @@ function buscar_sesion_porID($conexion, $id){
 
 function buscar_cursos_prog_porSede_Anio($conexion, $sede, $anio){
     $consulta = "SELECT * FROM programacion_cursos WHERE id_sede='$sede' AND id_anio_academico='$anio'";
+    return mysqli_query($conexion, $consulta);
+}
+
+function buscar_cursos_prog_porSede_Anio_grado_turno_seccion($conexion, $sede, $anio, $curso, $turno, $seccion){
+    $consulta = "SELECT * FROM programacion_cursos WHERE id_sede='$sede' AND id_anio_academico='$anio' AND id_curso='$curso' AND id_seccion='$seccion' AND id_turno='$turno'";
+    return mysqli_query($conexion, $consulta);
+}
+
+//buscar estudiantes matriculados
+
+function buscar_matriculadosPorIdCursoProg($conexion, $id_curso){
+    $consulta = "SELECT * FROM detalle_matricula WHERE id_curso_programado='$id_curso'";
     return mysqli_query($conexion, $consulta);
 }
 ?>
