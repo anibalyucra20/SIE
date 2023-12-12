@@ -50,7 +50,7 @@
       </li>
       <li><a><i class="fa fa-clone"></i>Evaluación <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="evaluaciones.php">Registro de Evaluación</a></li>
+          <li><a href="calificaciones_areas.php">Registro de Evaluación</a></li>
         </ul>
       </li>
       <li><a><i class="fa fa-clone"></i>Mantenimiento <span class="fa fa-chevron-down"></span></a>

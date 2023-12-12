@@ -248,16 +248,72 @@ function buscar_cursos_prog_porSede_Anio($conexion, $sede, $anio){
     $consulta = "SELECT * FROM programacion_cursos WHERE id_sede='$sede' AND id_anio_academico='$anio'";
     return mysqli_query($conexion, $consulta);
 }
+function buscar_cursos_prog_porId($conexion, $id){
+    $consulta = "SELECT * FROM programacion_cursos WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
 
 function buscar_cursos_prog_porSede_Anio_grado_turno_seccion($conexion, $sede, $anio, $curso, $turno, $seccion){
     $consulta = "SELECT * FROM programacion_cursos WHERE id_sede='$sede' AND id_anio_academico='$anio' AND id_curso='$curso' AND id_seccion='$seccion' AND id_turno='$turno'";
     return mysqli_query($conexion, $consulta);
 }
 
-//buscar estudiantes matriculados
+//buscar matriculas
+function buscar_matriculas($conexion){
+    $consulta = "SELECT * FROM matricula ";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_matriculasPorId($conexion,$id){
+    $consulta = "SELECT * FROM matricula WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
 
-function buscar_matriculadosPorIdCursoProg($conexion, $id_curso){
+
+//buscar estudiantes matriculados
+function buscar_detmatriculadosPorIdCursoProg($conexion, $id_curso){
     $consulta = "SELECT * FROM detalle_matricula WHERE id_curso_programado='$id_curso'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_detmatriculadosPorId($conexion, $id){
+    $consulta = "SELECT * FROM detalle_matricula WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+
+// buscar calificaciones
+function buscar_calificacionPorId($conexion, $id){
+    $consulta = "SELECT * FROM calificacion WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_calificacionPorIdDetMat($conexion, $id_det_mat){
+    $consulta = "SELECT * FROM calificacion WHERE id_detalle_maticula='$id_det_mat'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_calificacionPorIdDetMatOrden($conexion, $id_det_mat,$orden){
+    $consulta = "SELECT * FROM calificacion WHERE id_detalle_maticula='$id_det_mat' AND orden='$orden'";
+    return mysqli_query($conexion, $consulta);
+}
+
+// buscar evaluacion
+function buscar_EvaluacionPorId($conexion, $id){
+    $consulta = "SELECT * FROM evaluacion WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_EvaluacionPorIdCalificacion($conexion, $id_calif){
+    $consulta = "SELECT * FROM evaluacion WHERE id_calificacion='$id_calif'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_EvaluacionPorIdCalificacion_Detalle($conexion, $id_calif,$detalle){
+    $consulta = "SELECT * FROM evaluacion WHERE id_calificacion='$id_calif' AND detalle='$detalle'";
+    return mysqli_query($conexion, $consulta);
+}
+
+// buscar indicadores de logro
+function buscar_CritEvaPorIdEvaluacion($conexion, $id_eva){
+    $consulta = "SELECT * FROM criterio_evaluacion WHERE id_evaluacion='$id_eva'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_CritEvaPorIdEvaluacionOrden($conexion, $id_eva, $orden){
+    $consulta = "SELECT * FROM criterio_evaluacion WHERE id_evaluacion='$id_eva'";
     return mysqli_query($conexion, $consulta);
 }
 ?>

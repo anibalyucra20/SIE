@@ -66,4 +66,23 @@ function actualizar_sesion($conexion, $id_sesion)
     mysqli_query($conexion, $actualizar);
 }
 
+function convertir_vigesimal_cualitativo($numero){
+    if ($numero >= 0 && $numero <= 10) {
+        return "C";
+    }
+    if ($numero > 10 && $numero <= 13) {
+        return "B";
+    }
+    if ($numero > 13 && $numero <= 17) {
+        return "A";
+    }
+    if ($numero > 17 && $numero <= 20) {
+        return "AD";
+    }
+    if($numero < 0 && $numero > 20){
+        return 0;
+    }
+
+}
+
 ?>

@@ -33,7 +33,7 @@ if ($resultado) {
             
             $id_curso_prog = $r_b_curso_prog['id'];
 
-            $b_cant_matriculados = buscar_matriculadosPorIdCursoProg($conexion, $id_curso_prog);
+            $b_cant_matriculados = buscar_detmatriculadosPorIdCursoProg($conexion, $id_curso_prog);
             $contar_matriculados = mysqli_num_rows($b_cant_matriculados);
             $new_orden = $contar_matriculados + 1;
 
@@ -47,10 +47,12 @@ if ($resultado) {
             $b_periodo_lectivo = buscar_periodos($conexion);
             $cant_peridos = mysqli_num_rows($b_periodo_lectivo);
             $ponderado_calif = round(100 / $cant_peridos);
+            $orden_calif = 0;
             while ($r_b_periodo = mysqli_fetch_array($b_periodo_lectivo)) {
+                $orden_calif++;
                 $detalle = $r_b_periodo['nombre'];
                 //registramos calificaciones (trimestres)
-                $reg_calif = "INSERT INTO calificacion (id_detalle_maticula,detalle,ponderado) VALUES ('$id_detalle_matricula','$detalle','$ponderado_calif')";
+                $reg_calif = "INSERT INTO calificacion (id_detalle_maticula,orden,detalle,ponderado) VALUES ('$id_detalle_matricula','$orden_calif','$detalle','$ponderado_calif')";
                 $ejec_reg_calif = mysqli_query($conexion, $reg_calif);
 
                 //buscamos el ultimo registro de la calificacion
@@ -74,9 +76,11 @@ if ($resultado) {
                     $b_capcaidades = buscar_capacidadPorIdCompetencia($conexion, $id_competencia);
                     $cant_capacidades = mysqli_num_rows($b_capcaidades);
                     $ponderado_c_eva = round(100 / $cant_capacidades);
+                    $cont_orden=0;
                     while ($r_b_capacidades = mysqli_fetch_array($b_capcaidades)) {
+                        $cont_orden++;
                         //registramos criterios de evaluacion
-                        $reg_crit_eva = "INSERT INTO criterio_evaluacion (id_evaluacion,detalle,calificacion,ponderado) VALUES ('$id_evaluacion','','','$ponderado_c_eva')";
+                        $reg_crit_eva = "INSERT INTO criterio_evaluacion (id_evaluacion,orden,detalle,calificacion,ponderado) VALUES ('$id_evaluacion','$cont_orden','','','$ponderado_c_eva')";
                         $ejec_reg_crit_eva = mysqli_query($conexion, $reg_crit_eva);
                     }
 
