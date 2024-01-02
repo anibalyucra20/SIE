@@ -63,6 +63,7 @@
           <li><a href="grados.php">Grados</a></li>
           <li><a href="turnos.php">Turnos</a></li>
           <li><a href="secciones.php">Secciones</a></li>
+          <li><a href="area_curricular.php">Áreas Curriculares</a></li>
           <li><a href="cursos.php">Cursos</a></li>
           <li><a href="modalidad.php">Modalidades</a></li>
           <!--<li><a href="competencias.php">Competencias</a></li>

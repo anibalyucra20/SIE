@@ -15,10 +15,10 @@ if ($cargo != "Secretario Academico") {
 			";
 } else {
 
-    $id_curso = $_GET['curso'];
+    $id_area_curricular = $_GET['data'];
 
-    $b_curso = buscar_cursoPorId($conexion, $id_curso);
-    $r_b_curso = mysqli_fetch_array($b_curso);
+    $b_area = buscar_AreaCurricularPorId($conexion, $id_area_curricular);
+    $r_b_area = mysqli_fetch_array($b_area);
 ?>
     <!DOCTYPE html>
     <html lang="es">
@@ -79,7 +79,7 @@ if ($cargo != "Secretario Academico") {
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         <div class="x_panel">
                                             <div class="x_title">
-                                                <h2>Competencias - <?php echo $r_b_curso['nombre']; ?></h2>
+                                                <h2>Competencias - <?php echo $r_b_area['nombre']; ?></h2>
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div class="x_content">
@@ -107,7 +107,7 @@ if ($cargo != "Secretario Academico") {
                                                                     <div class="x_content">
                                                                         <br />
                                                                         <form role="form" action="operaciones/registrar_competencia.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                                                            <input type="hidden" name="id_curso" value="<?php echo $id_curso; ?>">
+                                                                            <input type="hidden" name="id_area" value="<?php echo $id_area_curricular; ?>">
                                                                             <div class="form-group">
                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre de la competencia : </label>
                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
@@ -152,7 +152,7 @@ if ($cargo != "Secretario Academico") {
                                                         <thead>
                                                             <tr>
                                                                 <th>Nro</th>
-                                                                <th>Curso - Grado - Nivel</th>
+                                                                <th>Área Curricular - Nivel</th>
                                                                 <th>Nombre</th>
                                                                 <th>Acciones</th>
                                                             </tr>
@@ -161,24 +161,21 @@ if ($cargo != "Secretario Academico") {
 
                                                         <tbody>
                                                             <?php
-                                                            $b_competencia = buscar_competenciaPorIdCurso($conexion, $id_curso);
+                                                            $b_competencia = buscar_competenciaPorIdArea($conexion, $id_area_curricular);
                                                             $cont = 0;
                                                             while ($r_b_competencia = mysqli_fetch_array($b_competencia)) {
                                                                 $cont++;
 
-                                                                $b_curso = buscar_cursoPorId($conexion, $r_b_competencia['id_curso']);
-                                                                $r_b_curso = mysqli_fetch_array($b_curso);
-                                                                $b_grado = buscar_gradoPorId($conexion, $r_b_curso['id_grado']);
-                                                                $r_b_grado = mysqli_fetch_array($b_grado);
-                                                                $b_ciclo = buscar_ciclosPorId($conexion, $r_b_grado['id_ciclo']);
-                                                                $r_b_ciclo = mysqli_fetch_array($b_ciclo);
-                                                                $b_nivel = buscar_nivel_id($conexion, $r_b_ciclo['id_nivel']);
+                                                                
+                                                                $b_areaa = buscar_AreaCurricularPorId($conexion, $r_b_competencia['id_area_curricular']);
+                                                                $r_b_areaa = mysqli_fetch_array($b_areaa);
+                                                                $b_nivel = buscar_nivel_id($conexion, $r_b_areaa['id_nivel']);
                                                                 $r_b_nivel = mysqli_fetch_array($b_nivel);
 
                                                             ?>
                                                                 <tr>
                                                                     <td><?php echo $cont; ?></td>
-                                                                    <td><?php echo $r_b_curso['nombre'] . " - " . $r_b_grado['nombre'] . " - " . $r_b_nivel['nombre']; ?></td>
+                                                                    <td><?php echo $r_b_areaa['nombre'] . " - " . $r_b_nivel['nombre']; ?></td>
                                                                     <td><?php echo $r_b_competencia['nombre']; ?></td>
                                                                     <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_competencia['id']; ?>">Editar</button>
                                                                     <a href="capacidades.php?competencia=<?php echo $r_b_competencia['id']; ?>" class="btn btn-warning">Capacidades</a>
@@ -207,7 +204,7 @@ if ($cargo != "Secretario Academico") {
                                                                                         <form role="form" action="operaciones/editar_competencia.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                                             <div class="form-group">
                                                                                                 <input type="hidden" name="data" value="<?php echo $r_b_competencia['id']; ?>">
-                                                                                                <input type="hidden" name="curso" value="<?php echo $id_curso; ?>">
+                                                                                                <input type="hidden" name="area" value="<?php echo $id_area_curricular; ?>">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Competencia : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                                                                                     <input type="text" maxlength="20" class="form-control" name="editar_competencia" value="<?php echo $r_b_competencia['nombre']; ?>">

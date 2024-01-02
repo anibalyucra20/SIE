@@ -31,7 +31,8 @@ if ($resultado) {
         if ($cont > 0) {
             $r_b_curso_prog = mysqli_fetch_array($busc_progr);
             
-            $id_curso_prog = $r_b_curso_prog['id'];
+
+            
 
             $b_cant_matriculados = buscar_detmatriculadosPorIdCursoProg($conexion, $id_curso_prog);
             $contar_matriculados = mysqli_num_rows($b_cant_matriculados);
@@ -59,7 +60,7 @@ if ($resultado) {
                 $id_calificacion = mysqli_insert_id($conexion);
 
                 //buscar competencias para definir cantidad de evaluaciones
-                $b_competencias = buscar_competenciaPorIdCurso($conexion, $id_curso);
+                $b_competencias = buscar_competenciaPorIdArea($conexion, $r_b_cursos['id_area_curricular']);
                 $cant_competencias = mysqli_num_rows($b_competencias);
                 $ponderado_eva = round(100 / $cant_competencias);
                 while ($r_b_competencias = mysqli_fetch_array($b_competencias)) {

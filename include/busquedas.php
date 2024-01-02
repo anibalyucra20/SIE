@@ -159,6 +159,22 @@ function buscar_cursoPorIdGrado($conexion, $id_grado){
     return mysqli_query($conexion, $consulta);
 }
 
+// busquedas area_curricular
+
+function buscar_area_curricular($conexion){
+    $consulta = "SELECT * FROM area_curricular";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_AreaCurricularPorId($conexion, $id){
+    $consulta = "SELECT * FROM area_curricular WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_AreaCurricularPorIdNivel($conexion, $id_nivel){
+    $consulta = "SELECT * FROM area_curricular WHERE id_nivel='$id_nivel'";
+    return mysqli_query($conexion, $consulta);
+}
+
+
 // busquedas copetencias
 
 function buscar_competencia($conexion){
@@ -169,8 +185,8 @@ function buscar_competenciaPorId($conexion, $id){
     $consulta = "SELECT * FROM competencia WHERE id='$id'";
     return mysqli_query($conexion, $consulta);
 }
-function buscar_competenciaPorIdCurso($conexion, $id){
-    $consulta = "SELECT * FROM competencia WHERE id_curso='$id'";
+function buscar_competenciaPorIdArea($conexion, $id){
+    $consulta = "SELECT * FROM competencia WHERE id_area_curricular='$id'";
     return mysqli_query($conexion, $consulta);
 }
 // busquedas capacidad

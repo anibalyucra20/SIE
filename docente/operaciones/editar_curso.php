@@ -8,9 +8,10 @@ $id = $_POST['data'];
 $nombre = $_POST['editar_curso'];
 $descripcion_curso = $_POST['descripcion_curso'];
 $id_grado = $_POST['id_grado'];
+$id_area = $_POST['id_area'];
 
 
-$consulta = "UPDATE curso SET nombre='$nombre', descripcion='$descripcion_curso', id_grado='$id_grado' WHERE id='$id'";
+$consulta = "UPDATE curso SET nombre='$nombre', descripcion='$descripcion_curso', id_grado='$id_grado', id_area_curricular='$id_area' WHERE id='$id'";
 
 
 $ejecutar_consulta = mysqli_query($conexion, $consulta);

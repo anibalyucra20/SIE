@@ -4,22 +4,20 @@ include("../../include/busquedas.php");
 include("../../include/funciones.php");
 
 //no recibir dni  buscar dn BD
-$id_area = $_POST['area'];
 $id = $_POST['data'];
-$nombre = $_POST['editar_competencia'];
-$enfoque = $_POST['editar_enfoque'];
-$descripcion_competencia = $_POST['editar_descripcion_competencia'];
+$nombre = $_POST['editar_area'];
+$descripcion = $_POST['descripcion_area'];
+$id_nivel = $_POST['id_nivel'];
 
 
-
-$consulta = "UPDATE competencia SET nombre='$nombre', enfoque='$enfoque', descripcion='$descripcion_competencia'WHERE id='$id'";
+$consulta = "UPDATE area_curricular SET nombre='$nombre', descripcion='$descripcion', id_nivel='$id_nivel' WHERE id='$id'";
 
 
 $ejecutar_consulta = mysqli_query($conexion, $consulta);
 if ($ejecutar_consulta) {
     echo "<script>
                 alert('Datos Actualizados Correctamente');
-                window.location= '../competencias.php?data=".$id_area."';
+                window.location= '../area_curricular.php';
                 </script>
                 ";
 }else {
