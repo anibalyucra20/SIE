@@ -283,6 +283,10 @@ function buscar_matriculasPorId($conexion,$id){
     $consulta = "SELECT * FROM matricula WHERE id='$id'";
     return mysqli_query($conexion, $consulta);
 }
+function buscar_matriculasPorAnioSede($conexion,$anio,$sede){
+    $consulta = "SELECT * FROM matricula WHERE id_anio_academico='$anio' AND id_sede='$sede'";
+    return mysqli_query($conexion, $consulta);
+}
 
 
 //buscar estudiantes matriculados
@@ -292,6 +296,14 @@ function buscar_detmatriculadosPorIdCursoProg($conexion, $id_curso){
 }
 function buscar_detmatriculadosPorId($conexion, $id){
     $consulta = "SELECT * FROM detalle_matricula WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_detmatriculadosPorIdMat($conexion, $id){
+    $consulta = "SELECT * FROM detalle_matricula WHERE id_matricula='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_detmatriculadosPorIdMatProg($conexion, $id, $id_prog){
+    $consulta = "SELECT * FROM detalle_matricula WHERE id_matricula='$id' AND id_curso_programado='$id_prog'";
     return mysqli_query($conexion, $consulta);
 }
 

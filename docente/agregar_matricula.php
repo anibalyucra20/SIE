@@ -15,6 +15,17 @@ if ($cargo != "Secretario Academico") {
 			";
 } else {
 
+    $id_matricula = $_GET['data'];
+
+    $b_matricula = buscar_matriculasPorId($conexion, $id_matricula);
+    $rb_matricula = mysqli_fetch_array($b_matricula);
+
+    $b_estudiante = buscar_estudiantePorId($conexion, $rb_matricula['id_estudiante']);
+    $rb_estudiante = mysqli_fetch_array($b_estudiante);
+
+    $b_sede = buscar_sedesPorId($conexion, $_SESSION['id_sede']);
+    $rb_sede = mysqli_fetch_array($b_sede);
+
 ?>
     <!DOCTYPE html>
     <html lang="es">
@@ -51,7 +62,7 @@ if ($cargo != "Secretario Academico") {
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
 
-    <body class="nav-md">
+    <body class="nav-md" >
         <div class="container body">
             <div class="main_container">
                 <div class="col-md-3 left_col">
@@ -82,38 +93,30 @@ if ($cargo != "Secretario Academico") {
                                             </div>
                                             <div class="x_content">
                                                 <br />
-                                                <form role="form" id="myform" action="operaciones/registrar_matricula.php" class="form-horizontal form-label-left input_mask" method="POST">
+                                                <form role="form" id="myform" action="operaciones/editar_matricula.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">DNI estudiante: </label>
                                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                                            <input class="form-control" type="number" name="dni_est" id="dni_est" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
-                                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                                            <button type="button" class="btn btn-success" onclick="recargarest();">Buscar</button>
-
-                                                            <br>
+                                                            <input class="form-control" type="number" value="<?php echo $rb_estudiante['dni']; ?>" readonly>
                                                             <br>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Estudiante : </label>
                                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                                            <input type="hidden" id="id_est" name="id_est">
-                                                            <input type="hidden" id="id_sede" name="id_sede">
-                                                            <input class="form-control" type="text" name="estudiante" id="estudiante" readonly>
+                                                            <input type="hidden" name="data" value="<?php echo $id_matricula; ?>">
+                                                            <input type="hidden" name="id_est" value="<?php echo $rb_estudiante['id']; ?>">
+                                                            <input type="hidden" id="sede_m" value="<?php echo $_SESSION['id_sede']; ?>">
+                                                            <input type="hidden" id="id_nivel" value="<?php echo $rb_matricula['id_nivel']; ?>">
+                                                            <input type="hidden" id="id_grado" value="<?php echo $rb_matricula['id_grado']; ?>">
+                                                            <input class="form-control" type="text" name="estudiante" id="estudiante" value="<?php echo $rb_estudiante['apellidos_nombres']; ?>" readonly>
                                                             <br>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Sede : </label>
                                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                                            <select class="form-control" id="sede_m" name="sede_m" value="" required="required">
-                                                                <option></option>
-                                                                <!-- datos a traer segun los datos del estudiante -->
-                                                            </select>
+                                                            <input class="form-control" type="text" id="id_sede" name="id_sede" value="<?php echo $rb_sede['nombre']; ?>" readonly>
                                                             <br>
                                                         </div>
                                                     </div>
@@ -145,12 +148,12 @@ if ($cargo != "Secretario Academico") {
                                                                 <?php
                                                                 $b_turnos = buscar_turno($conexion);
                                                                 while ($rb_turnos = mysqli_fetch_array($b_turnos)) { ?>
-                                                                    <option value="<?php echo $rb_turnos['id']; ?>"><?php echo $rb_turnos['nombre']; ?></option>
+                                                                    <option value="<?php echo $rb_turnos['id']; ?>" <?php if($rb_turnos['id']==$rb_matricula['id_turno']){ echo 'selected';} ?>><?php echo $rb_turnos['nombre']; ?></option>
                                                                 <?php
                                                                 }
                                                                 ?>
                                                             </select>
-                                                            <br>
+                                                            <br> 
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -161,7 +164,7 @@ if ($cargo != "Secretario Academico") {
                                                                 <?php
                                                                 $b_seccion = buscar_seccion($conexion);
                                                                 while ($rb_seccion = mysqli_fetch_array($b_seccion)) { ?>
-                                                                    <option value="<?php echo $rb_seccion['id']; ?>"><?php echo $rb_seccion['nombre']; ?></option>
+                                                                    <option value="<?php echo $rb_seccion['id']; ?>" <?php if($rb_seccion['id']==$rb_matricula['id_seccion']){ echo 'selected';} ?>><?php echo $rb_seccion['nombre']; ?></option>
                                                                 <?php
                                                                 }
                                                                 ?>
@@ -169,7 +172,7 @@ if ($cargo != "Secretario Academico") {
                                                             <br>
                                                         </div>
                                                     </div>
-                                                    
+
 
 
 
@@ -190,17 +193,17 @@ if ($cargo != "Secretario Academico") {
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div class="x_content">
-                                            <div class="form-group">
-                                                        <input type="hidden" id="arr_uds" name="arr_uds">
-                                                        <input type="hidden" id="mat_relacion" name="mat_relacion" required>
-                                                        </label>
-                                                        <div class="col-md-9 col-sm-9 col-xs-12" id="udss">
-                                                            <div class="checkbox">
-                                                                
-                                                            </div>
+                                                <div class="form-group">
+                                                    <input type="hidden" id="arr_uds" name="arr_uds">
+                                                    <input type="hidden" id="mat_relacion" name="mat_relacion" required>
+                                                    </label>
+                                                    <div class="col-md-9 col-sm-9 col-xs-12" id="udss">
+                                                        <div class="checkbox">
 
                                                         </div>
+
                                                     </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -271,59 +274,23 @@ if ($cargo != "Secretario Academico") {
                     $('#seccion_m').change(function() {
                         listar_cursos();
                     });
-
+                    listar_niveles();
                 })
             </script>
-            <script type="text/javascript">
-                function recargarest() {
-                    // funcion para traer datos del estudiante
-                    // Creando el objeto para hacer el request
-                    var request = new XMLHttpRequest();
-                    request.responseType = 'json';
-                    // Objeto PHP que consultaremos
-                    request.open("POST", "operaciones/obtener_estudiante.php");
-                    // Definiendo el listener
-                    request.onreadystatechange = function() {
-                        // Revision si fue completada la peticion y si fue exitosa
-                        if (this.readyState === 4 && this.status === 200) {
-                            // Ingresando la respuesta obtenida del PHP
-                            document.getElementById("id_est").value = this.response.id_est;
-                            document.getElementById("estudiante").value = this.response.nombre;
-                            document.getElementById("id_sede").value = this.response.sede;
-                            cargar_sede();
 
-                        }
-                    };
-                    // Recogiendo la data del HTML
-                    var myForm = document.getElementById("myform");
-                    var formData = new FormData(myForm);
-                    // Enviando la data al PHP
-                    request.send(formData);
-                }
-            </script>
-            <script type="text/javascript">
-                function cargar_sede() {
-                    $.ajax({
-                        type: "POST",
-                        url: "operaciones/obtener_sedes.php",
-                        data: "id=" + $('#id_sede').val(),
-                        success: function(r) {
-                            $('#sede_m').html(r);
-                            listar_niveles();
-
-                        }
-                    });
-                }
-            </script>
+            
             <script type="text/javascript">
                 function listar_niveles() {
                     $.ajax({
                         type: "POST",
                         url: "operaciones/obtener_niveles.php",
-                        data: "id=" + $('#id_sede').val(),
+                        data: {
+                            id:  $('#sede_m').val(),
+                            nivel: $('#id_nivel').val(),
+                        },
                         success: function(r) {
                             $('#nivel_m').html(r);
-
+                            listar_grados();
                         }
                     });
                 }
@@ -333,14 +300,18 @@ if ($cargo != "Secretario Academico") {
                     $.ajax({
                         type: "POST",
                         url: "operaciones/obtener_grados.php",
-                        data: "id_nivel=" + $('#nivel_m').val(),
+                        data: {
+                            id_nivel: $('#nivel_m').val(),
+                            grado: $('#id_grado').val()
+                        },
                         success: function(r) {
                             $('#grado_m').html(r);
+                            listar_cursos();
                         }
                     });
                 }
             </script>
-           
+
             <script type="text/javascript">
                 function listar_cursos() {
                     var sede = $('#sede_m').val();
@@ -350,7 +321,12 @@ if ($cargo != "Secretario Academico") {
                     $.ajax({
                         type: "POST",
                         url: "operaciones/cargar_cursos_check.php",
-                        data: {id_sede: sede,id_grado: grado, id_turno: turno,id_seccion: seccion },
+                        data: {
+                            id_sede: sede,
+                            id_grado: grado,
+                            id_turno: turno,
+                            id_seccion: seccion
+                        },
                         success: function(r) {
                             $('#udss').html(r);
                         }

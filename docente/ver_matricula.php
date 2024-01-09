@@ -15,7 +15,13 @@ if ($cargo != "Secretario Academico") {
 			";
 } else {
 
-    
+    $id_matricula = $_GET['data'];
+
+    $b_matricula = buscar_matriculasPorId($conexion, $id_matricula);
+    $rb_matricula = mysqli_fetch_array($b_matricula);
+
+    $b_estudiante = buscar_estudiantePorId($conexion, $rb_matricula['id_estudiante']);
+    $rb_estudiante = mysqli_fetch_array($b_estudiante);
 
 ?>
     <!DOCTYPE html>
@@ -49,6 +55,16 @@ if ($cargo != "Secretario Academico") {
 
         <!-- Custom Theme Style -->
         <link href="../plantilla/build/css/custom.min.css" rel="stylesheet">
+        <script>
+            function confirmarEliminar() {
+                var r = confirm("Estas Seguro Eliminar Registro?");
+                if (r == true) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        </script>
     </head>
 
     <body class="nav-md">
@@ -76,20 +92,18 @@ if ($cargo != "Secretario Academico") {
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         <div class="x_panel">
                                             <div class="x_title">
-                                                <h2>Matrículas</h2>
+                                                <h2>Matrícula - <?php echo $rb_estudiante['apellidos_nombres']; ?></h2>
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div class="x_content">
-                                                <a href="matricula.php" class="btn btn-success"><i class="fa fa-plus-square"></i> Nuevo</a>
+                                                <a href="agregar_matricula.php?data=<?php echo $id_matricula; ?>" class="btn btn-success"><i class="fa fa-plus-square"></i> Agregar Cursos a Matrícula</a>
                                                 <br />
                                                 <div class="x_content">
                                                     <table id="example" class="table table-striped table-bordered">
                                                         <thead>
                                                             <tr>
                                                                 <th>Nro</th>
-                                                                <th>DNI</th>
-                                                                <th>Estudiante</th>
-                                                                <th>Año Académico</th>
+                                                                <th>Curso</th>
                                                                 <th>Sede</th>
                                                                 <th>Nivel</th>
                                                                 <th>Grado</th>
@@ -103,42 +117,43 @@ if ($cargo != "Secretario Academico") {
                                                         <tbody>
                                                             <?php
                                                             $contador = 0;
-                                                            $b_matriculas = buscar_matriculasPorAnioSede($conexion,$_SESSION['anio_lectivo'],$_SESSION['id_sede']);
-                                                            while ($rb_matriculas = mysqli_fetch_array($b_matriculas)) {
-                                                               $contador ++;
+                                                            $b_det_matriculas = buscar_detmatriculadosPorIdMat($conexion, $id_matricula);
+                                                            while ($rb_det_matriculas = mysqli_fetch_array($b_det_matriculas)) {
+                                                                $contador++;
 
-                                                               $b_estudiante = buscar_estudiantePorId($conexion, $rb_matriculas['id_estudiante']);
-                                                               $rb_estudiante = mysqli_fetch_array($b_estudiante);
+                                                                $b_curso_prog = buscar_cursos_prog_porId($conexion, $rb_det_matriculas['id_curso_programado']);
+                                                                $rb_curso_prog = mysqli_fetch_array($b_curso_prog);
 
-                                                               $b_anio_acad = buscar_anio_academico_id($conexion, $rb_matriculas['id_anio_academico']);
-                                                               $rb_anio_acad = mysqli_fetch_array($b_anio_acad);
+                                                                $b_curso = buscar_cursoPorId($conexion, $rb_curso_prog['id_curso']);
+                                                                $rb_curso = mysqli_fetch_array($b_curso);
 
-                                                               $b_sede = buscar_sedesPorId($conexion, $rb_matriculas['id_sede']);
-                                                               $rb_sede = mysqli_fetch_array($b_sede);
+                                                                $b_sede = buscar_sedesPorId($conexion, $rb_curso_prog['id_sede']);
+                                                                $rb_sede = mysqli_fetch_array($b_sede);
 
-                                                               $b_nivel = buscar_nivel_id($conexion, $rb_matriculas['id_nivel']);
-                                                               $rb_nivel = mysqli_fetch_array($b_nivel);
+                                                                $b_grado = buscar_gradoPorId($conexion, $rb_curso['id_grado']);
+                                                                $rb_grado = mysqli_fetch_array($b_grado);
 
-                                                               $b_grado = buscar_gradoPorId($conexion, $rb_matriculas['id_grado']);
-                                                               $rb_grado = mysqli_fetch_array($b_grado);
+                                                                $b_ciclo = buscar_ciclosPorId($conexion, $rb_grado['id_ciclo']);
+                                                                $rb_ciclo = mysqli_fetch_array($b_ciclo);
 
-                                                               $b_seccion = buscar_seccionPorid($conexion, $rb_matriculas['id_seccion']);
-                                                               $rb_seccion = mysqli_fetch_array($b_seccion);
+                                                                $b_nivel = buscar_nivel_id($conexion, $rb_ciclo['id_nivel']);
+                                                                $rb_nivel = mysqli_fetch_array($b_nivel);
 
-                                                               $b_turno = buscar_turno_id($conexion, $rb_matriculas['id_turno']);
-                                                               $rb_turno = mysqli_fetch_array($b_turno);
+                                                                $b_seccion = buscar_seccionPorid($conexion, $rb_curso_prog['id_seccion']);
+                                                                $rb_seccion = mysqli_fetch_array($b_seccion);
+
+                                                                $b_turno = buscar_turno_id($conexion, $rb_curso_prog['id_turno']);
+                                                                $rb_turno = mysqli_fetch_array($b_turno);
                                                             ?>
                                                                 <tr>
                                                                     <td><?php echo $contador; ?></td>
-                                                                    <td><?php echo $rb_estudiante['dni']; ?></td>
-                                                                    <td><?php echo $rb_estudiante['apellidos_nombres']; ?></td>
-                                                                    <td><?php echo $rb_anio_acad['nombre']; ?></td>
+                                                                    <td><?php echo $rb_curso['nombre']; ?></td>
                                                                     <td><?php echo $rb_sede['nombre']; ?></td>
                                                                     <td><?php echo $rb_nivel['nombre']; ?></td>
                                                                     <td><?php echo $rb_grado['nombre']; ?></td>
                                                                     <td><?php echo $rb_seccion['nombre']; ?></td>
                                                                     <td><?php echo $rb_turno['nombre']; ?></td>
-                                                                    <td><a href="ver_matricula.php?data=<?php echo $rb_matriculas['id']; ?>" class="btn btn-success">Editar</a></td>
+                                                                    <td><a href="operaciones/eliminar_detalle_matricula.php?data=<?php echo $rb_det_matriculas['id']."&data2=".$id_matricula; ?>" class="btn btn-danger" onclick="return confirmarEliminar();">Eliminar</a></td>
                                                                 </tr>
                                                             <?php
                                                             }

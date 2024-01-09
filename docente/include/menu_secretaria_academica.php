@@ -34,7 +34,7 @@
       <li><a><i class="fa fa-desktop"></i> Matrícula <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="matriculas.php">Matrículas</a></li>
-          <li><a href="licencias.php">Licencias</a></li>
+          <!--<li><a href="">Licencias</a></li>-->
         </ul>
       </li>
       <li><a><i class="fa fa-table"></i> Docentes <span class="fa fa-chevron-down"></span></a>
@@ -44,8 +44,8 @@
       </li>
       <li><a><i class="fa fa-bar-chart-o"></i> Estudiantes <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="estudiantes.php">Relación de Estudiantes</a></li>
           <li><a href="apoderados.php">Relación de Apoderados</a></li>
+          <li><a href="estudiantes.php">Relación de Estudiantes</a></li>
         </ul>
       </li>
       <li><a><i class="fa fa-clone"></i>Evaluación <span class="fa fa-chevron-down"></span></a>
@@ -103,7 +103,7 @@
             $busc_sede_id = buscar_sedesPorId($conexion, $_SESSION['id_sede']);
             $res_busc_sede_id = mysqli_fetch_array($busc_sede_id);
             echo $res_busc_sede_id['nombre'];
-            
+
             ?>
             <span class=" fa fa-angle-down"></span>
           </a>
@@ -115,8 +115,8 @@
               <li><a href="operaciones/actualizar_sesion_sede.php?dato=<?php echo $res_buscar_sedes['id']; ?>"><?php if ($res_buscar_sedes['id'] == $_SESSION['id_sede']) {
                                                                                                                   echo "<b>";
                                                                                                                 } ?><?php echo $res_buscar_sedes['nombre']; ?><?php if ($res_buscar_sedes['id'] == $_SESSION['id_sede']) {
-                                                                                                                                                                    echo "</b>";
-                                                                                                                                                                  } ?></a></li>
+                                                                                                                                                                echo "</b>";
+                                                                                                                                                              } ?></a></li>
             <?php
             }
             ?>
@@ -125,7 +125,7 @@
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <?php
-            
+
             if ($_SESSION['anio_lectivo'] == '') {
               $b_ultimo_anio_acad = buscar_anio_academicoultimoporSede($conexion, $_SESSION['id_sede']);
               $rb_ultimo_sede = mysqli_fetch_array($b_ultimo_anio_acad);
@@ -145,8 +145,8 @@
               <li><a href="operaciones/actualizar_sesion_anio_acad.php?dato=<?php echo $res_buscar_anios_Acad['id']; ?>"><?php if ($res_buscar_anios_Acad['id'] == $_SESSION['anio_lectivo']) {
                                                                                                                             echo "<b>";
                                                                                                                           } ?><?php echo $res_buscar_anios_Acad['nombre']; ?><?php if ($res_buscar_anios_Acad['id'] == $_SESSION['anio_lectivo']) {
-                                                                                                                                                                              echo "</b>";
-                                                                                                                                                                            } ?></a></li>
+                                                                                                                                                                                echo "</b>";
+                                                                                                                                                                              } ?></a></li>
             <?php
             }
             ?>
