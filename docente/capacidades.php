@@ -15,6 +15,8 @@ if ($cargo != "Secretario Academico") {
 			";
 } else {
 
+    
+
     $id_competencia = $_GET['competencia'];
     $b_competencia = buscar_competenciaPorId($conexion, $id_competencia);
     $r_b_competencia = mysqli_fetch_array($b_competencia);

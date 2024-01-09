@@ -14,6 +14,7 @@ if($cargo!="Secretario Academico"){
 				</script>
 			";
 }else{
+  
 
 ?>
 <!DOCTYPE html>

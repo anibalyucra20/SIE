@@ -14,6 +14,7 @@ if ($cargo != "Secretario Academico") {
 				</script>
 			";
 } else {
+    
 
     $id_matricula = $_GET['data'];
 
@@ -25,6 +26,7 @@ if ($cargo != "Secretario Academico") {
 
     $b_sede = buscar_sedesPorId($conexion, $_SESSION['id_sede']);
     $rb_sede = mysqli_fetch_array($b_sede);
+    
 
 ?>
     <!DOCTYPE html>

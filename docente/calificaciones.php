@@ -14,6 +14,10 @@ if ($cargo != "Secretario Academico" && $cargo != "Docente") {
 				</script>
 			";
 } else {
+
+
+    
+
     $id_curso_programado = $_GET['data'];
 
     $b_curso_prog = buscar_cursos_prog_porId($conexion, $id_curso_programado);

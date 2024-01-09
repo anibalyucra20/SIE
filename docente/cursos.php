@@ -198,6 +198,7 @@ if ($cargo != "Secretario Academico") {
                                                                     <td><?php echo $r_b_curso['nombre']; ?></td>
                                                                     <td><?php echo $r_b_area['nombre']; ?></td>
                                                                     <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_curso['id']; ?>">Editar</button>
+                                                                        
                                                                 </tr>
                                                                 <!--MODAL EDITAR-->
                                                                 <div class="modal fade editar<?php echo $r_b_curso['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">

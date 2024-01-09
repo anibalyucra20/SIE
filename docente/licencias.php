@@ -1,25 +1,3 @@
-<?php
-session_start();
-include("../include/conexion.php");
-include("../include/busquedas.php");
-include("../include/funciones.php");
-
-include("include/verificar_sesion.php");
-
-$cargo = verificar_sesion($conexion);
-if($cargo!="Secretario Academico"){
-    echo "<script>
-					alert('Error, Usted no cuenta con los permisos para acceder a esta página');
-					window.history.back();
-				</script>
-			";
-}else{
-    $b_sesion = buscar_sesion_porID($conexion, $_SESSION['id_sesion_sie']);
-$r_b_sesion = mysqli_fetch_array($b_sesion);
-$id_trabajador = $r_b_sesion['id_trabajador'];
-$b_docente = buscar_docentePorId($conexion, $id_trabajador);
-$r_b_docente = mysqli_fetch_array($b_docente);
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -30,7 +8,7 @@ $r_b_docente = mysqli_fetch_array($b_docente);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Secciones | SIE</title>
+    <title>Licencias | SIE</title>
     <!--icono en el titulo-->
     <link rel="shortcut icon" href="">
 
@@ -78,97 +56,52 @@ $r_b_docente = mysqli_fetch_array($b_docente);
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="x_panel">
                                         <div class="x_title">
-                                            <h2>Secciones</h2>
+                                            <h2>Licencias</h2>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="x_content">
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target=".registrar"><i class="fa fa-plus-square"></i> Nuevo</button>
-
-
-                                            <!--MODAL REGISTRAR-->
-                                            <div class="modal fade registrar" tabindex="-1" role="dialog" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                                                            </button>
-                                                            <h4 class="modal-title" id="myModalLabel" align="center">Registar SecciÓn</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <!--INICIO CONTENIDO DE MODAL-->
-                                                            <div class="x_panel">
-
-                                                                <div class="" align="center">
-                                                                    <h2></h2>
-                                                                    <div class="clearfix"></div>
-                                                                </div>
-                                                                <div class="x_content">
-                                                                    <br />
-                                                                    <form role="form" action="operaciones/registrar_seccion.php" class="form-horizontal form-label-left input_mask" method="POST">
-
-
-
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sección : </label>
-                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                            <input type="text" maxlength="20" class="form-control" name="seccion" required>
-                                                                                                                                                     
-                                                                                <br>
-                                                                            </div>
-                                                                        </div>
-
-
-                                                                        <div align="center">
-                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-
-                                                                            <button type="submit" class="btn btn-primary">Guardar</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                            <!--FIN DE CONTENIDO DE MODAL-->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- FIN MODAL REGISTRAR-->
+                                            <a href="registrar_licencia.php" class="btn btn-success"><i class="fa fa-plus-square"></i> Nuevo</a>
+                                            
                                             <br />
                                             <div class="x_content">
                                                 <table id="example" class="table table-striped table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th>Nro</th>
-                                                            <th>Nombre del sección</th>
+                                                            <th>DNI</th>
+                                                            <th>Estudiante</th>
+                                                            <th>Nivel</th>
+                                                            <th>Grado</th>
+                                                            <th>Nro. Resolución</th>
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>
+
+                                                    
                                                     <tbody>
                                                         <?php
-                                                        $b_seccion = buscar_seccion($conexion);
-                                                        $cont = 0;
-                                                        while ($r_b_seccion = mysqli_fetch_array($b_seccion)) {
-                                                            $cont++;
+                                                        for ($i = 1; $i <= 4; $i++) {
+
+
                                                         ?>
-                                                        
-                                                        
                                                             <tr>
-                                                                    <td><?php echo $cont; ?></td>
-                                                                <td><?php echo $r_b_seccion['nombre']; ?></td>
-                                                             
-                                                              
-                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $r_b_seccion['id']; ?>">Editar</button></td>
+                                                                <td><?php echo $i; ?></td>
+                                                                <td><?php echo $i; ?>Tiger Nixon</td>
+                                                                <td><?php echo $i; ?>System Architect</td>
+                                                                <td><?php echo $i; ?>Edinburgh</td>
+                                                                <td><?php echo $i; ?>61</td>
+                                                                <td><?php echo $i; ?>1213</td>
+                                                                <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".editar<?php echo $i;?>">Editar</button><button class="btn btn-danger">Eliminar</button></td>
                                                             </tr>
                                                             <!--MODAL EDITAR-->
-                                                            <div class="modal fade editar<?php echo $r_b_seccion['id']; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal fade editar<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                                 <div class="modal-dialog modal-lg">
                                                                     <div class="modal-content">
 
                                                                         <div class="modal-header">
                                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                                                                             </button>
-                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Sección</h4>
+                                                                            <h4 class="modal-title" id="myModalLabel" align="center">Editar Licencia</h4>
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <!--INICIO CONTENIDO DE MODAL-->
@@ -180,17 +113,25 @@ $r_b_docente = mysqli_fetch_array($b_docente);
                                                                                 </div>
                                                                                 <div class="x_content">
                                                                                     <br />
-                                                                                    <form role="form" action="operaciones/editar_seccion.php" class="form-horizontal form-label-left input_mask" method="POST">
-                                                                                    <input type="hidden" name="data" value="<?php echo $r_b_seccion['id']; ?>">
+                                                                                    <form role="form" action="operaciones/registrar_periodo_lectivo.php" class="form-horizontal form-label-left input_mask" method="POST">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre Sección : </label>
-                                                                                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                <input type="text" maxlength="50" class="form-control" name="editar_seccion" value="<?php echo $r_b_seccion['nombre']; ?>">
-                                                                                                <br>
+                                                                                            <div class="row">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Estudiante : </label>
+                                                                                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                                                                                    <input type="text" maxlength="20" class="form-control" readonly>
+                                                                                                    <br>
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
-                                                                                        
-
+                                                                                        <div class="form-group">
+                                                                                            <div class="row">
+                                                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Nro de Resolución : </label>
+                                                                                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                                                                                    <input type="text" class="form-control" name="nro_resolucion" required="required">
+                                                                                                    <br>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
                                                                                         <div align="center">
                                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 
@@ -297,5 +238,3 @@ $r_b_docente = mysqli_fetch_array($b_docente);
 </body>
 
 </html>
-<?php
-}

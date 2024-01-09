@@ -15,6 +15,8 @@ if($cargo!="Secretario Academico"){
 			";
 }else{
 
+  
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

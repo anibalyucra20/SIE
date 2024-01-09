@@ -15,6 +15,8 @@ if ($cargo != "Secretario Academico") {
 			";
 } else {
 
+    
+
     $id_area_curricular = $_GET['data'];
 
     $b_area = buscar_AreaCurricularPorId($conexion, $id_area_curricular);
