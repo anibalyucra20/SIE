@@ -207,21 +207,21 @@ if ($cargo != "Secretario Academico") {
                                                                                                 <input type="hidden" name="area" value="<?php echo $id_area_curricular; ?>">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Competencia : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="text" maxlength="20" class="form-control" name="editar_competencia" value="<?php echo $r_b_competencia['nombre']; ?>">
+                                                                                                    <input type="text" maxlength="100" class="form-control" name="editar_competencia" value="<?php echo $r_b_competencia['nombre']; ?>">
                                                                                                     <br>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Enfoque : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="text" maxlength="50" class="form-control" name="editar_enfoque" value="<?php echo $r_b_competencia['enfoque']; ?>">
+                                                                                                    <textarea name="editar_enfoque" id="" cols="30" rows="5" class="form-control"><?php echo $r_b_competencia['enfoque']; ?></textarea>
                                                                                                     <br>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripciónn : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="text" maxlength="50" class="form-control" name="editar_descripcion_competencia" value="<?php echo $r_b_competencia['descripcion']; ?>">
+                                                                                                    <textarea name="editar_descripcion_competencia" id="" cols="30" rows="10" class="form-control"><?php echo $r_b_competencia['descripcion']; ?></textarea>
                                                                                                     <br>
                                                                                                 </div>
                                                                                             </div>

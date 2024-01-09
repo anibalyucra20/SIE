@@ -196,14 +196,14 @@ if ($cargo != "Secretario Academico") {
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre Capacidades : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="text" maxlength="50" class="form-control" name="nombre_capacidades" value="<?php echo $r_b_capacidad['nombre']; ?>" required>
+                                                                                                    <input type="text" maxlength="100" class="form-control" name="nombre_capacidades" value="<?php echo $r_b_capacidad['nombre']; ?>" required>
                                                                                                     <br>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Descripción : </label>
                                                                                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                                                                                    <input type="text" maxlength="50" class="form-control" name="descripcion" required value="<?php echo $r_b_capacidad['descripcion']; ?>">
+                                                                                                    <textarea name="descripcion" id="" cols="30" rows="10" class="form-control" required><?php echo $r_b_capacidad['descripcion']; ?></textarea>
                                                                                                     <br>
                                                                                                 </div>
                                                                                             </div>

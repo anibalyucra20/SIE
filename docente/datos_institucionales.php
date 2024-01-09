@@ -95,7 +95,7 @@ if($cargo!="Secretario Academico"){
                         <div class="form-group">
                           <label class="control-label col-md-3 col-sm-3 col-xs-12">Código Modular : </label>
                           <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="number" class="form-control" name="cod_modular" id="cod_modular" required="" value="<?php echo $res['cod_modular']; ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                            <input type="text" class="form-control" name="cod_modular" id="cod_modular" required="" value="<?php echo $res['cod_modular']; ?>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                             <br>
                           </div>
                         </div>
