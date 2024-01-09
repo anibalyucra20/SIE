@@ -264,11 +264,14 @@ function buscar_cursos_prog_porSede_Anio($conexion, $sede, $anio){
     $consulta = "SELECT * FROM programacion_cursos WHERE id_sede='$sede' AND id_anio_academico='$anio'";
     return mysqli_query($conexion, $consulta);
 }
+function buscar_cursos_prog_porSede_Anio_Docente($conexion, $sede, $anio, $docente){
+    $consulta = "SELECT * FROM programacion_cursos WHERE id_sede='$sede' AND id_anio_academico='$anio' AND id_docente='$docente'";
+    return mysqli_query($conexion, $consulta);
+}
 function buscar_cursos_prog_porId($conexion, $id){
     $consulta = "SELECT * FROM programacion_cursos WHERE id='$id'";
     return mysqli_query($conexion, $consulta);
 }
-
 function buscar_cursos_prog_porSede_Anio_grado_turno_seccion($conexion, $sede, $anio, $curso, $turno, $seccion){
     $consulta = "SELECT * FROM programacion_cursos WHERE id_sede='$sede' AND id_anio_academico='$anio' AND id_curso='$curso' AND id_seccion='$seccion' AND id_turno='$turno'";
     return mysqli_query($conexion, $consulta);

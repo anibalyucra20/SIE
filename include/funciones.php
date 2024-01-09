@@ -18,7 +18,8 @@ function generar_llave()
 
 
 
-function reg_sesion($conexion, $id_trabajador, $llave){
+function reg_sesion($conexion, $id_trabajador, $llave)
+{
     $fecha_hora_inicio = date("Y-m-d H:i:s");
     $fecha_hora_fin = strtotime('+1 minute', strtotime($fecha_hora_inicio));
     $fecha_hora_fin = date("Y-m-d H:i:s", $fecha_hora_fin);
@@ -32,6 +33,15 @@ function reg_sesion($conexion, $id_trabajador, $llave){
     } else {
         return 0;
     }
+}
+
+function buscar_docente_sesion($conexion)
+{
+    $b_sesion = buscar_sesion_porID($conexion, $_SESSION['id_sesion_sie']);
+    $r_b_sesion = mysqli_fetch_array($b_sesion);
+    $id_trabajador = $r_b_sesion['id_trabajador'];
+
+    return $id_trabajador;
 }
 
 function sesion_si_activa($conexion, $id_sesion, $token)
@@ -66,7 +76,8 @@ function actualizar_sesion($conexion, $id_sesion)
     mysqli_query($conexion, $actualizar);
 }
 
-function convertir_vigesimal_cualitativo($numero){
+function convertir_vigesimal_cualitativo($numero)
+{
     if ($numero >= 0 && $numero <= 10) {
         return "C";
     }
@@ -79,10 +90,7 @@ function convertir_vigesimal_cualitativo($numero){
     if ($numero > 17 && $numero <= 20) {
         return "AD";
     }
-    if($numero < 0 && $numero > 20){
+    if ($numero < 0 && $numero > 20) {
         return 0;
     }
-
 }
-
-?>

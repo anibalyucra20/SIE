@@ -7,13 +7,14 @@ include("../include/funciones.php");
 include("include/verificar_sesion.php");
 
 $cargo = verificar_sesion($conexion);
-if ($cargo != "Secretario Academico") {
+if ($cargo != "Secretario Academico" && $cargo != "Docente") {
   echo "<script>
 					alert('Error, Usted no cuenta con los permisos para acceder a esta página');
 					window.history.back();
 				</script>
 			";
 } else {
+  $id_docente = buscar_docente_sesion($conexion);
 
 ?>
   <!DOCTYPE html>
@@ -56,7 +57,21 @@ if ($cargo != "Secretario Academico") {
           <div class="left_col scroll-view">
 
 
-            <?php include("include/menu_secretaria_academica.php"); ?>
+            <?php
+            switch ($cargo) {
+              case 'Secretario Academico':
+                include("include/menu_secretaria_academica.php");
+                $b_cursos_programados = buscar_cursos_prog_porSede_Anio($conexion, $_SESSION['id_sede'], $_SESSION['anio_lectivo']);
+                break;
+              case 'Docente':
+                include("include/menu_docente.php");
+                $b_cursos_programados = buscar_cursos_prog_porSede_Anio_Docente($conexion, $_SESSION['id_sede'], $_SESSION['anio_lectivo'], $id_docente);
+                break;
+              default:
+                echo "ERROR";
+                break;
+            }
+             ?>
 
             <!-- page content -->
             <div class="right_col" role="main">
@@ -97,7 +112,6 @@ if ($cargo != "Secretario Academico") {
                             </thead>
                             <tbody>
                               <?php
-                              $b_cursos_programados = buscar_cursos_prog_porSede_Anio($conexion, $_SESSION['id_sede'], $_SESSION['anio_lectivo']);
                               $cont = 0;
                               while ($rb_cursos_programados = mysqli_fetch_array($b_cursos_programados)) {
                                 $cont++;
@@ -149,7 +163,7 @@ if ($cargo != "Secretario Academico") {
                                   <td>
                                     <a href="calificaciones.php?data=<?php echo $rb_cursos_programados['id']; ?>" class="btn btn-success">Evaluar</a>
                                 </tr>
-                                
+
 
                               <?php
                               }
