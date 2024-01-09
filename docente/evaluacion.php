@@ -218,9 +218,9 @@ if ($cargo != "Secretario Academico" && $cargo != "Docente") {
                                                                         <?php
                                                                         $b_calificacion = buscar_calificacionPorIdDetMatOrden($conexion, $id_det_matricula, $orden_calif);
                                                                         while ($rb_calificacion = mysqli_fetch_array($b_calificacion)) {
-                                                                            $id_calificacion = $rb_calificacion['id'];
+                                                                            $id_calificacion_mat = $rb_calificacion['id'];
 
-                                                                            $b_evaluacion = buscar_EvaluacionPorIdCalificacion($conexion, $id_calificacion);
+                                                                            $b_evaluacion = buscar_EvaluacionPorIdCalificacion($conexion, $id_calificacion_mat);
                                                                             $suma_total_evaluacion = 0;
                                                                             while ($rb_evaluacion = mysqli_fetch_array($b_evaluacion)) {
                                                                                 $id_evaluacion = $rb_evaluacion['id'];

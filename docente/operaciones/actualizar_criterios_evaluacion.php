@@ -23,7 +23,7 @@ $b_detmatriculas = buscar_detmatriculadosPorIdCursoProg($conexion, $id_curso_pro
 while ($rb_det_mat = mysqli_fetch_array($b_detmatriculas)) {
     $id_det_matricula = $rb_det_mat['id'];
     //buscar matricula de estudiante
-    $b_matricula = buscar_matriculasPorId($conexion, $id_det_matricula);
+    $b_matricula = buscar_matriculasPorId($conexion, $rb_det_mat['id_matricula']);
     $rb_matricula = mysqli_fetch_array($b_matricula);
     $id_estudiante = $rb_matricula['id_estudiante'];
 
@@ -33,9 +33,9 @@ while ($rb_det_mat = mysqli_fetch_array($b_detmatriculas)) {
 
     $b_calificacion = buscar_calificacionPorIdDetMatOrden($conexion, $id_det_matricula, $orden_calif);
     while ($rb_calificacion = mysqli_fetch_array($b_calificacion)) {
-        $id_calificacion = $rb_calificacion['id'];
+        $id_calificacion_mat = $rb_calificacion['id'];
 
-        $b_evaluacion = buscar_EvaluacionPorIdCalificacion($conexion, $id_calificacion);
+        $b_evaluacion = buscar_EvaluacionPorIdCalificacion($conexion, $id_calificacion_mat);
         while ($rb_evaluacion = mysqli_fetch_array($b_evaluacion)) {
             $id_evaluacion = $rb_evaluacion['id'];
             $b_ind_logro = buscar_CritEvaPorIdEvaluacion($conexion, $id_evaluacion);
