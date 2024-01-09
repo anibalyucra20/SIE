@@ -107,7 +107,19 @@ if ($cargo != "Secretario Academico" && $cargo != "Docente") {
             <div class="main_container">
                 <div class="col-md-3 left_col">
                     <div class="left_col scroll-view">
-                        <?php include("include/menu_secretaria_academica.php"); ?>
+                        <?php
+                        switch ($cargo) {
+                            case 'Secretario Academico':
+                                include("include/menu_secretaria_academica.php");
+                                break;
+                            case 'Docente':
+                                include("include/menu_docente.php");
+                                break;
+                            default:
+                                echo "ERROR";
+                                break;
+                        }
+                        ?>
                         <!-- page content -->
                         <div class="right_col" role="main">
                             <div class="">
