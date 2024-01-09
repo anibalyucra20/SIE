@@ -92,4 +92,13 @@ if ($resultado) {
             }
         }
     }
+    echo "<script>
+                    alert('Matrícula Exitosa');
+                    window.location = '../matricula.php';
+                </script>";
+} else {
+    echo "<script>
+                    alert('Error, No se pudo realizar la matrícula');
+                    window.history.back();
+                </script>";
 }
