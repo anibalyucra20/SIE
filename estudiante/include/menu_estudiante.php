@@ -33,9 +33,9 @@ $r_b_estudiante = mysqli_fetch_array($b_estudiante);
         <ul class="nav side-menu">
             <li><a href="index.php"><i class="fa fa-home"></i> Inicio </a>
             </li>
-            <li><a><i class="fa fa-clone"></i>Evaluación <span class="fa fa-chevron-down"></span></a>
+            <li><a><i class="fa fa-clone"></i>Mi Calificaciones <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="calificaciones.php">Mis Cursos</a></li>
+                    <li><a href="calificaciones.php">Mis Calificaciones</a></li>
                 </ul>
             </li>
         </ul>
