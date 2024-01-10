@@ -15,7 +15,7 @@ $r_b_docente = mysqli_fetch_array($b_docente);
 <!-- menu profile quick info -->
 <div class="profile clearfix">
   <div class="profile_pic">
-    <img src="img_docente/70198965.jpg" alt="..." class="img-circle profile_img">
+    <img src="img_docente/<?php echo $r_b_docente['dni']; ?>.jpg" alt="..." class="img-circle profile_img">
   </div>
   <div class="profile_info">
     <span>Bienvenido,</span>
@@ -98,7 +98,7 @@ $r_b_docente = mysqli_fetch_array($b_docente);
       <ul class="nav navbar-nav navbar-right">
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <img src="img_docente/70198965.jpg" alt=""><?php echo $r_b_docente['apellidos_nombres']; ?>
+            <img src="img_docente/<?php echo $r_b_docente['dni']; ?>.jpg" alt=""><?php echo $r_b_docente['apellidos_nombres']; ?>
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">

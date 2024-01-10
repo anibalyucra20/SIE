@@ -181,6 +181,7 @@ if ($cargo != "Secretario Academico" && $cargo != "Docente") {
                                                                         $b_crit_eva = buscar_CritEvaPorIdEvaluacion($conexion, $mostrar_eva['id']);
                                                                         while ($rb_crit_eva = mysqli_fetch_array($b_crit_eva)) { ?>
                                                                             <th class="text-center">
+                                                                                <?php echo $rb_crit_eva['ponderado'] . "%"; ?>
                                                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".edit_crit_eva<?php echo $rb_crit_eva['id']; ?>"><i class="fa fa-edit"></i></button>
                                                                                 <p class="verticalll"><?php echo $rb_crit_eva['detalle']; ?></p>
                                                                             </th>
@@ -218,31 +219,32 @@ if ($cargo != "Secretario Academico" && $cargo != "Docente") {
                                                                         <?php
                                                                         $b_calificacion = buscar_calificacionPorIdDetMatOrden($conexion, $id_det_matricula, $orden_calif);
                                                                         while ($rb_calificacion = mysqli_fetch_array($b_calificacion)) {
-                                                                            $id_calificacion_mat = $rb_calificacion['id'];
+                                                                            $id_calificacion = $rb_calificacion['id'];
 
-                                                                            $b_evaluacion = buscar_EvaluacionPorIdCalificacion($conexion, $id_calificacion_mat);
+                                                                            $b_evaluacion = buscar_EvaluacionPorIdCalificacion($conexion, $id_calificacion);
                                                                             $suma_total_evaluacion = 0;
                                                                             while ($rb_evaluacion = mysqli_fetch_array($b_evaluacion)) {
                                                                                 $id_evaluacion = $rb_evaluacion['id'];
 
                                                                                 $b_ind_logro = buscar_CritEvaPorIdEvaluacion($conexion, $id_evaluacion);
-                                                                                $cant_crit_eva = 0;
                                                                                 $suma_total_crit_eva = 0;
                                                                                 while ($rb_ind_logro = mysqli_fetch_array($b_ind_logro)) {
                                                                                     if ($rb_ind_logro['calificacion'] != "") {
-                                                                                        $cant_crit_eva++;
-                                                                                        $suma_total_crit_eva += $rb_ind_logro['calificacion'];
+                                                                                        $suma_total_crit_eva += ($rb_ind_logro['ponderado'] / 100) * $rb_ind_logro['calificacion'];
                                                                                     }
                                                                         ?>
-                                                                                    <td class="text-center" height="auto" width="20px"><input type="number" name="<?php echo $rb_estudiante['dni'] . "_" . $rb_ind_logro['id']; ?>" class="nota_input" value="<?php echo $rb_ind_logro['calificacion']; ?>" max="20" min="0"></td>
+                                                                                    <td class="text-center" height="auto" width="20px">
+                                                                                        <input type="number" name="<?php echo $rb_estudiante['dni'] . "_" . $rb_ind_logro['id']; ?>" class="nota_input" value="<?php echo $rb_ind_logro['calificacion']; ?>" max="20" min="0">
+                                                                                    </td>
                                                                                 <?php }
                                                                                 if ($suma_total_crit_eva > 0) {
-                                                                                    $suma_total_evaluacion += ($rb_evaluacion['ponderado'] / 100) * round($suma_total_crit_eva / $cant_crit_eva);
+                                                                                    $suma_total_evaluacion += ($rb_evaluacion['ponderado'] / 100) * round($suma_total_crit_eva);
                                                                                 }
                                                                                 ?>
-                                                                                <td class="text-center" height="auto" width="20px"><?php if ($suma_total_crit_eva > 0) {
-                                                                                                                                        echo round($suma_total_crit_eva / $cant_crit_eva);
-                                                                                                                                    } ?></td>
+                                                                                <td class="text-center" height="auto" width="20px">
+                                                                                    <?php if ($suma_total_crit_eva > 0) {
+                                                                                        echo round($suma_total_crit_eva);
+                                                                                    } ?></td>
                                                                             <?php } ?>
                                                                             <td class="text-center" height="auto" width="20px">
                                                                                 <?php
@@ -342,7 +344,8 @@ if ($cargo != "Secretario Academico" && $cargo != "Docente") {
                 <script type="text/javascript">
                     function actualizarCritEvaluacion(id, id_eva, id_calif, orden, detalle_eva) {
                         let detalle_crit_eva = document.getElementById("detalle_crit_eva_" + id).value
-                        window.location = 'operaciones/actualizar_dato_criterio_evaluacion.php?id=' + id + '&detalle=' + detalle_crit_eva + '&id_eva=' + id_eva + '&id_calif=' + id_calif + '&orden=' + orden;
+                        let ponderado_crit_eva = document.getElementById("ponderado_crit_eva_" + id).value
+                        window.location = 'operaciones/actualizar_dato_criterio_evaluacion.php?id=' + id + '&detalle=' + detalle_crit_eva + '&id_eva=' + id_eva + '&id_calif=' + id_calif + '&orden=' + orden + '&ponderado=' + ponderado_crit_eva;
                     };
                 </script>
                 <script>

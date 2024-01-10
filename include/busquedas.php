@@ -158,6 +158,10 @@ function buscar_cursoPorIdGrado($conexion, $id_grado){
     $consulta = "SELECT * FROM curso WHERE id_grado='$id_grado'";
     return mysqli_query($conexion, $consulta);
 }
+function buscar_cursoPorIdArea($conexion, $id_area){
+    $consulta = "SELECT * FROM curso WHERE id_area_curricular='$id_area'";
+    return mysqli_query($conexion, $consulta);
+}
 
 // busquedas area_curricular
 
@@ -255,6 +259,12 @@ function buscar_sesion_porID($conexion, $id){
     return mysqli_query($conexion, $consulta);
 }
 
+function buscar_sesion_estudiante_porID($conexion, $id){
+    $consulta = "SELECT * FROM sesiones_estudiante WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+
+
 
 
 
@@ -284,6 +294,10 @@ function buscar_matriculas($conexion){
 }
 function buscar_matriculasPorId($conexion,$id){
     $consulta = "SELECT * FROM matricula WHERE id='$id'";
+    return mysqli_query($conexion, $consulta);
+}
+function buscar_matriculasPorIdEstudianteIdAnio($conexion,$id,$anio){
+    $consulta = "SELECT * FROM matricula WHERE id_estudiante='$id' AND id_anio_academico='$anio'";
     return mysqli_query($conexion, $consulta);
 }
 function buscar_matriculasPorAnioSede($conexion,$anio,$sede){
